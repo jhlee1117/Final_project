@@ -1,4 +1,4 @@
--- ±â¾÷°ø°í Å×ÀÌºí »ı¼º
+-- ê¸°ì—…ê³µê³  í…Œì´ë¸” ìƒì„±
 CREATE TABLE announcement
 (
     ann_num    NUMBER NOT NULL,
@@ -18,24 +18,24 @@ CREATE TABLE announcement
     ann_prime    VARCHAR2(1000) NOT NULL,
     ann_regdate    DATE DEFAULT sysdate NOT NULL
 );
--- ±â¾÷°ø°í PK ÀÎµ¦½º »ı¼º
+-- ê¸°ì—…ê³µê³  PK ì¸ë±ìŠ¤ ìƒì„±
 CREATE UNIQUE INDEX idx_ann_pk ON announcement
 ( ann_num );
--- ±â¾÷°ø°í PK ÁöÁ¤
+-- ê¸°ì—…ê³µê³  PK ì§€ì •
 ALTER TABLE announcement
  ADD CONSTRAINT ann_pk PRIMARY KEY ( ann_num )
  USING INDEX idx_ann_pk;
--- ±â¾÷°ø°í °í¿ëÇüÅÂ Á¦¾àÁ¶°Ç ÁöÁ¤
+-- ê¸°ì—…ê³µê³  ê³ ìš©í˜•íƒœ ì œì•½ì¡°ê±´ ì§€ì •
 ALTER TABLE announcement
  ADD CONSTRAINT ann_type_ck CHECK ( ann_type IN ('regular','contract','intern','rest') );
--- ±â¾÷°ø°í °æ·Â Á¦¾àÁ¶°Ç ÁöÁ¤
+-- ê¸°ì—…ê³µê³  ê²½ë ¥ ì œì•½ì¡°ê±´ ì§€ì •
 ALTER TABLE announcement
  ADD CONSTRAINT ann_career_ck CHECK ( ann_career IN ('new','old','okay') );
--- ±â¾÷°ø°í °Ô½Ã¹° »èÁ¦¿©ºÎ Á¦¾àÁ¶°Ç ÁöÁ¤(ÃÊ±â°ª n)
+-- ê¸°ì—…ê³µê³  ê²Œì‹œë¬¼ ì‚­ì œì—¬ë¶€ ì œì•½ì¡°ê±´ ì§€ì •(ì´ˆê¸°ê°’ n)
 ALTER TABLE announcement
  ADD CONSTRAINT ann_del_ck CHECK ( ann_del IN ('y','n') );
 
--- ±â¾÷È¸¿ø Å×ÀÌºí »ı¼º
+-- ê¸°ì—…íšŒì› í…Œì´ë¸” ìƒì„±
 CREATE TABLE company
 (
     com_num    NUMBER NOT NULL,
@@ -53,37 +53,37 @@ CREATE TABLE company
     com_pno    VARCHAR2(20) NOT NULL,
     user_dist    CHAR(1) DEFAULT '1' NOT NULL
 );
--- ±â¾÷È¸¿ø PK ÀÎµ¦½º »ı¼º
+-- ê¸°ì—…íšŒì› PK ì¸ë±ìŠ¤ ìƒì„±
 CREATE UNIQUE INDEX idx_company_pk ON company
 ( com_num );
--- ±â¾÷È¸¿ø PK ÁöÁ¤
+-- ê¸°ì—…íšŒì› PK ì§€ì •
 ALTER TABLE company
  ADD CONSTRAINT com_pk PRIMARY KEY ( com_num )
  USING INDEX idx_company_pk;
--- ±â¾÷È¸¿ø UK ÁöÁ¤ (ID)
+-- ê¸°ì—…íšŒì› UK ì§€ì • (ID)
 ALTER TABLE company
  ADD CONSTRAINT company_uk UNIQUE ( com_id )
  USING INDEX idx_company_uk;
--- ±â¾÷È¸¿ø Å»Åğ¿©ºÎ Á¦¾àÁ¶°Ç ÁöÁ¤(ÃÊ±â°ª n)
+-- ê¸°ì—…íšŒì› íƒˆí‡´ì—¬ë¶€ ì œì•½ì¡°ê±´ ì§€ì •(ì´ˆê¸°ê°’ n)
 ALTER TABLE company
  ADD CONSTRAINT com_invalid_ck CHECK ( com_invalid IN (y,n) );
 
--- Áñ°ÜÃ£±â Å×ÀÌºí »ı¼º
+-- ì¦ê²¨ì°¾ê¸° í…Œì´ë¸” ìƒì„±
 CREATE TABLE favorites
 (
     fav_num    NUMBER NOT NULL,
     mem_num    NUMBER NOT NULL,
     ann_num    NUMBER NOT NULL
 );
--- Áñ°ÜÃ£±â pk ÀÎµ¦½º »ı¼º
+-- ì¦ê²¨ì°¾ê¸° pk ì¸ë±ìŠ¤ ìƒì„±
 CREATE UNIQUE INDEX idx_fav_pk ON favorites
 ( fav_num );
--- Áñ°ÜÃ£±â pk ÁöÁ¤
+-- ì¦ê²¨ì°¾ê¸° pk ì§€ì •
 ALTER TABLE favorites
  ADD CONSTRAINT fav_pk PRIMARY KEY ( fav_num )
  USING INDEX idx_fav_pk;
 
--- °ü¸®ÀÚ Å×ÀÌºí »ı¼º
+-- ê´€ë¦¬ì í…Œì´ë¸” ìƒì„±
 CREATE TABLE manager
 (
     manager_id    VARCHAR2(20) NOT NULL,
@@ -91,19 +91,19 @@ CREATE TABLE manager
     user_dist    CHAR(1) DEFAULT '2' NOT NULL,
     manager_num    NUMBER NOT NULL
 );
--- °ü¸®ÀÚ pk ÀÎµ¦½º »ı¼º
+-- ê´€ë¦¬ì pk ì¸ë±ìŠ¤ ìƒì„±
 CREATE UNIQUE INDEX idx_manager_pk ON manager
 ( manager_num );
--- °ü¸®ÀÚ pk ÁöÁ¤
+-- ê´€ë¦¬ì pk ì§€ì •
 ALTER TABLE manager
  ADD CONSTRAINT manager_pk PRIMARY KEY ( manager_num )
  USING INDEX idx_manager_pk;
--- °ü¸®ÀÚ uk ÁöÁ¤
+-- ê´€ë¦¬ì uk ì§€ì •
 ALTER TABLE manager
  ADD CONSTRAINT manager_UK UNIQUE ( manager_id )
  USING INDEX idx_manager_uk;
 
--- È¸¿ø Å×ÀÌºí »ı¼º
+-- íšŒì› í…Œì´ë¸” ìƒì„±
 CREATE TABLE member
 (
     mem_num    NUMBER NOT NULL,
@@ -115,25 +115,25 @@ CREATE TABLE member
     mem_invalid    CHAR(1) DEFAULT 'n' NOT NULL,
     user_dist    CHAR(1) DEFAULT '0' NOT NULL
 );
--- È¸¿ø pk ÀÎµ¦½º »ı¼º
+-- íšŒì› pk ì¸ë±ìŠ¤ ìƒì„±
 CREATE UNIQUE INDEX idx_mem_pk ON member
 ( mem_num );
--- È¸¿ø pk ÁöÁ¤
+-- íšŒì› pk ì§€ì •
 ALTER TABLE member
  ADD CONSTRAINT mem_pk PRIMARY KEY ( mem_num )
  USING INDEX idx_mem_pk;
--- È¸¿ø uk ÀÎµ¦½º »ı¼º
+-- íšŒì› uk ì¸ë±ìŠ¤ ìƒì„±
 CREATE UNIQUE INDEX idx_mem_uk ON member
 ( mem_id );
--- È¸¿ø uk ÁöÁ¤
+-- íšŒì› uk ì§€ì •
 ALTER TABLE member
  ADD CONSTRAINT mem_uk UNIQUE ( mem_id )
  USING INDEX idx_mem_uk;
--- È¸¿ø Å»Åğ¿©ºÎ?Á¦¾àÁ¶°Ç ÁöÁ¤(ÃÊ±â°ª n)
+-- íšŒì› íƒˆí‡´ì—¬ë¶€?ì œì•½ì¡°ê±´ ì§€ì •(ì´ˆê¸°ê°’ n)
 ALTER TABLE member
  ADD CONSTRAINT mem_invalid_ck CHECK ( mem_invalid IN ('y','n') );
 
--- Áñ°ÜÃ£±â_½ºÅ©·¦ Å×ÀÌºí »ı¼º
+-- ì¦ê²¨ì°¾ê¸°_ìŠ¤í¬ë© í…Œì´ë¸” ìƒì„±
 CREATE TABLE scrap
 (
     scrap_num    NUMBER NOT NULL,
@@ -144,10 +144,10 @@ CREATE TABLE scrap
     scrap_career    VARCHAR2(20) NOT NULL,
     scrap_link    VARCHAR2(100) NOT NULL
 );
--- Áñ°ÜÃ£±â_½ºÅ©·¦ pk ÀÎµ¦½º »ı¼º
+-- ì¦ê²¨ì°¾ê¸°_ìŠ¤í¬ë© pk ì¸ë±ìŠ¤ ìƒì„±
 CREATE UNIQUE INDEX idx_scrap_pk ON scrap
 ( scrap_num );
--- Áñ°ÜÃ£±â_½ºÅ©·¦ pk ÁöÁ¤
+-- ì¦ê²¨ì°¾ê¸°_ìŠ¤í¬ë© pk ì§€ì •
 ALTER TABLE scrap
  ADD CONSTRAINT scrap_pk PRIMARY KEY ( scrap_num )
  USING INDEX idx_scrap_pk;

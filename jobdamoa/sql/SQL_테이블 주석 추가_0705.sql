@@ -1,127 +1,127 @@
 
-COMMENT ON COLUMN announcement.ann_num IS '±â¾÷°ø°í¹øÈ£';
+COMMENT ON COLUMN announcement.ann_num IS 'ê¸°ì—…ê³µê³ ë²ˆí˜¸';
 
-COMMENT ON COLUMN announcement.com_num IS '±â¾÷È¸¿ø¹øÈ£';
+COMMENT ON COLUMN announcement.com_num IS 'ê¸°ì—…íšŒì›ë²ˆí˜¸';
 
-COMMENT ON COLUMN announcement.ann_job IS 'Á÷¹«';
+COMMENT ON COLUMN announcement.ann_job IS 'ì§ë¬´';
 
-COMMENT ON COLUMN announcement.ann_type IS '°í¿ëÇüÅÂ';
+COMMENT ON COLUMN announcement.ann_type IS 'ê³ ìš©í˜•íƒœ';
 
-COMMENT ON COLUMN announcement.ann_career IS '°æ·Â';
+COMMENT ON COLUMN announcement.ann_career IS 'ê²½ë ¥';
 
-COMMENT ON COLUMN announcement.ann_recruit_period IS '±â°£';
+COMMENT ON COLUMN announcement.ann_recruit_period IS 'ê¸°ê°„';
 
-COMMENT ON COLUMN announcement.ann_location IS '±Ù¹«À§Ä¡';
+COMMENT ON COLUMN announcement.ann_location IS 'ê·¼ë¬´ìœ„ì¹˜';
 
-COMMENT ON COLUMN announcement.ann_title IS 'Å¸ÀÌÆ²';
+COMMENT ON COLUMN announcement.ann_title IS 'íƒ€ì´í‹€';
 
-COMMENT ON COLUMN announcement.ann_view IS 'Á¶È¸¼ö';
+COMMENT ON COLUMN announcement.ann_view IS 'ì¡°íšŒìˆ˜';
 
-COMMENT ON COLUMN announcement.ann_del IS '°ø°í»èÁ¦¿©ºÎ';
+COMMENT ON COLUMN announcement.ann_del IS 'ê³µê³ ì‚­ì œì—¬ë¶€';
 
-COMMENT ON COLUMN announcement.ann_min IS 'ÃÖ¼Ò±Ş¿©';
+COMMENT ON COLUMN announcement.ann_min IS 'ìµœì†Œê¸‰ì—¬';
 
-COMMENT ON COLUMN announcement.ann_max IS 'ÃÖ´ë±Ş¿©';
+COMMENT ON COLUMN announcement.ann_max IS 'ìµœëŒ€ê¸‰ì—¬';
 
-COMMENT ON COLUMN announcement.ann_contents IS '¾÷¹«¼Ò°³';
+COMMENT ON COLUMN announcement.ann_contents IS 'ì—…ë¬´ì†Œê°œ';
 
-COMMENT ON COLUMN announcement.ann_qualification IS 'ÀÚ°İ¿ä°Ç';
+COMMENT ON COLUMN announcement.ann_qualification IS 'ìê²©ìš”ê±´';
 
-COMMENT ON COLUMN announcement.ann_prime IS '¿ì´ë»çÇ×';
+COMMENT ON COLUMN announcement.ann_prime IS 'ìš°ëŒ€ì‚¬í•­';
 
-COMMENT ON COLUMN announcement.ann_regdate IS '°ø°íÀÛ¼ºÀÏ';
+COMMENT ON COLUMN announcement.ann_regdate IS 'ê³µê³ ì‘ì„±ì¼';
 
-COMMENT ON TABLE announcement IS '±â¾÷°ø°í';
+COMMENT ON TABLE announcement IS 'ê¸°ì—…ê³µê³ ';
 
 
 
-COMMENT ON COLUMN company.com_num IS '±â¾÷È¸¿ø¹øÈ£';
+COMMENT ON COLUMN company.com_num IS 'ê¸°ì—…íšŒì›ë²ˆí˜¸';
 
-COMMENT ON COLUMN company.com_id IS '¾ÆÀÌµğ';
+COMMENT ON COLUMN company.com_id IS 'ì•„ì´ë””';
 
-COMMENT ON COLUMN company.com_password IS 'ºñ¹Ğ¹øÈ£';
+COMMENT ON COLUMN company.com_password IS 'ë¹„ë°€ë²ˆí˜¸';
 
-COMMENT ON COLUMN company.com_join_date IS '°¡ÀÔÀÏ';
+COMMENT ON COLUMN company.com_join_date IS 'ê°€ì…ì¼';
 
-COMMENT ON COLUMN company.com_email IS '´ëÇ¥ÀÌ¸ŞÀÏ';
+COMMENT ON COLUMN company.com_email IS 'ëŒ€í‘œì´ë©”ì¼';
 
-COMMENT ON COLUMN company.com_business_num IS '»ç¾÷ÀÚµî·Ï¹øÈ£';
+COMMENT ON COLUMN company.com_business_num IS 'ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸';
 
-COMMENT ON COLUMN company.com_name IS 'È¸»ç¸í';
+COMMENT ON COLUMN company.com_name IS 'íšŒì‚¬ëª…';
 
-COMMENT ON COLUMN company.com_homepage IS 'È¸»çÈ¨ÆäÀÌÁö';
+COMMENT ON COLUMN company.com_homepage IS 'íšŒì‚¬í™ˆí˜ì´ì§€';
 
-COMMENT ON COLUMN company.com_emp_num IS '»ç¿ø¼ö';
+COMMENT ON COLUMN company.com_emp_num IS 'ì‚¬ì›ìˆ˜';
 
-COMMENT ON COLUMN company.com_sales IS '¸ÅÃâ';
+COMMENT ON COLUMN company.com_sales IS 'ë§¤ì¶œ';
 
-COMMENT ON COLUMN company.com_invalid IS 'Å»Åğ¿©ºÎ';
+COMMENT ON COLUMN company.com_invalid IS 'íƒˆí‡´ì—¬ë¶€';
 
-COMMENT ON COLUMN company.com_address IS 'È¸»çÁÖ¼Ò';
+COMMENT ON COLUMN company.com_address IS 'íšŒì‚¬ì£¼ì†Œ';
 
-COMMENT ON COLUMN company.com_pno IS 'È¸»çÀüÈ­¹øÈ£';
+COMMENT ON COLUMN company.com_pno IS 'íšŒì‚¬ì „í™”ë²ˆí˜¸';
 
-COMMENT ON COLUMN company.user_dist IS 'È¸¿ø±¸ºĞ';
+COMMENT ON COLUMN company.user_dist IS 'íšŒì›êµ¬ë¶„';
 
-COMMENT ON TABLE company IS '±â¾÷È¸¿ø';
+COMMENT ON TABLE company IS 'ê¸°ì—…íšŒì›';
 
 
 
-COMMENT ON COLUMN favorites.fav_num IS 'Áñ°ÜÃ£±â¹øÈ£';
+COMMENT ON COLUMN favorites.fav_num IS 'ì¦ê²¨ì°¾ê¸°ë²ˆí˜¸';
 
-COMMENT ON COLUMN favorites.mem_num IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN favorites.mem_num IS 'íšŒì›ë²ˆí˜¸';
 
-COMMENT ON COLUMN favorites.ann_num IS '±â¾÷°ø°í¹øÈ£';
+COMMENT ON COLUMN favorites.ann_num IS 'ê¸°ì—…ê³µê³ ë²ˆí˜¸';
 
-COMMENT ON TABLE favorites IS 'Áñ°ÜÃ£±â_±â¾÷°ø°í';
+COMMENT ON TABLE favorites IS 'ì¦ê²¨ì°¾ê¸°_ê¸°ì—…ê³µê³ ';
 
 
 
-COMMENT ON COLUMN manager.manager_id IS '°ü¸®ÀÚID';
+COMMENT ON COLUMN manager.manager_id IS 'ê´€ë¦¬ìID';
 
-COMMENT ON COLUMN manager.manager_password IS 'ºñ¹Ğ¹øÈ£';
+COMMENT ON COLUMN manager.manager_password IS 'ë¹„ë°€ë²ˆí˜¸';
 
-COMMENT ON COLUMN manager.user_dist IS 'È¸¿ø±¸ºĞ';
+COMMENT ON COLUMN manager.user_dist IS 'íšŒì›êµ¬ë¶„';
 
-COMMENT ON COLUMN manager.manager_num IS '°ü¸®ÀÚ¹øÈ£';
+COMMENT ON COLUMN manager.manager_num IS 'ê´€ë¦¬ìë²ˆí˜¸';
 
-COMMENT ON TABLE manager IS '°ü¸®ÀÚ';
+COMMENT ON TABLE manager IS 'ê´€ë¦¬ì';
 
 
 
-COMMENT ON COLUMN member.mem_num IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN member.mem_num IS 'íšŒì›ë²ˆí˜¸';
 
-COMMENT ON COLUMN member.mem_id IS '¾ÆÀÌµğ';
+COMMENT ON COLUMN member.mem_id IS 'ì•„ì´ë””';
 
-COMMENT ON COLUMN member.mem_password IS 'ºñ¹Ğ¹øÈ£';
+COMMENT ON COLUMN member.mem_password IS 'ë¹„ë°€ë²ˆí˜¸';
 
-COMMENT ON COLUMN member.mem_nickname IS '´Ğ³×ÀÓ';
+COMMENT ON COLUMN member.mem_nickname IS 'ë‹‰ë„¤ì„';
 
-COMMENT ON COLUMN member.mem_join_date IS '°¡ÀÔÀÏ';
+COMMENT ON COLUMN member.mem_join_date IS 'ê°€ì…ì¼';
 
-COMMENT ON COLUMN member.mem_email IS 'ÀÌ¸ŞÀÏ';
+COMMENT ON COLUMN member.mem_email IS 'ì´ë©”ì¼';
 
-COMMENT ON COLUMN member.mem_invalid IS 'Å»Åğ¿©ºÎ';
+COMMENT ON COLUMN member.mem_invalid IS 'íƒˆí‡´ì—¬ë¶€';
 
-COMMENT ON COLUMN member.user_dist IS 'È¸¿ø±¸ºĞ';
+COMMENT ON COLUMN member.user_dist IS 'íšŒì›êµ¬ë¶„';
 
-COMMENT ON TABLE member IS '°³ÀÎÈ¸¿ø';
+COMMENT ON TABLE member IS 'ê°œì¸íšŒì›';
 
 
 
-COMMENT ON COLUMN scrap.scrap_num IS 'Áñ°ÜÃ£±â¹øÈ£';
+COMMENT ON COLUMN scrap.scrap_num IS 'ì¦ê²¨ì°¾ê¸°ë²ˆí˜¸';
 
-COMMENT ON COLUMN scrap.mem_num IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN scrap.mem_num IS 'íšŒì›ë²ˆí˜¸';
 
-COMMENT ON COLUMN scrap.scrap_title IS 'Å¸ÀÌÆ²';
+COMMENT ON COLUMN scrap.scrap_title IS 'íƒ€ì´í‹€';
 
-COMMENT ON COLUMN scrap.scrap_company IS 'È¸»ç';
+COMMENT ON COLUMN scrap.scrap_company IS 'íšŒì‚¬';
 
-COMMENT ON COLUMN scrap.scrap_location IS 'À§Ä¡';
+COMMENT ON COLUMN scrap.scrap_location IS 'ìœ„ì¹˜';
 
-COMMENT ON COLUMN scrap.scrap_career IS '°æÇè';
+COMMENT ON COLUMN scrap.scrap_career IS 'ê²½í—˜';
 
-COMMENT ON COLUMN scrap.scrap_link IS '¸µÅ©';
+COMMENT ON COLUMN scrap.scrap_link IS 'ë§í¬';
 
-COMMENT ON TABLE scrap IS 'Áñ°ÜÃ£±â_½ºÅ©·¦';
+COMMENT ON TABLE scrap IS 'ì¦ê²¨ì°¾ê¸°_ìŠ¤í¬ë©';
 
