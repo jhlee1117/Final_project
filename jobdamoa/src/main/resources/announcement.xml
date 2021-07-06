@@ -3,4 +3,13 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="announcementns">
 
+	<select id="annList" parameterType="map" resultType="announcement">
+		select * from (select a.*, rowNum rn from (select * from announcement) a) 
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getTotal" resultType="integer">
+		select count(*) from announcement
+	</select>
+	
 </mapper>

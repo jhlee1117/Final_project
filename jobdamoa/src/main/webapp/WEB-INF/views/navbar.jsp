@@ -29,7 +29,7 @@
 						<li><a class="dropdown-item" href="#!">잡코리아</a></li>
 						<li><a class="dropdown-item" href="#!">사람인</a></li>
 					</ul></li>
-				<li class="nav-item"><a class="nav-link" href="#!">기업 채용 공고</a></li>
+				<li class="nav-item"><a class="nav-link" href="annList.do">기업 채용 공고</a></li>
 			</ul>
 			<form class="d-flex">
 				<button class="btn btn-outline-dark" type="submit">
