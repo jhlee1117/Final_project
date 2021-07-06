@@ -3,12 +3,20 @@
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="dept" type="com.ch.ch08.model.Dept"/>
-		<typeAlias alias="emp" type="com.ch.ch08.model.Emp"/>
+		<typeAlias alias="announcement" type="com.ch.jobdamoa.model.Announcement"/>
+		<typeAlias alias="company" type="com.ch.jobdamoa.model.Company"/>
+		<typeAlias alias="favorites" type="com.ch.jobdamoa.model.Favorites"/>
+		<typeAlias alias="manager" type="com.ch.jobdamoa.model.Manager"/>
+		<typeAlias alias="member" type="com.ch.jobdamoa.model.Member"/>
+		<typeAlias alias="scrap" type="com.ch.jobdamoa.model.Scrap"/>
 	</typeAliases>
 	<!-- 매퍼정보 설정 -->
 	<mappers>
-		<mapper resource="dept.xml" />
-		<mapper resource="emp.xml" />
+		<mapper resource="announcement.xml" />
+		<mapper resource="company.xml" />
+		<mapper resource="favorites.xml" />
+		<mapper resource="manager.xml" />
+		<mapper resource="member.xml" />
+		<mapper resource="scrap.xml" />
 	</mappers>
 </configuration>
