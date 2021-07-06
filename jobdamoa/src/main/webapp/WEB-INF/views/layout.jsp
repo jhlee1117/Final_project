@@ -12,9 +12,9 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<tiles:insertAttribute name="navbar"></tiles:insertAttribute>
 	</nav>
-	<header class="bg-dark py-5">
+<%-- 	<header class="bg-dark py-5">
 		<tiles:insertAttribute name="header"></tiles:insertAttribute>
-	</header>
+	</header> --%>
 	<section class="py-5">
 		<tiles:insertAttribute name="section"></tiles:insertAttribute>
 	</section>
