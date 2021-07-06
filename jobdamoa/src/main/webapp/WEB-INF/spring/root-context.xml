@@ -8,10 +8,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-<!-- 	<context:property-placeholder
-		location="classpath:db.properties" /> -->
+	<context:property-placeholder
+		location="classpath:db.properties" />
 	<!-- myBatis시작 -->
-<!-- 	<bean id="sqlSessionFactory"
+	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
@@ -19,9 +19,9 @@
 	</bean>
 	<bean id="session" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
-	</bean> -->
+	</bean>
 	<!-- DataBase Connection Pool -->
-<!-- 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="${driver}" />
 		<property name="jdbcUrl" value="${url}" />
 		<property name="username" value="${userId}" />
@@ -30,5 +30,5 @@
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
-	</bean>	 -->	
+	</bean>	
 </beans>
