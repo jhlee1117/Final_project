@@ -10,4 +10,8 @@ public interface AnnouncementService {
 
 	int getTotal();
 
+	int getMaxNum();
+
+	int annInsert(Announcement ann);
+
 }

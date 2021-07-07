@@ -11,7 +11,10 @@
 	<div class="col mb-5">
 		<h2 class="text-primary">공고 등록하기</h2>
 	</div>
-	<form action="insert.do" method="post" name="frm">
+	<form action="annInsert.do" method="post">
+		<input type="hidden" name="ann_num" value="${ann_num }">
+		<input type="hidden" name="pageNum" value="${pageNum }">
+		<input type="hidden" name="com_num" value="${com_num }">
 		<div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-2 justify-content-left">
 			<table class="table table-bordered">
 				<tr>
@@ -24,7 +27,7 @@
 					<th width="30%" valign="middle">회사명</th>
 					<!-- com_num은 company 테이블의 주키이므로 com_num을 이용하여 com_name을 가져와 불러오도록 변경 필요 -->
 					<td>
-						${ann.com_num }
+						${com_num }
 					</td>
 				</tr>
 				<tr>
@@ -36,7 +39,7 @@
 				<tr>
 					<th width="30%" valign="middle">고용형태</th>
 					<td>
-						<select class="form-select" aria-label="Default select example">
+						<select class="form-select" name="ann_type" aria-label="Default select example">
   							<option selected>고용형태를 선택하세요</option>
   							<option value="regular">정규직</option>
   							<option value="contract">계약직</option>
@@ -48,7 +51,7 @@
 				<tr>
 					<th width="30%" valign="middle">경력여부</th>
 					<td>
-						<select class="form-select" aria-label="Default select example">
+						<select class="form-select" name="ann_career" aria-label="Default select example">
   							<option selected>경력여부를 선택하세요</option>
   							<option value="new">신입</option>
   							<option value="old">경력</option>
@@ -72,7 +75,13 @@
 				<tr>
 					<th width="30%" valign="middle">근무위치</th>
 					<td>
-						<input type="text" name="ann_job" class="form-control" required="required">
+						<input type="text" name="ann_location" class="form-control" required="required">
+					</td>
+				</tr>
+				<tr>
+					<th width="30%" valign="middle">기간</th>
+					<td>
+						<input type="text" name="ann_recruit_period" class="form-control" required="required">
 					</td>
 				</tr>
 				<tr>
@@ -102,13 +111,11 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<button class="btn btn-dark" type="submit" onclick="location.href='#!'">확인</button>
-						<button class="btn btn-dark" type="submit" onclick="history.go(-1); return false;">취소</button>	
-					</td>
-				</tr>
 			</table>
+		</div>
+		<div align="center">
+			<button class="btn btn-dark" type="submit">확인</button>
+			<button class="btn btn-dark" type="button" onclick="history.go(-1); return false;">취소</button>
 		</div>
 	</form>
 </div>

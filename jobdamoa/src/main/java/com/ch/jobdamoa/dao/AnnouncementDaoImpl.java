@@ -23,4 +23,14 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 	public int getTotal() {
 		return sst.selectOne("announcementns.getTotal");
 	}
+
+	@Override
+	public int getMaxNum() {
+		return sst.selectOne("announcementns.getMaxNum");
+	}
+	
+	@Override
+	public int annInsert(Announcement ann) {
+		return sst.insert("announcementns.annInsert");
+	}
 }

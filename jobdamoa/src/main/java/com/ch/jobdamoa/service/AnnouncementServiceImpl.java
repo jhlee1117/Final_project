@@ -23,4 +23,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	public int getTotal() {
 		return ad.getTotal();
 	}
+
+	@Override
+	public int getMaxNum() {
+		return ad.getMaxNum();
+	}
+
+	@Override
+	public int annInsert(Announcement ann) {
+		return ad.annInsert(ann);
+	}
 }

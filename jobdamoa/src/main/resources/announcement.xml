@@ -12,4 +12,15 @@
 		select count(*) from announcement
 	</select>
 	
+	<select id="getMaxNum" resultType="integer">
+		select nvl(max(ann_num),0) + 1 from announcement	
+	</select>
+	
+	<select id="annInsert" parameterType="announcement">
+		insert into announcement(ann_num, com_num, ann_job, ann_type, ann_career, ann_recruit_period,
+		ann_location, ann_title, ann_view, ann_min, ann_max, ann_contents, ann_qualification, ann_prime )
+		 values(#{ann_num}, #{com_num}, #{ann_job}, #{ann_type}, #{ann_career}, #{ann_recruit_period},
+		 #{ann_location}, #{ann_title}, 0, #{ann_min}, #{ann_max}, #{ann_contents}, #{ann_qualification}, #{ann_prime})
+	</select>
+	
 </mapper>

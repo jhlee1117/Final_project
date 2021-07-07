@@ -2,13 +2,22 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
 	<typeAliases>
-		<typeAlias alias="announcement" type="com.ch.jobdamoa.model.Announcement"/>
-		<typeAlias alias="company" type="com.ch.jobdamoa.model.Company"/>
-		<typeAlias alias="favorites" type="com.ch.jobdamoa.model.Favorites"/>
-		<typeAlias alias="manager" type="com.ch.jobdamoa.model.Manager"/>
-		<typeAlias alias="member" type="com.ch.jobdamoa.model.Member"/>
-		<typeAlias alias="scrap" type="com.ch.jobdamoa.model.Scrap"/>
+		<typeAlias alias="announcement"
+			type="com.ch.jobdamoa.model.Announcement" />
+		<typeAlias alias="company"
+			type="com.ch.jobdamoa.model.Company" />
+		<typeAlias alias="favorites"
+			type="com.ch.jobdamoa.model.Favorites" />
+		<typeAlias alias="manager"
+			type="com.ch.jobdamoa.model.Manager" />
+		<typeAlias alias="member"
+			type="com.ch.jobdamoa.model.Member" />
+		<typeAlias alias="scrap" type="com.ch.jobdamoa.model.Scrap" />
 	</typeAliases>
 	<!-- 매퍼정보 설정 -->
 	<mappers>

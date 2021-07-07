@@ -10,4 +10,8 @@ public interface AnnouncementDao {
 
 	int getTotal();
 
+	int getMaxNum();
+
+	int annInsert(Announcement ann);
+
 }
