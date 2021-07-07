@@ -1,41 +1,41 @@
 SELECT * FROM ANNOUNCEMENT;
 COMMIT;
--- ÀÓ½Ãµ¥ÀÌÅÍ 1
+-- ìž„ì‹œë°ì´í„° 1
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(1, 1, '¹é¿£µå', 'regular', 'new', '¼ö½ÃÃ¤¿ë', '¼­¿ï °­³²±¸', '¼­¹ö °³¹ßÀÚ ¸ðÁý', 20, 3000, 3500, '¾÷¹«°¡ ½¬¿ö¿ä', '¼­¹ö¸¦ Àß ¾Æ´Â »ç¶÷¸¸ Áö¿øÇÏ¼¼¿ä.', 'Á¤º¸Ã³¸®±â»ç ÀÚ°ÝÁõ º¸À¯');
--- ÀÓ½Ãµ¥ÀÌÅÍ 2
+VALUES(1, 1, 'ë°±ì—”ë“œ', 'regular', 'new', 'ìˆ˜ì‹œì±„ìš©', 'ì„œìš¸ ê°•ë‚¨êµ¬', 'ì„œë²„ ê°œë°œìž ëª¨ì§‘', 20, 3000, 3500, 'ì—…ë¬´ê°€ ì‰¬ì›Œìš”', 'ì„œë²„ë¥¼ ìž˜ ì•„ëŠ” ì‚¬ëžŒë§Œ ì§€ì›í•˜ì„¸ìš”.', 'ì •ë³´ì²˜ë¦¬ê¸°ì‚¬ ìžê²©ì¦ ë³´ìœ ');
+-- ìž„ì‹œë°ì´í„° 2
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(2, 2, 'ÇÁ·±Æ®¿£µå', 'contract', 'old', '¼ö½ÃÃ¤¿ë', '¼­¿ï ³ë¿ø±¸', 'À¥ °³¹ßÀÚ ¸ðÁý', 21, 4000, 4800, '°æ·Â ÀÖ´Â »ç¶÷¸¸ ¿À¼¼¿ä', 'ÇÁ·±Æ® Àß ÇÏ´Â »ç¶÷¸¸.', '¾øÀ½');
--- ÀÓ½Ãµ¥ÀÌÅÍ 3
+VALUES(2, 2, 'í”„ëŸ°íŠ¸ì—”ë“œ', 'contract', 'old', 'ìˆ˜ì‹œì±„ìš©', 'ì„œìš¸ ë…¸ì›êµ¬', 'ì›¹ ê°œë°œìž ëª¨ì§‘', 21, 4000, 4800, 'ê²½ë ¥ ìžˆëŠ” ì‚¬ëžŒë§Œ ì˜¤ì„¸ìš”', 'í”„ëŸ°íŠ¸ ìž˜ í•˜ëŠ” ì‚¬ëžŒë§Œ.', 'ì—†ìŒ');
+-- ìž„ì‹œë°ì´í„° 3
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(3, 3, '¹é¿£µå', 'regular', 'new', 'Á¤±âÃ¤¿ë', '¼­¿ï Áß±¸', '¼­¹ö °³¹ßÀÚ ¸ðÁý', 20, 2800, 3000, '¾÷¹«°¡ ¾î·Á¿ö¿ä', '¼­¹ö¸¦ Àß ¾Æ´Â »ç¶÷¸¸ Áö¿øÇÏ¼¼¿ä.', '¾Æ¹«³ª');
--- ÀÓ½Ãµ¥ÀÌÅÍ 4
+VALUES(3, 3, 'ë°±ì—”ë“œ', 'regular', 'new', 'ì •ê¸°ì±„ìš©', 'ì„œìš¸ ì¤‘êµ¬', 'ì„œë²„ ê°œë°œìž ëª¨ì§‘', 20, 2800, 3000, 'ì—…ë¬´ê°€ ì–´ë ¤ì›Œìš”', 'ì„œë²„ë¥¼ ìž˜ ì•„ëŠ” ì‚¬ëžŒë§Œ ì§€ì›í•˜ì„¸ìš”.', 'ì•„ë¬´ë‚˜');
+-- ìž„ì‹œë°ì´í„° 4
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(4, 4, 'DBA', 'rest', 'okay', '¼ö½ÃÃ¤¿ë', 'ÆÇ±³', 'DBA ¸ðÁý', 20, 3000, 3500, '½Ç·Â ÀÖ´Â DBA¸¸', 'MariaDB¸¦ Àß ´Ù·ç´Â »ç¶÷¸¸', 'OCJP ÀÚ°ÝÁõ ¶Ç´Â ±×¿¡ ÁØÇÏ´Â ´É·Â º¸À¯ÀÚ');
--- ÀÓ½Ãµ¥ÀÌÅÍ 5
+VALUES(4, 4, 'DBA', 'rest', 'okay', 'ìˆ˜ì‹œì±„ìš©', 'íŒêµ', 'DBA ëª¨ì§‘', 20, 3000, 3500, 'ì‹¤ë ¥ ìžˆëŠ” DBAë§Œ', 'MariaDBë¥¼ ìž˜ ë‹¤ë£¨ëŠ” ì‚¬ëžŒë§Œ', 'OCJP ìžê²©ì¦ ë˜ëŠ” ê·¸ì— ì¤€í•˜ëŠ” ëŠ¥ë ¥ ë³´ìœ ìž');
+-- ìž„ì‹œë°ì´í„° 5
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(5, 5, '¹é¿£µå', 'regular', 'new', '»ó½ÃÃ¤¿ë', '¼­¿ï °­¼­±¸', '¼­¹ö °³¹ßÀÚ ¸ðÁý', 20, 3000, 4000, 'ÁÁÁÁ¼Ò ¾Æ´Ô', 'ÀÏ ÀßÇÏ´Â ½ÅÀÔ¸¸', 'Á¤º¸Ã³¸®±â»ç ÀÚ°ÝÁõ º¸À¯');
--- ÀÓ½Ãµ¥ÀÌÅÍ 6
+VALUES(5, 5, 'ë°±ì—”ë“œ', 'regular', 'new', 'ìƒì‹œì±„ìš©', 'ì„œìš¸ ê°•ì„œêµ¬', 'ì„œë²„ ê°œë°œìž ëª¨ì§‘', 20, 3000, 4000, 'ì¢‹ì¢‹ì†Œ ì•„ë‹˜', 'ì¼ ìž˜í•˜ëŠ” ì‹ ìž…ë§Œ', 'ì •ë³´ì²˜ë¦¬ê¸°ì‚¬ ìžê²©ì¦ ë³´ìœ ');
+-- ìž„ì‹œë°ì´í„° 6
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(6, 6, 'µðÀÚÀÌ³Ê', 'regular', 'old', '°ø°³Ã¤¿ë', '¼­¿ï °­ºÏ±¸', 'µðÀÚÀÌ³Ê ¸ðÁý', 24, 5000, 5500, 'CSS¿Í ¿©·¯°¡Áö ÇÁ·±Æ®´Ü±îÁö ÇÒ ÁÙ ¾Ë¾Æ¾ß ÇÔ', '±â¼úÀÌ ÁÁÀº »ç¶÷ ¿ì´ë', 'Æ÷Åä¼¥, CSS, ÀÏ·¯½ºÆ® ±âº»');
--- ÀÓ½Ãµ¥ÀÌÅÍ 7
+VALUES(6, 6, 'ë””ìžì´ë„ˆ', 'regular', 'old', 'ê³µê°œì±„ìš©', 'ì„œìš¸ ê°•ë¶êµ¬', 'ë””ìžì´ë„ˆ ëª¨ì§‘', 24, 5000, 5500, 'CSSì™€ ì—¬ëŸ¬ê°€ì§€ í”„ëŸ°íŠ¸ë‹¨ê¹Œì§€ í•  ì¤„ ì•Œì•„ì•¼ í•¨', 'ê¸°ìˆ ì´ ì¢‹ì€ ì‚¬ëžŒ ìš°ëŒ€', 'í¬í† ìƒµ, CSS, ì¼ëŸ¬ìŠ¤íŠ¸ ê¸°ë³¸');
+-- ìž„ì‹œë°ì´í„° 7
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(7, 7, '±â¼ú¿µ¾÷', 'contract', 'old', '¼ö½ÃÃ¤¿ë', '¼­¿ï °­³²±¸', 'IT¿µ¾÷ÀÎ ¸ðÁý', 40, 5000, 6000, '¸»À» Àß ÇÏ´Â »ç¶÷¸¸', '±â¼ú ½ºÆå ÇÊ¿ä ¾øÀ½', '¾øÀ½');
--- ÀÓ½Ãµ¥ÀÌÅÍ 8
+VALUES(7, 7, 'ê¸°ìˆ ì˜ì—…', 'contract', 'old', 'ìˆ˜ì‹œì±„ìš©', 'ì„œìš¸ ê°•ë‚¨êµ¬', 'ITì˜ì—…ì¸ ëª¨ì§‘', 40, 5000, 6000, 'ë§ì„ ìž˜ í•˜ëŠ” ì‚¬ëžŒë§Œ', 'ê¸°ìˆ  ìŠ¤íŽ™ í•„ìš” ì—†ìŒ', 'ì—†ìŒ');
+-- ìž„ì‹œë°ì´í„° 8
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(8, 8, '¼­¹ö ¿î¿µ', 'intern', 'old', '~ 12-31', '¼­¿ï °­³²±¸', '¸®´ª½º/À¯´Ð½º ¿î¿µ ´ë±âÁ¶ ¸ðÁý', 20, 4000, 4200, '¾÷¹«°¡ ½¬¿ö¿ä', '¹ã Àß »õ°í, ¹®Á¦ ¹ß»ý ½Ã ´ëÀÀ Àß ÇÏ´Â »ç¶÷ ¿ì´ë', '¸®´ª½º¸¶½ºÅÍ ÀÚ°ÝÁõ º¸À¯');
--- ÀÓ½Ãµ¥ÀÌÅÍ 9
+VALUES(8, 8, 'ì„œë²„ ìš´ì˜', 'intern', 'old', '~ 12-31', 'ì„œìš¸ ê°•ë‚¨êµ¬', 'ë¦¬ëˆ…ìŠ¤/ìœ ë‹‰ìŠ¤ ìš´ì˜ ëŒ€ê¸°ì¡° ëª¨ì§‘', 20, 4000, 4200, 'ì—…ë¬´ê°€ ì‰¬ì›Œìš”', 'ë°¤ ìž˜ ìƒˆê³ , ë¬¸ì œ ë°œìƒ ì‹œ ëŒ€ì‘ ìž˜ í•˜ëŠ” ì‚¬ëžŒ ìš°ëŒ€', 'ë¦¬ëˆ…ìŠ¤ë§ˆìŠ¤í„° ìžê²©ì¦ ë³´ìœ ');
+-- ìž„ì‹œë°ì´í„° 9
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(9, 9, 'CTO', 'contract', 'old', '°ø°³Ã¤¿ë', '¼­¿ï ¼ºµ¿±¸', '±â¼ú°í¹® ¸ðÁý', 100, 10000, 12000, '´Ù¾çÇÑ ±â¼ú º¸À¯ÇÑ CTO', '±â¼úÀûÀ¸·Î ¾÷¹« ÀÌÇØµµ°¡ ÀÖ¾î¾ß ÇÔ', '´ë±â¾÷ ÀÓ¿ø Ãâ½Å ¿ì´ë');
--- ÀÓ½Ãµ¥ÀÌÅÍ 10
+VALUES(9, 9, 'CTO', 'contract', 'old', 'ê³µê°œì±„ìš©', 'ì„œìš¸ ì„±ë™êµ¬', 'ê¸°ìˆ ê³ ë¬¸ ëª¨ì§‘', 100, 10000, 12000, 'ë‹¤ì–‘í•œ ê¸°ìˆ  ë³´ìœ í•œ CTO', 'ê¸°ìˆ ì ìœ¼ë¡œ ì—…ë¬´ ì´í•´ë„ê°€ ìžˆì–´ì•¼ í•¨', 'ëŒ€ê¸°ì—… ìž„ì› ì¶œì‹  ìš°ëŒ€');
+-- ìž„ì‹œë°ì´í„° 10
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(10, 10, '¼­¹ö°ü¸®', 'regular', 'new', '»ó½ÃÃ¤¿ë', '°æ±â ÆòÅÃ½Ã', '»ï¼ºÀüÀÚ ¹ÝµµÃ¼ ¼­¹ö ¿î¿µÀÚ ¸ðÁý', 30, 3200, 3500, '¾÷¹«°¡ ½¬¿ö¿ä', '¼­¹ö¸¦ Àß ¾Æ´Â »ç¶÷¸¸ Áö¿øÇÏ¼¼¿ä.', 'Á¤º¸Ã³¸®±â»ç ÀÚ°ÝÁõ º¸À¯');
--- ÀÓ½Ãµ¥ÀÌÅÍ 11
+VALUES(10, 10, 'ì„œë²„ê´€ë¦¬', 'regular', 'new', 'ìƒì‹œì±„ìš©', 'ê²½ê¸° í‰íƒì‹œ', 'ì‚¼ì„±ì „ìž ë°˜ë„ì²´ ì„œë²„ ìš´ì˜ìž ëª¨ì§‘', 30, 3200, 3500, 'ì—…ë¬´ê°€ ì‰¬ì›Œìš”', 'ì„œë²„ë¥¼ ìž˜ ì•„ëŠ” ì‚¬ëžŒë§Œ ì§€ì›í•˜ì„¸ìš”.', 'ì •ë³´ì²˜ë¦¬ê¸°ì‚¬ ìžê²©ì¦ ë³´ìœ ');
+-- ìž„ì‹œë°ì´í„° 11
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(11, 11, 'ÀÎ°øÁö´É °³¹ß', 'regular', 'new', '¼ö½ÃÃ¤¿ë', '°æ±â ±èÆ÷½Ã', 'ÀÎ°øÁö´É AI °³¹ßÀÚ ¸ðÁý', 44, 4400, 4900, '°í³­ÀÌµµ ¾÷¹«ÀÔ´Ï´Ù.', 'ÀÎ°øÁö´É ¾÷¹« °æÇèÀÌ ÀÖÀ¸¸é ÁÁ¾Æ¿ä.', '¼®/¹Ú»ç ÇÐÀ§ ¿ì´ë');
--- ÀÓ½Ãµ¥ÀÌÅÍ 12
+VALUES(11, 11, 'ì¸ê³µì§€ëŠ¥ ê°œë°œ', 'regular', 'new', 'ìˆ˜ì‹œì±„ìš©', 'ê²½ê¸° ê¹€í¬ì‹œ', 'ì¸ê³µì§€ëŠ¥ AI ê°œë°œìž ëª¨ì§‘', 44, 4400, 4900, 'ê³ ë‚œì´ë„ ì—…ë¬´ìž…ë‹ˆë‹¤.', 'ì¸ê³µì§€ëŠ¥ ì—…ë¬´ ê²½í—˜ì´ ìžˆìœ¼ë©´ ì¢‹ì•„ìš”.', 'ì„/ë°•ì‚¬ í•™ìœ„ ìš°ëŒ€');
+-- ìž„ì‹œë°ì´í„° 12
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(12, 12, 'ÇÁ·±Æ®¿£µå', 'intern', 'new', 'Á¤±âÃ¤¿ë', '¼­¿ï µµºÀ±¸', 'À¥ °³¹ßÀÚ ¸ðÁý', 20, 3000, 3500, '¾÷¹«°¡ ½¬¿ö¿ä', 'À¥, ÀÚ¹Ù½ºÅ©¸³Æ®, jquery µî ´Ù·ê ÁÙ ¾Ë¾Æ¾ß ÇÔ', 'Á¤º¸Ã³¸®±â»ç ÀÚ°ÝÁõ º¸À¯');
--- ÀÓ½Ãµ¥ÀÌÅÍ 13
+VALUES(12, 12, 'í”„ëŸ°íŠ¸ì—”ë“œ', 'intern', 'new', 'ì •ê¸°ì±„ìš©', 'ì„œìš¸ ë„ë´‰êµ¬', 'ì›¹ ê°œë°œìž ëª¨ì§‘', 20, 3000, 3500, 'ì—…ë¬´ê°€ ì‰¬ì›Œìš”', 'ì›¹, ìžë°”ìŠ¤í¬ë¦½íŠ¸, jquery ë“± ë‹¤ë£° ì¤„ ì•Œì•„ì•¼ í•¨', 'ì •ë³´ì²˜ë¦¬ê¸°ì‚¬ ìžê²©ì¦ ë³´ìœ ');
+-- ìž„ì‹œë°ì´í„° 13
 INSERT INTO ANNOUNCEMENT(ANN_NUM, COM_NUM, ANN_JOB, ANN_TYPE, ANN_CAREER, ANN_RECRUIT_PERIOD, ANN_LOCATION, ANN_TITLE, ANN_VIEW, ANN_MIN, ANN_MAX, ANN_CONTENTS, ANN_QUALIFICATION, ANN_PRIME)
-VALUES(13, 13, '¹é¿£µå', 'intern', 'new', 'Á¤±âÃ¤¿ë', '¼­¿ï µµºÀ±¸', 'ÀÀ¿ëÇÁ·Î±×·¥ °³¹ßÀÚ ¸ðÁý', 20, 3000, 3500, '¾÷¹«°¡ ½¬¿ö¿ä', 'awt, javafx µî ÀÚ¹Ù±â¹Ý ÀÀ¿ëÇÁ·Î±×·¥ °³¹ß', 'Á¤º¸Ã³¸®±â»ç ÀÚ°ÝÁõ º¸À¯');
+VALUES(13, 13, 'ë°±ì—”ë“œ', 'intern', 'new', 'ì •ê¸°ì±„ìš©', 'ì„œìš¸ ë„ë´‰êµ¬', 'ì‘ìš©í”„ë¡œê·¸ëž¨ ê°œë°œìž ëª¨ì§‘', 20, 3000, 3500, 'ì—…ë¬´ê°€ ì‰¬ì›Œìš”', 'awt, javafx ë“± ìžë°”ê¸°ë°˜ ì‘ìš©í”„ë¡œê·¸ëž¨ ê°œë°œ', 'ì •ë³´ì²˜ë¦¬ê¸°ì‚¬ ìžê²©ì¦ ë³´ìœ ');
