@@ -101,7 +101,7 @@
 		</c:if>
 		<%-- <c:if test="${not empty com_id }"> --%> <!-- 기업회원 id로 로그인 확인 시 '공고 등록' 버튼 활성화되도록 진행 -->
 			<div align="right">
-				<button class="btn btn-dark" type="submit" onclick="location.href='#!'">공고 등록</button>
+				<button class="btn btn-dark" type="submit" onclick="location.href='annInsertForm.do?ann_num=0&pageNum=1'">공고 등록</button>
 			</div>
 		<%-- </c:if> --%>
 	</div>

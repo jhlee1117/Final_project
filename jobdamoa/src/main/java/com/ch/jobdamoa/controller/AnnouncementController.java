@@ -42,4 +42,13 @@ public class AnnouncementController {
 		
 		return "announcement/annList";
 	}
+	
+	@RequestMapping("annInsertForm")
+	public String annInsertForm(int ann_num, String pageNum, Model model) {
+		
+		model.addAttribute("ann_num", ann_num);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "announcement/annInsertForm";
+	}
 }
