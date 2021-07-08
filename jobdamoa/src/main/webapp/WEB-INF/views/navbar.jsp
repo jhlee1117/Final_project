@@ -33,7 +33,7 @@
 			</ul>
 			<form class="d-flex">
 				<button class="btn btn-outline-dark" type="submit">
-					<i class="bi bi-box-arrow-in-right"></i> 로그인
+					<i class="bi bi-box-arrow-in-right" onclick="location.href='loginForm.do'"></i> 로그인
 				</button>
 				<button class="btn btn-dark" type="submit">
 					<i class="bi bi-person-circle"></i> 회원가입

@@ -3,4 +3,11 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="companyns">
 
+	<select id="selectCom_nm" parameterType="integer" resultType="company">
+		select com_name from company where com_num = #{com_num}
+	</select>
+	
+	<select id="selectCom" parameterType="integer" resultType="company">
+		select * from company where com_num = #{com_num}
+	</select>
 </mapper>

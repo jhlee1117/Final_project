@@ -30,6 +30,8 @@ public class Announcement {
 	// 검색용
 	private String search;
 	private String keyword;
+	// 
+	private String com_name;
 	
 	
 }

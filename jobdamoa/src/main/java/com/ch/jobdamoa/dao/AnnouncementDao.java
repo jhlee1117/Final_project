@@ -14,4 +14,8 @@ public interface AnnouncementDao {
 
 	int annInsert(Announcement ann);
 
+	void updateReadCount(int ann_num);
+
+	Announcement annView(int ann_num);
+
 }

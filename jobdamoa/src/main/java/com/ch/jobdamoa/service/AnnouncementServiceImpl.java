@@ -33,4 +33,15 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	public int annInsert(Announcement ann) {
 		return ad.annInsert(ann);
 	}
+
+	@Override
+	public void updateReadCount(int ann_num) {
+		ad.updateReadCount(ann_num);
+		
+	}
+
+	@Override
+	public Announcement annView(int ann_num) {
+		return ad.annView(ann_num);
+	}
 }

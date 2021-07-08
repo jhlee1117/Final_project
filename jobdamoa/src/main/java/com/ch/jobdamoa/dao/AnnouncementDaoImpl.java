@@ -10,7 +10,7 @@ import com.ch.jobdamoa.model.Announcement;
 
 @Repository
 public class AnnouncementDaoImpl implements AnnouncementDao {
-	
+
 	@Autowired
 	private SqlSessionTemplate sst;
 
@@ -28,9 +28,19 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 	public int getMaxNum() {
 		return sst.selectOne("announcementns.getMaxNum");
 	}
-	
+
 	@Override
 	public int annInsert(Announcement ann) {
 		return sst.insert("announcementns.annInsert", ann);
+	}
+
+	@Override
+	public void updateReadCount(int ann_num) {
+		sst.update("announcementns.updateReadCount", ann_num);
+	}
+
+	@Override
+	public Announcement annView(int ann_num) {
+		return sst.selectOne("announcementns.annView", ann_num);
 	}
 }

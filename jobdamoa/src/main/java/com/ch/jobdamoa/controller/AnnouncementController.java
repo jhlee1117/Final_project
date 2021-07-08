@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ch.jobdamoa.model.Announcement;
 import com.ch.jobdamoa.model.Company;
 import com.ch.jobdamoa.service.AnnouncementService;
+import com.ch.jobdamoa.service.CompanyService;
 import com.ch.jobdamoa.service.PagingBean;
 
 @Controller
@@ -20,8 +21,11 @@ public class AnnouncementController {
 	@Autowired
 	private AnnouncementService as;
 	
+	@Autowired
+	private CompanyService cs;
+	
 	@RequestMapping("annList")
-	public String annList(Announcement ann, String pageNum, Model model) {
+	public String annList(Announcement ann, Company com, String pageNum, Model model) {
 		
 		if (pageNum == null || pageNum.equals(""))
 			pageNum = "1";	// 페이지 번호 여부 확인 및 값 초기화
@@ -38,15 +42,17 @@ public class AnnouncementController {
 		ann.setEndRow(endRow);
 		List<Announcement> annlist = as.annList(ann);
 		
+		// 회사번호로 회사명을 하나씩 조회해서 annList에 추가해준다.
+		for (Announcement ann_com_name : annlist) {
+			Company company = cs.selectCom_nm(ann_com_name.getCom_num());
+			ann_com_name.setCom_name(company.getCom_name());
+		}
+		
 		int ann_num = total - startRow + 1;
 		model.addAttribute("ann_num", ann_num);
 		model.addAttribute("pb", pb);
 		model.addAttribute("annlist", annlist);
-		
-		for (int i = 0; i < annlist.size(); i++) {
-			System.out.println(annlist.get(i));
-		}
-		
+				
 		return "announcement/annList";
 	}
 	
@@ -77,5 +83,16 @@ public class AnnouncementController {
 		model.addAttribute("pageNum", pageNum);
 		
 		return "announcement/annInsert";
+	}
+	 
+	@RequestMapping("annView")
+	public String annView(int ann_num, String pageNum, Model model) {
+		as.updateReadCount(ann_num); 
+		Announcement ann = as.annView(ann_num);
+		Company com = cs.selectCom(ann.getCom_num());
+		model.addAttribute("ann", ann);
+		model.addAttribute("com", com);
+		model.addAttribute("pageNum", pageNum);
+		return "announcement/annView";
 	}
 }

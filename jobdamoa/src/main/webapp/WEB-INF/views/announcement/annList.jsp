@@ -33,7 +33,7 @@
 								<c:if test="${ann.ann_del != 'y' }">
 									<h5 class="fw-bolder mb-3">${ann.ann_title }</h5>
 									<!-- com_num은 company 테이블의 주키이므로 com_num을 이용하여 com_name을 가져와 불러오도록 변경 필요 -->
-									<h6 class="fw-bold mb-3">${ann.com_num }</h6>
+									<h6 class="fw-bold mb-3">${ann.com_name }</h6>
 										<ul class="list-group list-group-horizontal mb-3">
 											<li class="list-group-item"> <!-- 경력 제약조건 확인 -->
 												<c:if test="${ann.ann_career == 'new' }">신입</c:if>
@@ -68,7 +68,7 @@
 							<!-- 상세보기 공고 저장 버튼-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">공고 상세보기</a>
+								<a class="btn btn-outline-dark mt-auto" href="annView.do?ann_num=${ann.ann_num }&pageNum=${pb.currentPage}">공고 상세보기</a>
 								<a class="btn btn-outline-dark mt-auto" href="#">공고 저장</a>
 							</div>
 						</div>
