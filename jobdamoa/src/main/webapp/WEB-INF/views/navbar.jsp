@@ -31,14 +31,21 @@
 					</ul></li>
 				<li class="nav-item"><a class="nav-link" href="annList.do">기업 채용 공고</a></li>
 			</ul>
-			<form class="d-flex">
-				<button class="btn btn-outline-dark" type="submit">
-					<i class="bi bi-box-arrow-in-right" onclick="location.href='loginForm.do'"></i> 로그인
-				</button>
+			<div class="d-flex">
+				<div class="dropdown">
+					<button class="btn btn-outline-dark dropdown-toggle bi bi-box-arrow-in-right" type="button" id="loginSelectButton" data-bs-toggle="dropdown" aria-expanded="false">
+						로그인
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
+    					<li><a class="dropdown-item" href="#">일반회원</a></li>
+    					<li><a class="dropdown-item" href="companyLoginForm.do">기업회원</a></li>
+    					<li><a class="dropdown-item" href="#">관리자</a></li>
+  					</ul>
+				</div>
 				<button class="btn btn-dark" type="submit">
 					<i class="bi bi-person-circle"></i> 회원가입
 				</button>
-			</form>
+			</div>
 		</div>
 	</div>
 </body>

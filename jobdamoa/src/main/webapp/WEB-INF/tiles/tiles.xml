@@ -16,14 +16,14 @@
 		<put-attribute name="section" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	<!-- 적용하지 않을 레이아웃 -->
-	<definition name="nolayout" template="/WEB-INF/views/nolayout.jsp">
-		<put-attribute name="navbar" value="" />
+	<definition name="loginlayout" template="/WEB-INF/views/loginlayout.jsp">
+		<put-attribute name="navbar" value="/WEB-INF/views/loginnav.jsp" />
 		<!-- <put-attribute name="header" value="" /> -->
 		<put-attribute name="footer" value="" />	
 	</definition>
 	<!-- (1) nolay 폴더 안에 {1}에 있는 jsp 이름 -->
-	<definition name="nolay/*" extends="nolayout">
-		<put-attribute name="section" value="/WEB-INF/views/nolay/{1}.jsp"/>
+	<definition name="company/companyLoginForm" extends="loginlayout">
+		<put-attribute name="section" value="/WEB-INF/views/company/companyLoginForm.jsp"/>
 	</definition>
 </tiles-definitions>
 	
