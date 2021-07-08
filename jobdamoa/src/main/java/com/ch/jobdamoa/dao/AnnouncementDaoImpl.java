@@ -31,6 +31,6 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 	
 	@Override
 	public int annInsert(Announcement ann) {
-		return sst.insert("announcementns.annInsert");
+		return sst.insert("announcementns.annInsert", ann);
 	}
 }

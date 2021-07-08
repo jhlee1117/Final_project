@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ch.jobdamoa.model.Announcement;
+import com.ch.jobdamoa.model.Company;
 import com.ch.jobdamoa.service.AnnouncementService;
 import com.ch.jobdamoa.service.PagingBean;
 
@@ -42,13 +43,17 @@ public class AnnouncementController {
 		model.addAttribute("pb", pb);
 		model.addAttribute("annlist", annlist);
 		
+		for (int i = 0; i < annlist.size(); i++) {
+			System.out.println(annlist.get(i));
+		}
+		
 		return "announcement/annList";
 	}
 	
 	@RequestMapping("annInsertForm")
 	public String annInsertForm(int ann_num, String pageNum, Model model) {
 		
-		int com_num = 14;
+		int com_num = 14; // 예시, 향후 로그인 관련하여 변경 필요
 		model.addAttribute("com_num", com_num);
 		
 		model.addAttribute("ann_num", ann_num);
@@ -64,7 +69,6 @@ public class AnnouncementController {
 		ann.setCom_num(Integer.parseInt(request.getParameter("com_num")));
 		
 		int number = as.getMaxNum();
-		System.out.println(number);
 		ann.setAnn_num(number); // 일련번호 추가
 		
 		int result = as.annInsert(ann);
