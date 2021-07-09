@@ -10,4 +10,6 @@ public interface CompanyService {
 
 	Company selectLogin(String com_id);
 
+	Company findComId(String com_email);
+
 }

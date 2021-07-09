@@ -14,4 +14,8 @@
 	<select id="selectLogin" parameterType="string" resultType="company">
 		select * from company where com_id = #{com_id}
 	</select>
+	
+	<select id="findComId" parameterType="string" resultType="company">
+		select * from company where com_email = #{com_email}
+	</select>
 </mapper>

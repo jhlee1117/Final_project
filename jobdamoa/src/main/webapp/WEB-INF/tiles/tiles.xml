@@ -15,15 +15,25 @@
 	<definition name="*/*" extends="tilesbase">
 		<put-attribute name="section" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
-	<!-- 적용하지 않을 레이아웃 -->
+	<!-- 로그인 시 기본 메뉴바가 아닌 레이아웃 적용 -->
 	<definition name="loginlayout" template="/WEB-INF/views/loginlayout.jsp">
 		<put-attribute name="navbar" value="/WEB-INF/views/loginnav.jsp" />
 		<!-- <put-attribute name="header" value="" /> -->
 		<put-attribute name="footer" value="" />	
 	</definition>
-	<!-- (1) nolay 폴더 안에 {1}에 있는 jsp 이름 -->
 	<definition name="company/companyLoginForm" extends="loginlayout">
 		<put-attribute name="section" value="/WEB-INF/views/company/companyLoginForm.jsp"/>
+	</definition>
+	<!-- 팝업 시 레이아웃 미적용 -->
+	<definition name="poplayout" template="/WEB-INF/views/poplayout.jsp">
+		<put-attribute name="navbar" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	<definition name="company/findComIdForm" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/company/findComIdForm.jsp"/>
+	</definition>
+	<definition name="company/findComPwForm" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/company/findComPwForm.jsp"/>
 	</definition>
 </tiles-definitions>
 	

@@ -26,4 +26,9 @@ public class CompanyServiceImpl implements CompanyService {
 	public Company selectLogin(String com_id) {
 		return cd.selectLogin(com_id);
 	}
+
+	@Override
+	public Company findComId(String com_email) {
+		return cd.findComId(com_email);
+	}
 }
