@@ -10,4 +10,8 @@
 	<select id="selectCom" parameterType="integer" resultType="company">
 		select * from company where com_num = #{com_num}
 	</select>
+	
+	<select id="selectLogin" parameterType="string" resultType="company">
+		select * from company where com_id = #{com_id}
+	</select>
 </mapper>

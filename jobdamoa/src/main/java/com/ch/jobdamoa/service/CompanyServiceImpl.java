@@ -21,4 +21,9 @@ public class CompanyServiceImpl implements CompanyService {
 	public Company selectCom(int com_num) {
 		return cd.selectCom(com_num);
 	}
+
+	@Override
+	public Company selectLogin(String com_id) {
+		return cd.selectLogin(com_id);
+	}
 }

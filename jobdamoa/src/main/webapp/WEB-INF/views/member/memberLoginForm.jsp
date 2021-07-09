@@ -8,20 +8,19 @@
 </head>
 <body>
 	<div class="container px-4 px-lg-5 mt-5">
-		<form action="companyLogin.do" method="post">
-			<input type="hidden" name="user_dist" value="1">
+		<form action="memberLogin.do" method="post">
 			<div class="card w-50 text-center">
 				<div class="card-header">
-					<h2>기업회원 로그인</h2>
+					<h2>일반회원 로그인</h2>
 				</div>
 				<div class="card-body">
 					<div class="form-floating mb-3">
-						<input type="text" name="com_id" class="form-control" id="com_id" 
+						<input type="text" name="mem_id" class="form-control" id="mem_id"
 							placeholder="ID"> <label for="com_id">ID</label>
 					</div>
 					<div class="form-floating">
-						<input type="password" name="com_password" class="form-control" id="com_password"
-							placeholder="Password"> <label for="com_password">Password</label>
+						<input type="password" name="mem_password" class="form-control" id="mem_password"
+							placeholder="Password"> <label for="mem_password">Password</label>
 					</div>
 				</div>
 				<div class="card-footer">
@@ -30,10 +29,6 @@
 				</div>
 			</div>
 		</form>
-		<div>
-			<span><a href="#">ID 찾기</a></span>
-			<span><a href="#">비밀번호 찾기</a></span>
-		</div>
 	</div>
 </body>
 </html>

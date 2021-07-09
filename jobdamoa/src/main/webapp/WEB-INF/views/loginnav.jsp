@@ -19,9 +19,9 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<div class="d-flex">
 				<ul class="list-group list-group-horizontal">
-  					<li class="list-group-item"><a href="#">일반회원 로그인</a></li>
-  					<li class="list-group-item"><a href="#">기업회원 로그인</a></li>
-  					<li class="list-group-item"><a href="#">관리자 로그인</a></li>
+  					<li class="list-group-item"><a href="memberLoginForm.do">일반회원 로그인</a></li>
+  					<li class="list-group-item"><a href="companyLoginForm.do">기업회원 로그인</a></li>
+  					<li class="list-group-item"><a href="managerLoginForm.do">관리자 로그인</a></li>
 				</ul>
 			</div>
 		</div>

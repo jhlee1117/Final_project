@@ -21,4 +21,9 @@ public class CompanyDaoImpl implements CompanyDao {
 	public Company selectCom(int com_num) {
 		return sst.selectOne("companyns.selectCom", com_num);
 	}
+
+	@Override
+	public Company selectLogin(String com_id) {
+		return sst.selectOne("companyns.selectLogin", com_id);
+	}
 }

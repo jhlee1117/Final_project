@@ -8,4 +8,6 @@ public interface CompanyDao {
 
 	Company selectCom(int com_num);
 
+	Company selectLogin(String com_id);
+
 }
