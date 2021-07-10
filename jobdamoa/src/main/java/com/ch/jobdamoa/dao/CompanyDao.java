@@ -12,4 +12,6 @@ public interface CompanyDao {
 
 	Company findComId(String com_email);
 
+	int newComPw(Company com);
+
 }

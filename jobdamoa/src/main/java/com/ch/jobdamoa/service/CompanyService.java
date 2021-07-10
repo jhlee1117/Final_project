@@ -12,4 +12,6 @@ public interface CompanyService {
 
 	Company findComId(String com_email);
 
+	int newComPw(Company com);
+
 }

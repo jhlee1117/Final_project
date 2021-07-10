@@ -31,4 +31,9 @@ public class CompanyDaoImpl implements CompanyDao {
 	public Company findComId(String com_email) {
 		return sst.selectOne("companyns.findComId", com_email);
 	}
+
+	@Override
+	public int newComPw(Company com) {
+		return sst.update("companyns.newComPw", com);
+	}
 }

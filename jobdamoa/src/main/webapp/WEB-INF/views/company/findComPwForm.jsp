@@ -23,7 +23,7 @@
 		} else {
 			return true;
 		}
-	}
+	};
 </script>
 </head>
 <body>
@@ -33,9 +33,8 @@
 			<div class="card-body">
 				<h6>아이디를 입력하세요.</h6>
 				<div class="form-floating mb-3">
-					<input type="text" name="com_id" class="form-control"
-						id="com_id" placeholder="ID"> <label
-						for="com_id">ID</label>
+					<input type="text" name="com_id" class="form-control" id="com_id"
+						placeholder="ID"> <label for="com_id">ID</label>
 				</div>
 				<h6>이메일을 입력하세요.</h6>
 				<div class="form-floating mb-3">

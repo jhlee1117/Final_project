@@ -35,5 +35,14 @@
 	<definition name="company/findComPwForm" extends="poplayout">
 		<put-attribute name="section" value="/WEB-INF/views/company/findComPwForm.jsp"/>
 	</definition>
+	<definition name="company/findComPwForm" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/company/findComPwForm.jsp"/>
+	</definition>
+		<definition name="company/pwComAuth" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/company/pwComAuth.jsp"/>
+	</definition>
+		<definition name="company/newComPwForm" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/company/newComPwForm.jsp"/>
+	</definition>
 </tiles-definitions>
 	

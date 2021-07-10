@@ -91,7 +91,7 @@ public class CompanyController {
 			mv.addObject("msg", msg);
 		}
 		else if(!com2.getCom_email().equals(com.getCom_email())) {
-			msg = "존재하지 않는 이메일입니다.";
+			msg = "등록되지 않은 이메일입니다.";
 			mv.setViewName("company/failComPw");
 			mv.addObject("msg", msg);
 		}
@@ -120,6 +120,7 @@ public class CompanyController {
 				System.out.println(e.getMessage());
 
 			}
+			session.setAttribute("com_id", com2.getCom_id());
 			mv.setViewName("company/pwComAuth"); // 패스워드 체크를 위한 인증페이지 설정
 			mv.addObject("num", num);
 		}
@@ -130,11 +131,18 @@ public class CompanyController {
 	public String pwComSet(@RequestParam(value="auth_num") String auth_num, @RequestParam(value="num") String num, Model model) {
 		
 		if(auth_num.equals(num)) {
-			return "company/sucsComPw";
+			return "company/newComPwForm";
 		} else {
 			String msg = "인증번호가 일치하지 않습니다.";
 			model.addAttribute("msg", msg);
 			return "company/failComPw";
 		}
+	}
+	
+	@RequestMapping("newComPw")
+	public String newComPw(Company com, Model model) {
+		int result = cs.newComPw(com);
+		model.addAttribute("result", result);
+		return "company/newComPw";
 	}
 }

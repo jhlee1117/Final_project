@@ -31,4 +31,9 @@ public class CompanyServiceImpl implements CompanyService {
 	public Company findComId(String com_email) {
 		return cd.findComId(com_email);
 	}
+
+	@Override
+	public int newComPw(Company com) {
+		return cd.newComPw(com);
+	}
 }

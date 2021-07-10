@@ -18,4 +18,8 @@
 	<select id="findComId" parameterType="string" resultType="company">
 		select * from company where com_email = #{com_email}
 	</select>
+	
+	<update id="newComPw" parameterType="company">
+		update company set com_password = #{com_password} where com_id = #{com_id}
+	</update>
 </mapper>
