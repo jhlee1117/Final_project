@@ -16,4 +16,14 @@ public class MemberServiceImpl implements MemberService {
 	public Member selectLogin(String mem_id) {
 		return md.selectLogin(mem_id);
 	}
+
+	@Override
+	public Member findMemId(String mem_email) {
+		return md.findMemId(mem_email);
+	}
+
+	@Override
+	public int newMemPw(Member mem) {
+		return md.newMemPw(mem);
+	}
 }

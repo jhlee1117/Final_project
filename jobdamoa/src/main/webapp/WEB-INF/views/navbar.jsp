@@ -37,7 +37,7 @@
 						로그인
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
-    					<li><a class="dropdown-item" href="#">일반회원</a></li>
+    					<li><a class="dropdown-item" href="memberLoginForm.do">일반회원</a></li>
     					<li><a class="dropdown-item" href="companyLoginForm.do">기업회원</a></li>
     					<li><a class="dropdown-item" href="#">관리자</a></li>
   					</ul>

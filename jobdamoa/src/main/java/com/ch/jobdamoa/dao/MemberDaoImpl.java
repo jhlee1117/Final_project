@@ -16,4 +16,14 @@ public class MemberDaoImpl implements MemberDao {
 	public Member selectLogin(String mem_id) {
 		return sst.selectOne("memberns.selectLogin", mem_id);
 	}
+
+	@Override
+	public Member findMemId(String mem_email) {
+		return sst.selectOne("memberns.findMemId", mem_email);
+	}
+
+	@Override
+	public int newMemPw(Member mem) {
+		return sst.update("memberns.newMemPw", mem);
+	}
 }

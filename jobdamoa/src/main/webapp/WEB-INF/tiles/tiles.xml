@@ -24,25 +24,39 @@
 	<definition name="company/companyLoginForm" extends="loginlayout">
 		<put-attribute name="section" value="/WEB-INF/views/company/companyLoginForm.jsp"/>
 	</definition>
+	<definition name="member/memberLoginForm" extends="loginlayout">
+		<put-attribute name="section" value="/WEB-INF/views/member/memberLoginForm.jsp"/>
+	</definition>
 	<!-- 팝업 시 레이아웃 미적용 -->
 	<definition name="poplayout" template="/WEB-INF/views/poplayout.jsp">
 		<put-attribute name="navbar" value="" />
 		<put-attribute name="footer" value="" />
 	</definition>
+	<!-- 기업 ID, 비번 찾기 팝업 -->
 	<definition name="company/findComIdForm" extends="poplayout">
 		<put-attribute name="section" value="/WEB-INF/views/company/findComIdForm.jsp"/>
 	</definition>
 	<definition name="company/findComPwForm" extends="poplayout">
 		<put-attribute name="section" value="/WEB-INF/views/company/findComPwForm.jsp"/>
 	</definition>
-	<definition name="company/findComPwForm" extends="poplayout">
-		<put-attribute name="section" value="/WEB-INF/views/company/findComPwForm.jsp"/>
-	</definition>
-		<definition name="company/pwComAuth" extends="poplayout">
+	<definition name="company/pwComAuth" extends="poplayout">
 		<put-attribute name="section" value="/WEB-INF/views/company/pwComAuth.jsp"/>
 	</definition>
-		<definition name="company/newComPwForm" extends="poplayout">
+	<definition name="company/newComPwForm" extends="poplayout">
 		<put-attribute name="section" value="/WEB-INF/views/company/newComPwForm.jsp"/>
 	</definition>
+		<!-- 일반회원 ID, 비번 찾기 팝업 -->
+	<definition name="member/findMemIdForm" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/member/findMemIdForm.jsp"/>
+	</definition>
+	<definition name="member/findMemPwForm" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/member/findMemPwForm.jsp"/>
+	</definition>
+	<definition name="member/pwMemAuth" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/member/pwMemAuth.jsp"/>
+	</definition>
+	<definition name="member/newMemPwForm" extends="poplayout">
+		<put-attribute name="section" value="/WEB-INF/views/member/newMemPwForm.jsp"/>
+	</definition>	
 </tiles-definitions>
 	

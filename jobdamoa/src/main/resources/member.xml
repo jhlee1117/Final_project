@@ -7,4 +7,11 @@
 		select * from member where mem_id = #{mem_id}
 	</select>
 
+	<select id="findMemId" parameterType="string" resultType="member">
+		select * from member where mem_email = #{mem_email}
+	</select>
+	
+	<update id="newMemPw" parameterType="member">
+		update member set mem_password = #{mem_password} where mem_id = #{mem_id}
+	</update>
 </mapper>
