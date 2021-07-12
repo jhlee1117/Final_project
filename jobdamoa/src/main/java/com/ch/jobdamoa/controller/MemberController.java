@@ -43,9 +43,12 @@ public class MemberController {
 			result = -1; // 없는 ID
 		else if (mem2.getMem_password().equals(mem.getMem_password())) {
 			result = 1; // ID와 패스워드 일치
-			session.setAttribute("mem_id", mem.getMem_id());
-			session.setAttribute("mem_nickname", mem.getMem_nickname());
-			session.setAttribute("user_dist", mem.getUser_dist());
+			session.setAttribute("mem_id", mem2.getMem_id());
+			session.setAttribute("mem_nickname", mem2.getMem_nickname());
+			session.setAttribute("user_dist", mem2.getUser_dist());
+			System.out.println(mem2.getMem_id());
+			System.out.println(mem2.getMem_nickname());
+			System.out.println(mem2.getUser_dist());
 		}
 		model.addAttribute("result", result);
 		return "member/memberLogin";		

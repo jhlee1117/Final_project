@@ -32,6 +32,7 @@
 				<li class="nav-item"><a class="nav-link" href="annList.do">기업 채용 공고</a></li>
 			</ul>
 			<div class="d-flex">
+				<c:if test="${empty user_dist }">
 				<div class="dropdown">
 					<button class="btn btn-outline-dark dropdown-toggle bi bi-box-arrow-in-right" type="button" id="loginSelectButton" data-bs-toggle="dropdown" aria-expanded="false">
 						로그인
@@ -42,9 +43,38 @@
     					<li><a class="dropdown-item" href="#">관리자</a></li>
   					</ul>
 				</div>
-				<button class="btn btn-dark" type="submit">
-					<i class="bi bi-person-circle"></i> 회원가입
+				<button class="btn btn-dark" type="button" onclick="#">
+					<i class="bi bi-person-plus"></i> 회원가입
 				</button>
+				</c:if>
+				<c:if test="${user_dist == '0' }">
+				<div class="dropdown">
+					<button class="btn btn-outline-dark dropdown-toggle bi bi-person-circle" type="button" id="loginSelectButton" data-bs-toggle="dropdown" aria-expanded="false">
+						마이페이지
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
+    					<li><a class="dropdown-item" href="#">회원정보</a></li>
+    					<li><a class="dropdown-item" href="#">스크랩 공고</a></li>
+  					</ul>
+				</div>
+					<button class="btn btn-dark" type="button" onclick="#">
+						<i class="bi bi-box-arrow-in-left"></i> 로그아웃
+					</button>
+				</c:if>
+				<c:if test="${user_dist == '1' }">
+				<div class="dropdown">
+					<button class="btn btn-outline-dark dropdown-toggle bi bi-building" type="button" id="loginSelectButton" data-bs-toggle="dropdown" aria-expanded="false">
+						마이페이지
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
+    					<li><a class="dropdown-item" href="#">기업정보</a></li>
+    					<li><a class="dropdown-item" href="#">나의 공고</a></li>
+  					</ul>  					
+				</div>
+					<button class="btn btn-dark" type="button" onclick="#">
+						<i class="bi bi-box-arrow-in-left"></i> 로그아웃
+					</button>
+				</c:if>
 			</div>
 		</div>
 	</div>

@@ -30,7 +30,7 @@
 				<div class="card-body">
 					<div class="form-floating mb-3">
 						<input type="text" name="mem_id" class="form-control" id="mem_id"
-							placeholder="ID"> <label for="com_id">ID</label>
+							placeholder="ID"> <label for="mem_id">ID</label>
 					</div>
 					<div class="form-floating">
 						<input type="password" name="mem_password" class="form-control"

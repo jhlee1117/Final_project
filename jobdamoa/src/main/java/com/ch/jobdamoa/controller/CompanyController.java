@@ -44,9 +44,9 @@ public class CompanyController {
 			result = -1; // 없는 ID
 		else if (com2.getCom_password().equals(com.getCom_password())) {
 			result = 1; // ID와 패스워드가 일치
-			session.setAttribute("com_id", com.getCom_id());
-			session.setAttribute("com_name", com.getCom_name());
-			session.setAttribute("user_dist", com.getUser_dist());
+			session.setAttribute("com_id", com2.getCom_id());
+			session.setAttribute("com_name", com2.getCom_name());
+			session.setAttribute("user_dist", com2.getUser_dist());
 		}
 		model.addAttribute("result", result);
 		return "company/companyLogin";
