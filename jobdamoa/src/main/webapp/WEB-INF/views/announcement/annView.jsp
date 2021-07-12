@@ -17,7 +17,9 @@
 				<h4 class="h4">${com.com_name }</h4>
 			</div>
 			<div class="col-4 mb-5">
-				<a class="btn btn-outline-dark mt-auto" href="#">공고 저장하기</a>
+				<c:if test="${user_dist == '0' }">
+					<a class="btn btn-outline-dark mt-auto" href="#">공고 저장하기</a>
+				</c:if>
 			</div>
 		</div>
 		<div
@@ -83,6 +85,14 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div align="center">
+			<c:if test="${user_dist == '1'}">
+				<c:if test = "${com_num == ann.com_num }">
+					<button class="btn btn-dark" type="submit" onclick="location.href='annUpdateForm.do?ann_num=${ann.ann_num}&pageNum=${pageNum}'">공고 수정</button>
+					<button class="btn btn-dark" type="submit" onclick="location.href='#'">공고 삭제</button>
+				</c:if>
+			</c:if>
 		</div>
 	</div>
 </body>

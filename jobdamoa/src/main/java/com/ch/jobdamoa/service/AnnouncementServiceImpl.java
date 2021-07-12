@@ -44,4 +44,25 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	public Announcement annView(int ann_num) {
 		return ad.annView(ann_num);
 	}
+
+	@Override
+	public List<Announcement> myAnnList(Announcement ann) {
+		return ad.myAnnList(ann);
+	}
+
+	@Override
+	public int getMyTotal(int com_num) {
+		return ad.getMyTotal(com_num);
+	}
+
+	@Override
+	public int annUpdate(Announcement ann) {
+		return ad.annUpdate(ann);
+	}
+
+	@Override
+	public int annDelete(int ann_num) {
+		// TODO Auto-generated method stub
+		return ad.annDelete(ann_num);
+	}
 }

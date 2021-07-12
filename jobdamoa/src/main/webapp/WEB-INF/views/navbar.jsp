@@ -57,7 +57,7 @@
     					<li><a class="dropdown-item" href="#">스크랩 공고</a></li>
   					</ul>
 				</div>
-					<button class="btn btn-dark" type="button" onclick="#">
+					<button class="btn btn-dark" type="button" onclick="location.href='memberLogout.do';">
 						<i class="bi bi-box-arrow-in-left"></i> 로그아웃
 					</button>
 				</c:if>
@@ -68,10 +68,10 @@
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
     					<li><a class="dropdown-item" href="#">기업정보</a></li>
-    					<li><a class="dropdown-item" href="#">나의 공고</a></li>
+    					<li><a class="dropdown-item" onclick="location.href='myAnnList.do'">나의 공고</a></li>
   					</ul>  					
 				</div>
-					<button class="btn btn-dark" type="button" onclick="#">
+					<button class="btn btn-dark" type="button" onclick="location.href='companyLogout.do';">
 						<i class="bi bi-box-arrow-in-left"></i> 로그아웃
 					</button>
 				</c:if>

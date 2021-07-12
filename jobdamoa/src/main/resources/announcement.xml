@@ -31,4 +31,24 @@
 		select * from announcement where ann_num = #{ann_num}  
 	</select>
 	
+	<select id="myAnnList" parameterType="map" resultType="announcement">
+		select * from (select a.*, rowNum rn from (select * from announcement where com_num = #{com_num}) a order by ann_num asc) 
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getMyTotal" parameterType="integer" resultType="integer">
+		select count(*) from announcement where com_num = #{com_num}
+	</select>
+	
+	<update id="annUpdate" parameterType="announcement">
+		update announcement set ann_job = #{ann_job}, ann_type = #{ann_type}, ann_career = #{ann_career}, ann_min = #{ann_min}, ann_max = #{ann_max},
+								ann_location = #{ann_location}, ann_recruit_period = #{ann_recruit_period}, ann_contents = #{ann_contents},
+								ann_qualification = #{ann_qualification}, ann_prime = #{ann_prime}
+								where ann_num = #{ann_num}
+	</update>
+	
+	<update id="annDelete" parameterType="announcement">
+		update announcement set ann_del = 'y' where ann_num = #{ann_num}
+	</update>
+	
 </mapper>

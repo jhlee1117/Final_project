@@ -43,4 +43,24 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 	public Announcement annView(int ann_num) {
 		return sst.selectOne("announcementns.annView", ann_num);
 	}
+
+	@Override
+	public List<Announcement> myAnnList(Announcement ann) {
+		return sst.selectList("announcementns.myAnnList", ann);
+	}
+
+	@Override
+	public int getMyTotal(int com_num) {
+		return sst.selectOne("announcementns.getMyTotal", com_num);
+	}
+
+	@Override
+	public int annUpdate(Announcement ann) {
+		return sst.update("announcementns.annUpdate", ann);
+	}
+
+	@Override
+	public int annDelete(int ann_num) {
+		return sst.update("announcementns.annDelete", ann_num);
+	}
 }

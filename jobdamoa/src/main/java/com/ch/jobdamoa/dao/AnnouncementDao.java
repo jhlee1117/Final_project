@@ -18,4 +18,12 @@ public interface AnnouncementDao {
 
 	Announcement annView(int ann_num);
 
+	List<Announcement> myAnnList(Announcement ann);
+
+	int getMyTotal(int com_num);
+
+	int annUpdate(Announcement ann);
+
+	int annDelete(int ann_num);
+
 }

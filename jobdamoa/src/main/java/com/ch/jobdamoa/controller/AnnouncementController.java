@@ -3,6 +3,8 @@ package com.ch.jobdamoa.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,14 +59,21 @@ public class AnnouncementController {
 	}
 	
 	@RequestMapping("annInsertForm")
-	public String annInsertForm(int ann_num, String pageNum, Model model) {
+	public String annInsertForm(int ann_num, String pageNum, Model model, HttpSession session) {
 		
-		int com_num = 14; // 예시, 향후 로그인 관련하여 변경 필요
-		model.addAttribute("com_num", com_num);
+		int result;
+		Integer com_num = (Integer) session.getAttribute("com_num");
+		String user_dist = (String) session.getAttribute("user_dist");
 		
-		model.addAttribute("ann_num", ann_num);
-		System.out.println(ann_num);
-		model.addAttribute("pageNum", pageNum);
+		if (com_num == null || !user_dist.equals("1")) {
+			result = 0;
+		} else {
+			result = 1;
+			model.addAttribute("com_name", (String) session.getAttribute("com_name"));
+			model.addAttribute("ann_num", ann_num);
+			model.addAttribute("pageNum", pageNum);
+		}
+		session.setAttribute("result", result);
 		
 		return "announcement/annInsertForm";
 	}
@@ -94,5 +103,111 @@ public class AnnouncementController {
 		model.addAttribute("com", com);
 		model.addAttribute("pageNum", pageNum);
 		return "announcement/annView";
+	}
+	
+	@RequestMapping("myAnnList")
+	public String myAnnList(Announcement ann, HttpSession session, String pageNum, Model model) {
+		
+		int com_num = (int) session.getAttribute("com_num");
+//		String com_name = (String) session.getAttribute("com_name");
+		
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";	// 페이지 번호 여부 확인 및 값 초기화
+		int currentPage = Integer.parseInt(pageNum); // 숫자로 변환하여 처리
+		int rowPerPage = 10; // 한 화면에 보여지는 게시글 개수
+		int startRow = (currentPage - 1) * rowPerPage + 1; // 페이지 내 시작행 설정
+		int endRow = startRow + rowPerPage - 1; // 페이지 내 끝행 설정
+		
+		// 내가 쓴 글만 페이징 처리
+		int total = as.getMyTotal(com_num);
+		PagingBean pb = new PagingBean(currentPage, rowPerPage, total);
+		
+		ann.setStartRow(startRow);
+		ann.setEndRow(endRow);
+		ann.setCom_num(com_num);
+		
+		List<Announcement> myannlist = as.myAnnList(ann);
+		
+		model.addAttribute("pb", pb);
+		model.addAttribute("myannlist", myannlist);
+		
+		return "announcement/myAnnList";
+	}
+	
+	@RequestMapping("annUpdateForm")
+	public String annUpdateForm(int ann_num, String pageNum, Model model, HttpSession session) {
+		
+		int result;
+		Announcement ann = as.annView(ann_num);
+		
+		if (ann.getAnn_del() == "y") {
+			result = 0;
+		} else {
+			result = 1;
+			
+			model.addAttribute("ann_num", ann_num);
+			model.addAttribute("pageNum", pageNum);
+			model.addAttribute("ann", ann);
+		}
+		session.setAttribute("result", result);
+		
+		return "announcement/annUpdateForm";
+	}
+	
+	@RequestMapping("annUpdate")
+	public String annUpdate(Announcement ann, String pageNum, Model model) {
+		
+		int result = as.annUpdate(ann);
+		model.addAttribute("result", result);
+		model.addAttribute("ann_num", ann.getAnn_num()); // View로 보내는 것이므로 받는 값이 ann_num
+		model.addAttribute("pageNum", pageNum);
+		
+		return "announcement/annUpdate";
+	}
+	
+	@RequestMapping("annDeleteForm")
+	public String annDeleteForm(int ann_num, String pageNum, Model model, HttpSession session) {
+		
+		int result;
+		Announcement ann = as.annView(ann_num);
+		
+		if (ann.getAnn_del() == "y") {
+			result = 0;
+		} else {
+			result = 1;
+			
+			model.addAttribute("ann_num", ann_num);
+			model.addAttribute("pageNum", pageNum);
+			model.addAttribute("ann", ann);
+		}
+		
+		session.setAttribute("result", result);
+		
+		return "announcement/annDeleteForm";
+	}
+	
+	@RequestMapping("confirmAnnDel")
+	public void confirmAnnDel(HttpSession session, HttpServletRequest request) {
+		
+		Company com = cs.selectCom((int) session.getAttribute("com_num"));
+		String result;
+		
+		if (com.getCom_password() == request.getParameter("com_password")) {
+			result = "1";
+		} else 
+			result = "-1";
+		
+		request.setAttribute("result", result);
+	}
+	
+	@RequestMapping("annDelete")
+	public String annDelete(int ann_num, String pageNum, Model model) {
+		System.out.println(ann_num);
+		int result = as.annDelete(ann_num);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "announcement/annDelete";
 	}
 }

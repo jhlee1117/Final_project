@@ -69,14 +69,15 @@
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center">
 								<a class="btn btn-outline-dark mt-auto" href="annView.do?ann_num=${ann.ann_num }&pageNum=${pb.currentPage}">공고 상세보기</a>
-								<a class="btn btn-outline-dark mt-auto" href="#">공고 저장</a>
+								<c:if test="${user_dist == '0' }">
+									<a class="btn btn-outline-dark mt-auto" href="#">공고 저장</a>
+								</c:if>
 							</div>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
 			</div>
-			<!-- 페이징 처리를 위한 공간 !!! 부트스트랩 CSS 제대로 적용 안 되는 부분 해결 필요 --> 
 			<div align="center">
 				<ul class="pagination justify-content-center">
 					<!-- 시작 페이지가 pagePerBlock(10)보다 크면 앞에 보여줄 페이지가 존재하므로 버튼 생성 -->
