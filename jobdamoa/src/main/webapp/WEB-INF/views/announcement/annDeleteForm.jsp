@@ -8,25 +8,28 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function chk() {
-		$.ajax({
-			url: "confirmAnnDel.do",
-			type: "post",
-			data: "com_password=" + frm.com_password.value,
-			async: false,
-			success: function(data) {
-				if (data.msg == "1") {
-					var delchk = confirm("정말로 공고를 삭제하시겠습니까?");
+		if(!frm.com_password.value) {
+			alert("비밀번호를 입력해야 합니다.");
+			frm.com_password.focus();
+			return false;
+		}
+		$.post("confirmAnnDel.do", "com_password=" + frm.com_password.value,
+			function (result) {
+				if (result == "1") {
+					delchk = confirm("정말로 공고를 삭제하시겠습니까?");
 					if (delchk == true) {
-						return true;
+						//return true;
+						frm.action="annDelete.do";
+						frm.submit();
 					} else {
-						return false;		
+						return;		
 					}
-				} else if (data.msg == "-1") {
+				} else if (result == "-1") {
 					alert("비밀번호가 일치하지 않습니다.");
-					return false;
+					return;
 				}
 			}
-		});
+		);
 	}
 </script>
 </head>
@@ -39,7 +42,8 @@
 </c:if>
 <c:if test="${result == 1 }">
 	<div class="container" align="center">
-	<form action="annDelete.do" name="frm" method="post" onsubmit="return chk()">
+	<form action="" name="frm" method="post" onsubmit="return chk(this);">
+		<input type="hidden" name="ann_num" value="${ann_num }">
 			<div class="card w-100 text-center">
 				<div class="card-body">
 					<h6>회원님의 계정 비밀번호를 입력하세요.</h6>
@@ -50,9 +54,8 @@
 					</div>
 				</div>
 				<div class="card-footer">
-					<button type="submit" class="btn btn-primary">확인</button>
-					<button type="button" class="btn btn-danger"
-						onclick="history.back()">취소</button>
+					<input type="submit" class="btn btn-primary" value="확인">
+					<input type="button" class="btn btn-danger" onclick="history.back();" value="취소">
 				</div>
 			</div>
 		</form>

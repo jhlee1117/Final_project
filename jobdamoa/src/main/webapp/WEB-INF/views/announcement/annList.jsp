@@ -62,15 +62,15 @@
 												<td>${ann.ann_regdate }</td>
 											</tr>
 										</table>
-								</c:if>
-							</div>
-						</div>
-							<!-- 상세보기 공고 저장 버튼-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="annView.do?ann_num=${ann.ann_num }&pageNum=${pb.currentPage}">공고 상세보기</a>
-								<c:if test="${user_dist == '0' }">
-									<a class="btn btn-outline-dark mt-auto" href="#">공고 저장</a>
+										<!-- 상세보기 공고 저장 버튼-->
+										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+											<div class="text-center mt-3">
+											<a class="btn btn-outline-dark mt-auto" href="annView.do?ann_num=${ann.ann_num }&pageNum=${pb.currentPage}">공고 상세보기</a>
+											<c:if test="${user_dist == '0' }">
+											<a class="btn btn-outline-dark mt-auto" href="#">공고 저장</a>
+											</c:if>
+										</div>
+									</div>
 								</c:if>
 							</div>
 						</div>

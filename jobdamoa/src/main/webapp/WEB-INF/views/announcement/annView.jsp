@@ -90,7 +90,7 @@
 			<c:if test="${user_dist == '1'}">
 				<c:if test = "${com_num == ann.com_num }">
 					<button class="btn btn-dark" type="submit" onclick="location.href='annUpdateForm.do?ann_num=${ann.ann_num}&pageNum=${pageNum}'">공고 수정</button>
-					<button class="btn btn-dark" type="submit" onclick="location.href='#'">공고 삭제</button>
+					<button class="btn btn-dark" type="submit" onclick="location.href='annDeleteForm.do?ann_num=${ann.ann_num}&pageNum=${pageNum}'">공고 삭제</button>
 				</c:if>
 			</c:if>
 		</div>

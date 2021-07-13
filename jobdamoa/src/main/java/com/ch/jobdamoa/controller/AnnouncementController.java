@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ch.jobdamoa.model.Announcement;
 import com.ch.jobdamoa.model.Company;
@@ -140,7 +141,7 @@ public class AnnouncementController {
 		int result;
 		Announcement ann = as.annView(ann_num);
 		
-		if (ann.getAnn_del() == "y") {
+		if (ann.getAnn_del().equals("y")) {
 			result = 0;
 		} else {
 			result = 1;
@@ -171,11 +172,10 @@ public class AnnouncementController {
 		int result;
 		Announcement ann = as.annView(ann_num);
 		
-		if (ann.getAnn_del() == "y") {
+		if (ann.getAnn_del().equals("y")) {
 			result = 0;
 		} else {
 			result = 1;
-			
 			model.addAttribute("ann_num", ann_num);
 			model.addAttribute("pageNum", pageNum);
 			model.addAttribute("ann", ann);
@@ -187,22 +187,23 @@ public class AnnouncementController {
 	}
 	
 	@RequestMapping("confirmAnnDel")
-	public void confirmAnnDel(HttpSession session, HttpServletRequest request) {
+	@ResponseBody
+	public String confirmAnnDel(String com_password, HttpSession session) {
 		
-		Company com = cs.selectCom((int) session.getAttribute("com_num"));
 		String result;
+		Company com = cs.selectCom((int) session.getAttribute("com_num"));
 		
-		if (com.getCom_password() == request.getParameter("com_password")) {
+		if (com.getCom_password().equals(com_password)) {
 			result = "1";
 		} else 
 			result = "-1";
 		
-		request.setAttribute("result", result);
+		return result;
 	}
 	
 	@RequestMapping("annDelete")
 	public String annDelete(int ann_num, String pageNum, Model model) {
-		System.out.println(ann_num);
+		
 		int result = as.annDelete(ann_num);
 		
 		model.addAttribute("result", result);

@@ -28,7 +28,6 @@
 			</c:if>
 			<c:if test="${not empty myannlist }">
 				<c:forEach var="myann" items="${myannlist }">
-					<input type="hidden" value="${myann.ann_num }">
 					<tr>
 						<td>
 							<c:if test="${myann.ann_del == 'y' }">종료</c:if>
