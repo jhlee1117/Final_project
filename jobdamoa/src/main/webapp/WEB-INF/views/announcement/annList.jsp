@@ -67,7 +67,7 @@
 											<div class="text-center mt-3">
 											<a class="btn btn-outline-dark mt-auto" href="annView.do?ann_num=${ann.ann_num }&pageNum=${pb.currentPage}">공고 상세보기</a>
 											<c:if test="${user_dist == '0' }">
-											<a class="btn btn-outline-dark mt-auto" href="#">공고 저장</a>
+											<a class="btn btn-outline-dark mt-auto" href="favSave.do?ann_num=${ann.ann_num }&pageNum=${pb.currentPage}">공고 저장</a>
 											</c:if>
 										</div>
 									</div>
