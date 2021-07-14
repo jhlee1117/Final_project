@@ -1,8 +1,5 @@
 package com.ch.jobdamoa.dao;
 
-import java.util.List;
-import java.util.Map;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,8 +13,8 @@ public class FavoritesDaoImpl implements FavoritesDao {
 	private SqlSessionTemplate sst;
 
 	@Override
-	public List<Map<String, Favorites>> confirmFav(int mem_num) {
-		return sst.selectList("favoritesns.confirmFav", mem_num);
+	public Favorites confirmFav(Favorites favchk) {
+		return sst.selectOne("favoritesns.confirmFav", favchk);
 	}
 
 	@Override

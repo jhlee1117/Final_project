@@ -1,8 +1,5 @@
 package com.ch.jobdamoa.service;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +13,8 @@ public class FavoritesServiceImpl implements FavoritesService {
 	private FavoritesDao fd;
 
 	@Override
-	public List<Map<String, Favorites>> confirmFav(int mem_num) {
-		return fd.confirmFav(mem_num);
+	public Favorites confirmFav(Favorites favchk) {
+		return fd.confirmFav(favchk);
 	}
 
 	@Override

@@ -3,15 +3,8 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="favoritesns">
 	
-	<resultMap type="Hashmap" id="favMap">
-		<result property="fav_num" column="fav_num"/>
-		<result property="mem_num" column="mem_num"/>
-		<result property="ann_num" column="ann_num"/>
-		<result property="fav_date" column="fav_date"/>
-	</resultMap>
-	
-	<select id="confirmFav" resultMap="favMap">
-		select * from favorites where mem_num = #{mem_num}
+	<select id="confirmFav" parameterType="favorites" resultType="favorites">
+		select * from favorites where mem_num = #{mem_num} and ann_num = #{ann_num}
 	</select>
 	
 	<select id="getMaxNum" resultType="integer">
