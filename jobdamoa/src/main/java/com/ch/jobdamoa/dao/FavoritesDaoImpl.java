@@ -16,7 +16,7 @@ public class FavoritesDaoImpl implements FavoritesDao {
 	private SqlSessionTemplate sst;
 
 	@Override
-	public List<Favorites> confirmFav(int mem_num) {
+	public List<Map<String, Favorites>> confirmFav(int mem_num) {
 		return sst.selectList("favoritesns.confirmFav", mem_num);
 	}
 

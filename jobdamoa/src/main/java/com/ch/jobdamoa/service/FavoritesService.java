@@ -7,7 +7,7 @@ import com.ch.jobdamoa.model.Favorites;
 
 public interface FavoritesService {
 
-	List<Favorites> confirmFav(int mem_num);
+	List<Map<String, Favorites>> confirmFav(int mem_num);
 
 	int getMaxNum();
 

@@ -1,5 +1,6 @@
 package com.ch.jobdamoa.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,32 +20,35 @@ public class FavoritesController {
 
 	@Autowired
 	private FavoritesService fs;
-	
+
 	@Autowired
 	private AnnouncementService as;
-	
-	
+
 //	@RequestMapping("confirmFav")
 //	public String confirmFav(int ann_num, String pageNum, Model model, HttpSession session) {
 //		
 //	}
-	
+
 	@RequestMapping("favSave")
 	public String favSave(int ann_num, String pageNum, Model model, HttpSession session) {
 		
 		System.out.println("게시물 번호: " + ann_num);
 		int mem_num = (int) session.getAttribute("mem_num");
 		System.out.println("회원일련번호: " + mem_num);
-		List<Favorites> favList = fs.confirmFav(mem_num); // 이미 즐겨찾기 추가한 공고인지 확인
 
+		List <Map<String, Favorites>> favList = fs.confirmFav(mem_num); // 이미 즐겨찾기 추가한 공고인지 확인
+		Map<String, Favorites> favann = new HashMap<>();
+		for ( : favList)
+			favann.put("ann_num", value);
+		
+		
 		int result;
-		
-		Favorites fav2 = new Favorites();
-		
 		if (favList == null) {
-			System.out.println("6");
+			System.out.println("null 진입점");
 			int number = fs.getMaxNum();
-			System.out.println(number);
+			System.out.println("일련번호: " + number);
+			Favorites fav2 = new Favorites();
+			System.out.println("객체 생성 후");
 			fav2.setFav_num(number); // 일련번호 추가
 			fav2.setMem_num(mem_num);
 			fav2.setAnn_num(ann_num);
@@ -52,9 +56,8 @@ public class FavoritesController {
 //			System.out.println("회원 번호 : " + fav.getMem_num());
 //			System.out.println("게시물 번호 : " + fav.getAnn_num());
 			result = fs.favSave(fav2);
-			System.out.println("3");
-			System.out.println(result);
-		} else if (fav.getAnn_num() == ann_num) {
+			System.out.println("객체값 확인 " + result);
+		} else if (favList.getAnn_num() == ann_num) {
 			result = 0;
 			System.out.println("4");
 //			System.out.println(fav.getAnn_num());

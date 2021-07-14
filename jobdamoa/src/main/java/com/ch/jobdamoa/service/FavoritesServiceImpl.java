@@ -16,7 +16,7 @@ public class FavoritesServiceImpl implements FavoritesService {
 	private FavoritesDao fd;
 
 	@Override
-	public List<Favorites> confirmFav(int mem_num) {
+	public List<Map<String, Favorites>> confirmFav(int mem_num) {
 		return fd.confirmFav(mem_num);
 	}
 
