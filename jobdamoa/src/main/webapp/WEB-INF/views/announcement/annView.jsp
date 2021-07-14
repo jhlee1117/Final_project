@@ -7,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	var script = document.createElement('script');
+	script.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=d2196f3ead15c9e78a17ba1c74506591";
+	document.head.appendChild(script);
+	var container = document.getElementById("map");
+	var options = {	center: new kakao.maps.LatLng(33.450701, 126.570667), level: 3
+					};
+	var map = new kakao.maps.Map(container, options);		
+</script>
 </head>
 <body>
 	<div class="container px-4 px-lg-5 mt-5">
@@ -18,7 +27,7 @@
 			</div>
 			<div class="col-4 mb-5">
 				<c:if test="${user_dist == '0' }">
-					<a class="btn btn-outline-dark mt-auto" href="#">공고 저장하기</a>
+					<a class="btn btn-outline-dark mt-auto" href="favSave.do?ann_num=${ann.ann_num }&pageNum=${pageNum}">공고 저장하기</a>
 				</c:if>
 			</div>
 		</div>
@@ -82,6 +91,50 @@
 					<div class="mb-5">
 						<h5 class="h5">우대사항</h5>
 						<span>${ann.ann_prime }</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-4 mb-5">
+				<div class="section">
+					<h5 class="h5">회사정보</h5>
+					<div class="card">
+  						<div class="card-header">${com.com_name }</div>
+  						<div class="card-body">
+    						<ul class="list-group list-group-flush">
+    							<li class="list-group-item">
+    								<dl class="row">
+    									<dt class="col">회사홈페이지</dt>
+    									<dd class="col" style="text-align: right;"><a href="${com_homepage}">바로가기</a></dd>
+    								</dl>
+    								<dl class="row">
+    									<dt class="col">사원수</dt>
+    									<dd class="col" style="text-align: right;">${com.com_emp_num } <span style="font-size: 6pt;">명</span></dd>
+    								</dl>
+    								<dl class="row">
+    									<dt class="col">매출</dt>
+    									<dd class="col" style="text-align: right;">${com.com_sales } <span style="font-size: 6pt;">만원</span></dd>
+    								</dl>
+    							</li>
+    							<li class="list-group-item">
+    								<dl class="row">
+    									<dt class="col">전화번호</dt>
+    									<dd class="col" style="text-align: right;">${com.com_pno}</dd>
+    								</dl>
+    								<dl class="row">
+    									<dt class="col">이메일</dt>
+    									<dd class="col" style="text-align: right;"><span style="font-size: 8pt;">${com.com_email }</span></dd>
+    								</dl>
+    								<dl class="row">
+    									<dt class="col">주소</dt>
+    									<dd class="col" style="text-align: right;"><span style="font-size: 8pt;">${com.com_address }</span></dd>
+    								</dl>
+    							</li>
+  							</ul>
+  						</div>
+					</div>
+					<div class="card-header">위치</div>
+					<div class="card-body col-auto" id="map">
+						지도 API 연동 필요
 					</div>
 				</div>
 			</div>
