@@ -13,4 +13,12 @@ public interface FavoritesDao {
 
 	int favSave(Favorites fav);
 
+	List<Favorites> favList(Favorites fav);
+
+	int getMyTotal(int mem_num);
+
+	List<Favorites> confirmFavAnn(int ann_num);
+
+	void favDelete(int ann_num);
+
 }

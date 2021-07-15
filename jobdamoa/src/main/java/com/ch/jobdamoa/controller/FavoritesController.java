@@ -1,14 +1,18 @@
 package com.ch.jobdamoa.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ch.jobdamoa.model.Favorites;
 import com.ch.jobdamoa.service.FavoritesService;
+import com.ch.jobdamoa.service.PagingBean;
 
 @Controller
 public class FavoritesController {
@@ -19,9 +23,7 @@ public class FavoritesController {
 	@RequestMapping("favSave")
 	public String favSave(int ann_num, String pageNum, Model model, HttpSession session) {
 		
-		System.out.println("게시물 번호: " + ann_num);
 		int mem_num = (int) session.getAttribute("mem_num");
-		System.out.println("회원일련번호: " + mem_num);
 		
 		Favorites favchk = new Favorites();
 		
@@ -32,27 +34,68 @@ public class FavoritesController {
 		
 		int result;
 		if (fav == null) {
-			System.out.println("null 진입점");
 			int number = fs.getMaxNum();
-			System.out.println("일련번호: " + number);
 			Favorites fav2 = new Favorites();
-			System.out.println("객체 생성 후");
 			fav2.setFav_num(number); // 일련번호 추가
 			fav2.setMem_num(mem_num);
 			fav2.setAnn_num(ann_num);
 			result = fs.favSave(fav2);
-			System.out.println("객체값 확인 " + result);
 		} else if (fav.getAnn_num() == ann_num) {
 			result = 0;
-			System.out.println("0");
 		} else {
 			result = -1;
-			System.out.println("-1");
 		}
-		System.out.println("성공");
+
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("result", result);
-		System.out.println("result=" + result);
+
 		return "favorites/favSave";
+	}
+	
+	@RequestMapping("myFavList")
+	public String favAnnList(Favorites fav, HttpSession session, String pageNum, Model model) {
+		
+		int mem_num = (int) session.getAttribute("mem_num");
+		
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";	// 페이지 번호 여부 확인 및 값 초기화
+		int currentPage = Integer.parseInt(pageNum); // 숫자로 변환하여 처리
+		int rowPerPage = 10; // 한 화면에 보여지는 게시글 개수
+		int startRow = (currentPage - 1) * rowPerPage + 1; // 페이지 내 시작행 설정
+		int endRow = startRow + rowPerPage - 1; // 페이지 내 끝행 설정
+		
+		// 내가 저장한 공고만 페이징 처리
+		int total = fs.getMyTotal(mem_num);
+		PagingBean pb = new PagingBean(currentPage, rowPerPage, total);
+				
+		fav.setStartRow(startRow);
+		fav.setEndRow(endRow);
+		fav.setMem_num(mem_num);
+		
+//		List<Favorites> myfavlist = fs.favList(mem_num);
+		List<Favorites> myfavlist = fs.favList(fav);
+		
+		model.addAttribute("pb", pb);
+		model.addAttribute("myfavlist", myfavlist);
+				
+		return "favorites/myFavList";
+	}
+	
+	@RequestMapping("favDelete")
+	@ResponseBody
+	public String favDelete(String ann_num, String pageNum) {
+		int ann_num2 = Integer.parseInt(ann_num);
+		
+		List<Favorites> cflist = fs.confirmFavAnn(ann_num2);
+		String msg;
+		
+		if (cflist != null) {
+			msg = "중지된 공고는 삭제할 수 없습니다.";
+		} else {
+			fs.favDelete(ann_num2);
+			msg = "정상적으로 삭제하였습니다.";
+		}
+		
+		return msg;
 	}
 }

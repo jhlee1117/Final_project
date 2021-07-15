@@ -3,6 +3,30 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="favoritesns">
 	
+	<!-- Announcement와 조인을 위해 resultMap 설정 -->	
+	<resultMap type="announcement" id="announcement">
+		<result property="ann_num" column="ann_num"/>
+		<result property="com_num" column="com_num"/>
+		<result property="ann_job" column="ann_job"/>
+		<result property="ann_title" column="ann_title"/>
+		<result property="ann_del" column="ann_del"/>
+		<result property="ann_regdate" column="ann_regdate"/>
+	</resultMap>
+	<!-- 회사 이름을 가져오기 위해 resultMap 설정 -->
+	<resultMap type="company" id="company">
+		<result property="com_num" column="com_num"/>
+		<result property="com_name" column="com_name"/>
+	</resultMap>
+	
+	<resultMap type="favorites" id="favorites">
+		<result property="fav_num" column="fav_num"/>
+		<result property="mem_num" column="mem_num"/>
+		<result property="ann_num" column="ann_num"/>
+		<result property="fav_date" column="fav_date"/>
+		<collection property="announcement" resultMap="announcement"/>
+		<collection property="company" resultMap="company"/>
+	</resultMap>
+	
 	<select id="confirmFav" parameterType="favorites" resultType="favorites">
 		select * from favorites where mem_num = #{mem_num} and ann_num = #{ann_num}
 	</select>
@@ -14,4 +38,22 @@
 	<insert id="favSave" parameterType="favorites">
 		insert into favorites values(#{fav_num}, #{mem_num}, #{ann_num}, default)
 	</insert>
+	
+	<select id="favList" parameterType="favorites" resultMap="favorites">
+		select * from (select favlist.*, rowNum rn from (select f.fav_num, a.ann_num, a.com_num, a.ann_job, a.ann_title, a.ann_del, a.ann_regdate, c.com_name 
+		from favorites f, announcement a, company c where f.ann_num = a.ann_num and f.mem_num = #{mem_num} and a.com_num = c.com_num) favlist order by fav_num desc)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getMyTotal" parameterType="integer" resultType="integer">
+		select count(*) from favorites where mem_num = #{mem_num}
+	</select>
+	
+	<select id="confirmFavAnn" parameterType="integer" resultType="favorites" >
+		select * from favorites where #{ann_num} in (select ann_num from announcement where ann_del = 'y')
+	</select>
+	
+	<select id="favDelete" parameterType="integer">
+		delete * from favorites where ann_num = #{ann_num}
+	</select>
 </mapper>

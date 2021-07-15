@@ -36,13 +36,12 @@
 				<div class="dropdown">
 					<button class="btn btn-outline-dark dropdown-toggle bi bi-box-arrow-in-right" type="button" id="loginSelectButton" data-bs-toggle="dropdown" aria-expanded="false">
 						로그인
-					</button>
+					</button> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
     					<li><a class="dropdown-item" href="memberLoginForm.do">일반회원</a></li>
     					<li><a class="dropdown-item" href="companyLoginForm.do">기업회원</a></li>
-    					<li><a class="dropdown-item" href="#">관리자</a></li>
   					</ul>
-				</div>
+				</div> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
 				<button class="btn btn-dark" type="button" onclick="#">
 					<i class="bi bi-person-plus"></i> 회원가입
 				</button>
@@ -54,7 +53,8 @@
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
     					<li><a class="dropdown-item" href="#">회원정보</a></li>
-    					<li><a class="dropdown-item" href="#">스크랩 공고</a></li>
+    					<li><a class="dropdown-item" onclick="location.href='myFavList.do'">저장공고</a></li>
+    					<li><a class="dropdown-item" href="">스크랩공고</a></li>
   					</ul>
 				</div>
 					<button class="btn btn-dark" type="button" onclick="location.href='memberLogout.do';">

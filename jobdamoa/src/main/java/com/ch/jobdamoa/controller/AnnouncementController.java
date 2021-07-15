@@ -3,7 +3,6 @@ package com.ch.jobdamoa.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +47,10 @@ public class AnnouncementController {
 		// 회사번호로 회사명을 하나씩 조회해서 annList에 추가해준다.
 		for (Announcement ann_com_name : annlist) {
 			Company company = cs.selectCom_nm(ann_com_name.getCom_num());
-			ann_com_name.setCom_name(company.getCom_name());
+			if (company != null) { // 게시물과 회사 정보는 동시에 있어야 그렇지 않은 경우 에러 발생 때문에 넣어놓음
+				ann_com_name.setCom_name(company.getCom_name());
+			} else
+				break;
 		}
 		
 		int ann_num = total - startRow + 1;

@@ -11,4 +11,12 @@ public class Favorites {
 	private int mem_num; // 회원번호(fk)
     private int ann_num; // 기업공고번호(fk)
     private Date fav_date; // 즐겨찾기 추가시점
+    
+	// paging용
+	private int startRow;
+	private int endRow;
+	
+	// join용
+	private Announcement announcement;
+	private Company company;
 }
