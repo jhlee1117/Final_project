@@ -9,8 +9,10 @@
 <script type="text/javascript">
 	function delchk() {
 		var delchk = confirm("저장된 공고를 삭제하시겠습니까?");
+		var ann_num = '${myfav.announcement.ann_num}';
+		var pageNum = '${pb.currentPage}';
 		if (delchk == true) {
-			$.post("favDelete.do", "ann_num=" + "<c:out value='${myfav.announcement.ann_num}'/>", "pageNum=" + "<c:out value='${pb.currentPage}'/>",
+			$.post("favDelete.do", "ann_num=" + ann_num, "pageNum=" + pageNum,
 				function(msg) {
 				alert(msg);
 			});

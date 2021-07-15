@@ -85,6 +85,8 @@ public class FavoritesController {
 	@ResponseBody
 	public String favDelete(String ann_num, String pageNum) {
 		int ann_num2 = Integer.parseInt(ann_num);
+		System.out.println(ann_num);
+		System.out.println(pageNum);
 		
 		List<Favorites> cflist = fs.confirmFavAnn(ann_num2);
 		String msg;
