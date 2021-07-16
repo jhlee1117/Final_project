@@ -7,17 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function delchk() {
+	function delchk(ann_num) {
 		var delchk = confirm("저장된 공고를 삭제하시겠습니까?");
-		var ann_num = '${myfav.announcement.ann_num}';
 		var pageNum = '${pb.currentPage}';
 		if (delchk == true) {
-			$.post("favDelete.do", "ann_num=" + ann_num, "pageNum=" + pageNum,
+			$.post("favDelete.do", "ann_num=" + ann_num + "&pageNum=" + pageNum,
 				function(msg) {
 				alert(msg);
 			});
 		} else
 			return;
+		location.reload();
 	}
 </script>
 </head>
@@ -56,7 +56,7 @@
 							<a class="btn btn-info btn-sm" href="annView.do?ann_num=${myfav.announcement.ann_num}&pageNum=${pb.currentPage}">공고 상세보기</a>
 						</td>
 						<td style="text-align: center">
-							<a class="btn btn-info btn-sm" onclick="delchk();" <%-- href="favDelete.do?ann_num=${myfav.announcement.ann_num}&pageNum=${pb.currentPage}" --%>>공고 삭제</a>
+							<a class="btn btn-info btn-sm" onclick="delchk(${myfav.announcement.ann_num});" <%-- href="favDelete.do?ann_num=${myfav.announcement.ann_num}&pageNum=${pb.currentPage}" --%>>공고 삭제</a>
 						</td>
 				</c:forEach>
 			</c:if>

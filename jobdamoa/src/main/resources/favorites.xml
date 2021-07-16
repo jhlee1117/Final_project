@@ -53,7 +53,8 @@
 		select * from favorites where #{ann_num} in (select ann_num from announcement where ann_del = 'y')
 	</select>
 	
-	<select id="favDelete" parameterType="integer">
-		delete * from favorites where ann_num = #{ann_num}
-	</select>
+	<delete id="favDelete" parameterType="integer">
+		delete from favorites where ann_num = #{ann_num}
+	</delete>
+
 </mapper>

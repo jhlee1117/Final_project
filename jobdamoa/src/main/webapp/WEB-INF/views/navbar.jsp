@@ -42,7 +42,7 @@
     					<li><a class="dropdown-item" href="companyLoginForm.do">기업회원</a></li>
   					</ul>
 				</div> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
-				<button class="btn btn-dark" type="button" onclick="#">
+				<button class="btn btn-dark" type="button" onclick="location.href='selectJoinForm.do'">
 					<i class="bi bi-person-plus"></i> 회원가입
 				</button>
 				</c:if>

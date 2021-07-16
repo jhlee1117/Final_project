@@ -81,23 +81,22 @@ public class FavoritesController {
 		return "favorites/myFavList";
 	}
 	
-	@RequestMapping("favDelete")
+	@RequestMapping(value = "favDelete", produces = "text/html;charset=utf-8")
 	@ResponseBody
-	public String favDelete(String ann_num, String pageNum) {
-		int ann_num2 = Integer.parseInt(ann_num);
-		System.out.println(ann_num);
-		System.out.println(pageNum);
+	public String favDelete(int ann_num, int pageNum) {
 		
-		List<Favorites> cflist = fs.confirmFavAnn(ann_num2);
+		List<Favorites> cflist = fs.confirmFavAnn(ann_num);
+		for (int i = 0; i < cflist.size(); i++) {
+			System.out.println(i);
+		}
 		String msg;
 		
-		if (cflist != null) {
-			msg = "중지된 공고는 삭제할 수 없습니다.";
-		} else {
-			fs.favDelete(ann_num2);
+		if (cflist.isEmpty()) {
 			msg = "정상적으로 삭제하였습니다.";
+			fs.favDelete(ann_num);
+		} else {
+			msg = "중지된 공고는 삭제할 수 없습니다.";
 		}
-		
 		return msg;
 	}
 }

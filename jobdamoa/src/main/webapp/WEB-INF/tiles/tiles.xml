@@ -27,6 +27,21 @@
 	<definition name="member/memberLoginForm" extends="loginlayout">
 		<put-attribute name="section" value="/WEB-INF/views/member/memberLoginForm.jsp"/>
 	</definition>
+	<!-- 회원가입 시 기본 메뉴바가 아닌 레이아웃 적용 -->
+	<definition name="joinlayout" template="/WEB-INF/views/joinlayout.jsp">
+		<put-attribute name="navbar" value="/WEB-INF/views/joinnav.jsp" />
+		<!-- <put-attribute name="header" value="" /> -->
+		<put-attribute name="footer" value="" />	
+	</definition>
+	<definition name="join/selectJoinForm" extends="joinlayout">
+		<put-attribute name="section" value="/WEB-INF/views/join/selectJoinForm.jsp"/>
+	</definition>
+	<definition name="join/companyJoinForm" extends="joinlayout">
+		<put-attribute name="section" value="/WEB-INF/views/join/companyJoinForm.jsp"/>
+	</definition>
+	<definition name="join/memberJoinForm" extends="joinlayout">
+		<put-attribute name="section" value="/WEB-INF/views/join/memberJoinForm.jsp"/>
+	</definition>
 	<!-- 팝업 시 레이아웃 미적용 -->
 	<definition name="poplayout" template="/WEB-INF/views/poplayout.jsp">
 		<put-attribute name="navbar" value="" />
