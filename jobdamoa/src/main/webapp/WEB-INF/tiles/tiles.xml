@@ -21,11 +21,14 @@
 		<!-- <put-attribute name="header" value="" /> -->
 		<put-attribute name="footer" value="" />	
 	</definition>
-	<definition name="company/companyLoginForm" extends="loginlayout">
-		<put-attribute name="section" value="/WEB-INF/views/company/companyLoginForm.jsp"/>
+	<definition name="login/selectLoginForm" extends="loginlayout">
+		<put-attribute name="section" value="/WEB-INF/views/login/selectLoginForm.jsp"/>
 	</definition>
-	<definition name="member/memberLoginForm" extends="loginlayout">
-		<put-attribute name="section" value="/WEB-INF/views/member/memberLoginForm.jsp"/>
+	<definition name="login/companyLoginForm" extends="loginlayout">
+		<put-attribute name="section" value="/WEB-INF/views/login/companyLoginForm.jsp"/>
+	</definition>
+	<definition name="login/memberLoginForm" extends="loginlayout">
+		<put-attribute name="section" value="/WEB-INF/views/login/memberLoginForm.jsp"/>
 	</definition>
 	<!-- 회원가입 시 기본 메뉴바가 아닌 레이아웃 적용 -->
 	<definition name="joinlayout" template="/WEB-INF/views/joinlayout.jsp">

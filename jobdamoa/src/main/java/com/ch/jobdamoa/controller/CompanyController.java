@@ -28,36 +28,6 @@ public class CompanyController {
 	@Autowired
 	private JavaMailSender jMailSender; // 이메일을 보내기 위한 객체 생성
 	
-	@RequestMapping("companyLoginForm")
-	public String companyLoginForm() {
-		return "company/companyLoginForm";
-	}
-	
-	@RequestMapping("companyLogin")
-	public String companyLogin(Company com, Model model, HttpSession session) {
-		
-		int result = 0; // 암호가 다른 경우
-		
-		Company com2 = cs.selectLogin(com.getCom_id());
-
-		if(com2 == null || com2.getCom_invalid().equals("y"))
-			result = -1; // 없는 ID
-		else if (com2.getCom_password().equals(com.getCom_password())) {
-			result = 1; // ID와 패스워드가 일치
-			session.setAttribute("com_num", com2.getCom_num());
-			session.setAttribute("com_name", com2.getCom_name());
-			session.setAttribute("user_dist", com2.getUser_dist());
-		}
-		model.addAttribute("result", result);
-		return "company/companyLogin";
-	}
-	
-	@RequestMapping("companyLogout")
-	public String companyLogout(HttpSession session) {
-		session.invalidate();
-		return "home/home";
-	}
-	
 	@RequestMapping("findComIdForm")
 	public String findComIdForm() {
 		return "company/findComIdForm";

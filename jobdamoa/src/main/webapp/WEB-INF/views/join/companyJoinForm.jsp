@@ -33,13 +33,15 @@
 					<tr>
 						<th width="25%" valign="middle">비밀번호</th>
 						<td>
-							<input type="password" name="com_password" class="form-control w-25" required="required">
+							<input type="password" name="com_password" id="pass" class="form-control w-25 passchk" required="required">
 						</td>
 					</tr>
 					<tr>
 						<th width="25%" valign="middle">비밀번호 확인</th>
 						<td>
-							<input type="password" name="com_password2" class="form-control w-25" required="required">
+							<input type="password" name="com_password2" id="confirmPass" class="form-control w-25 passchk" required="required">
+							<div id="alert-success">비밀번호가 일치합니다.</div>
+							<div id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 						</td>
 					</tr>
 					<tr>
@@ -57,13 +59,15 @@
 					<tr>
 						<th width="25%" valign="middle">이메일</th>
 						<td>
-							<input type="email" name="com_email" class="form-control w-50" required="required">
+							<input type="email" name="com_email" class="form-control w-50" 
+							pattern="^[0-9a-zA-Z]([-_￦.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_￦.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$" 
+							placeholder="korea@gmail.com" required="required">
 						</td>
 					</tr>
 					<tr>
-						<th width="25%" valign="middle">회사 전화번호</th>
+						<th width="25%" valign="middle">대표 전화번호</th>
 						<td>
-							<input type="text" name="com_pno" class="form-control w-50" required="required">
+							<input type="text" name="com_pno" class="form-control w-50" required="required" title="전화형식 3-3,4-4" pattern="\d{3}-\d{3,4}-\d{4}" placeholder="010-1111-1111">
 						</td>
 					</tr>
 					<tr>
@@ -94,7 +98,7 @@
 				</table>
 			</div>
 		<div align="center">
-			<button class="btn btn-dark" type="submit">확인</button>
+			<button class="btn btn-dark" id="submit" type="submit">확인</button>
 			<button class="btn btn-dark" type="button" onclick="history.go(-1); return false;">취소</button>
 		</div>
 		</form>

@@ -34,13 +34,9 @@
 			<div class="d-flex">
 				<c:if test="${empty user_dist }">
 				<div class="dropdown">
-					<button class="btn btn-outline-dark dropdown-toggle bi bi-box-arrow-in-right" type="button" id="loginSelectButton" data-bs-toggle="dropdown" aria-expanded="false">
-						로그인
+					<button class="btn btn-outline-dark" type="button" onclick="location.href='selectLoginForm.do'">
+						<i class="bi bi-box-arrow-in-right"></i> 로그인
 					</button> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
-					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
-    					<li><a class="dropdown-item" href="memberLoginForm.do">일반회원</a></li>
-    					<li><a class="dropdown-item" href="companyLoginForm.do">기업회원</a></li>
-  					</ul>
 				</div> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
 				<button class="btn btn-dark" type="button" onclick="location.href='selectJoinForm.do'">
 					<i class="bi bi-person-plus"></i> 회원가입

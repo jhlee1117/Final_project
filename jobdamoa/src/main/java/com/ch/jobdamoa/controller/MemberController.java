@@ -27,37 +27,6 @@ public class MemberController {
 	@Autowired
 	private JavaMailSender jMailSender; // 이메일을 보내기 위한 객체 생성
 	
-	@RequestMapping("memberLoginForm")
-	public String memberLoginForm() {
-		return "member/memberLoginForm";
-	}
-	
-	@RequestMapping("memberLogin")
-	public String memberLogin(Member mem, Model model, HttpSession session) {
-		
-		int result = 0; // 암호가 다른 경우
-		
-		Member mem2 = ms.selectLogin(mem.getMem_id());
-		
-		if(mem2 == null || mem2.getMem_invalid().equals("y"))
-			result = -1; // 없는 ID
-		else if (mem2.getMem_password().equals(mem.getMem_password())) {
-			result = 1; // ID와 패스워드 일치
-			session.setAttribute("mem_num", mem2.getMem_num());
-			session.setAttribute("mem_nickname", mem2.getMem_nickname());
-			session.setAttribute("user_dist", mem2.getUser_dist());
-		}
-		model.addAttribute("result", result);
-		return "member/memberLogin";		
-	}
-	
-	@RequestMapping("memberLogout")
-	public String memberLogout(HttpSession session) {
-		session.invalidate();
-		return "home/home";
-	}
-	
-	
 	@RequestMapping("findMemIdForm")
 	public String findMemIdForm() {
 		return "member/findMemIdForm";
