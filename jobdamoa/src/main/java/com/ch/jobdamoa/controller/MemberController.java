@@ -1,20 +1,25 @@
 package com.ch.jobdamoa.controller;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ch.jobdamoa.model.Company;
 import com.ch.jobdamoa.model.Member;
 import com.ch.jobdamoa.service.MemberService;
 
@@ -26,6 +31,45 @@ public class MemberController {
 	
 	@Autowired
 	private JavaMailSender jMailSender; // 이메일을 보내기 위한 객체 생성
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder; // 비밀번호 암호화 객체 생성
+	
+	/* 로그인 관련 기능 구현 */
+	
+	@RequestMapping("memberLoginForm")
+	public String memberLoginForm() {
+		return "login/memberLoginForm";
+	}
+	
+	@RequestMapping("memberLogin")
+	public String memberLogin(Member mem, Model model, HttpSession session) {
+		
+		int result = 0; // 암호가 다른 경우
+		
+		Member mem2 = ms.selectLogin(mem.getMem_id());
+		
+		if(mem2 == null || mem2.getMem_invalid().equals("y"))
+			result = -1; // 없는 ID
+		else if (passwordEncoder.matches(mem.getMem_password(), mem2.getMem_password())) {
+			result = 1; // ID와 패스워드 일치
+			session.setAttribute("mem_num", mem2.getMem_num());
+			session.setAttribute("mem_nickname", mem2.getMem_nickname());
+			session.setAttribute("user_dist", mem2.getUser_dist());
+		}
+		model.addAttribute("result", result);
+		return "login/memberLogin";		
+	}
+	
+	@RequestMapping("memberLogout")
+	public String memberLogout(HttpSession session) {
+		session.invalidate();
+		return "home/home";
+	}
+	
+	/* 로그인 관련 기능 구현 끝 */
+	
+	/* 비밀번호 찾기 기능 구현 */
 	
 	@RequestMapping("findMemIdForm")
 	public String findMemIdForm() {
@@ -117,8 +161,56 @@ public class MemberController {
 	
 	@RequestMapping("newMemPw")
 	public String newMemPw(Member mem, Model model) {
+		String encPassword = passwordEncoder.encode(mem.getMem_password()); // 비밀번호 암호화 설정
+		mem.setMem_password(encPassword);
 		int result = ms.newMemPw(mem);
 		model.addAttribute("result", result);
 		return "member/newMemPw";
 	}
+	/* 비밀번호 찾기 기능 끝 */
+	
+	/* 회원가입 기능 구현 */	
+	@RequestMapping("memberJoinForm")
+	public String memberJoinForm() {
+		return "join/memberJoinForm";
+	}
+	
+	@RequestMapping(value = "confirmMem", produces = "text/html;charset=utf-8")
+	@ResponseBody
+	public String confirmMem(HttpServletRequest request) {
+		
+		String mem_id = request.getParameter("mem_id");
+		String msg = "";
+		Member mem = ms.selectLogin(mem_id);
+		
+		if (mem == null)
+			msg = "사용 가능한 아이디입니다.";
+		else
+			msg = "사용 중이니 다른 아이디를 사용하세요.";
+		
+		return msg;
+	}
+	
+	@RequestMapping("memberJoin.do")
+	public String memberJoin(Member mem, Model model) {
+		
+		int result;
+		
+		mem.setMem_num(ms.giveMem_num()); // 일련번호 부여
+		
+		String encPassword = passwordEncoder.encode(mem.getMem_password()); // BCrypt를 활용한 비밀번호 암호화
+		mem.setMem_password(encPassword);
+
+		List<Member> mememail = ms.selectMem_email(mem.getMem_email()); // 중복된 이메일 등록 방지
+		
+		if (mememail.isEmpty()) {
+			result = ms.insertMem(mem);
+		} else
+			result = 0;
+		
+		model.addAttribute("result", result);
+		
+		return "join/memberJoin";
+	}
+	/* 회원가입 기능 구현 끝 */	
 }

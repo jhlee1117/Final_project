@@ -1,5 +1,7 @@
 package com.ch.jobdamoa.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,5 +37,30 @@ public class CompanyDaoImpl implements CompanyDao {
 	@Override
 	public int newComPw(Company com) {
 		return sst.update("companyns.newComPw", com);
+	}
+
+	@Override
+	public List<Company> selectCom_bnm(String com_business_num) {
+		return sst.selectList("companyns.selectCom_bnm", com_business_num);
+	}
+
+	@Override
+	public List<Company> selectCom_email(String com_email) {
+		return sst.selectList("companyns.selectCom_email", com_email);
+	}
+
+	@Override
+	public List<Company> selectCom_pno(String com_pno) {
+		return sst.selectList("companyns.selectCom_pno", com_pno);
+	}
+
+	@Override
+	public int insertCom(Company com) {
+		return sst.insert("companyns.insertCom", com);
+	}
+
+	@Override
+	public int giveCom_num() {
+		return sst.selectOne("companyns.giveCom_num");
 	}
 }

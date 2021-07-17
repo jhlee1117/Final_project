@@ -22,4 +22,27 @@
 	<update id="newComPw" parameterType="company">
 		update company set com_password = #{com_password} where com_id = #{com_id}
 	</update>
+	
+	<select id="selectCom_bnm" parameterType="string" resultType="company">
+		select * from company where com_business_num = #{com_business_num}
+	</select>
+	
+	<select id="selectCom_email" parameterType="string" resultType="company">
+		select * from company where com_email = #{com_email}
+	</select>
+	
+	<select id="selectCom_pno" parameterType="string" resultType="company">
+		select * from company where com_pno = #{com_pno}
+	</select>
+	
+	<select id="giveCom_num" resultType="integer">
+		select nvl(max(com_num),0) + 1 from company
+	</select>
+	
+	<insert id="insertCom" parameterType="company">
+		insert into company values(#{com_num}, #{com_id}, #{com_password}, default, #{com_email}, #{com_business_num},
+									#{com_name}, #{com_homepage}, #{com_emp_num}, #{com_sales}, default, #{com_address},
+									#{com_pno}, default)
+	</insert>
+	
 </mapper>

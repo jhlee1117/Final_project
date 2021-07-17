@@ -14,4 +14,18 @@
 	<update id="newMemPw" parameterType="member">
 		update member set mem_password = #{mem_password} where mem_id = #{mem_id}
 	</update>
+	
+	<select id="giveMem_num" resultType="integer">
+		select nvl(max(mem_num),0) + 1 from member
+	</select>
+	
+	<select id="selectMem_email" parameterType="string" resultType="member">
+		select * from member where mem_email = #{mem_email}
+	</select>
+	
+	<insert id="insertMem" parameterType="member">
+		insert into member values(#{mem_num}, #{mem_id}, #{mem_password}, #{mem_nickname}, default, 
+								  #{mem_email}, default, default)
+	</insert>
+	
 </mapper>

@@ -1,5 +1,6 @@
 package com.ch.jobdamoa.controller;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.MessagingException;
@@ -10,10 +11,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ch.jobdamoa.model.Company;
@@ -27,6 +30,45 @@ public class CompanyController {
 	
 	@Autowired
 	private JavaMailSender jMailSender; // 이메일을 보내기 위한 객체 생성
+
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder; // 비밀번호 암호화 객체 생성
+
+	/* 로그인을 위한 기능 구현 */
+	
+	@RequestMapping("companyLoginForm")
+	public String companyLoginForm() {
+		return "login/companyLoginForm";
+	}
+	
+	@RequestMapping("companyLogin")
+	public String companyLogin(Company com, Model model, HttpSession session) {
+		
+		int result = 0; // 암호가 다른 경우
+		
+		Company com2 = cs.selectLogin(com.getCom_id());
+		
+		if(com2 == null || com2.getCom_invalid().equals("y"))
+			result = -1; // 없는 ID
+		else if (passwordEncoder.matches(com.getCom_password(), com2.getCom_password())) {
+			result = 1; // ID와 패스워드가 일치
+			session.setAttribute("com_num", com2.getCom_num());
+			session.setAttribute("com_name", com2.getCom_name());
+			session.setAttribute("user_dist", com2.getUser_dist());
+		}
+		model.addAttribute("result", result);
+		return "login/companyLogin";
+	}
+	
+	@RequestMapping("companyLogout")
+	public String companyLogout(HttpSession session) {
+		session.invalidate();
+		return "home/home";
+	}
+	
+	/* 로그인 관련 기능 끝 */
+	
+	/* 비밀번호 찾기 기능 구현 */
 	
 	@RequestMapping("findComIdForm")
 	public String findComIdForm() {
@@ -118,8 +160,61 @@ public class CompanyController {
 	
 	@RequestMapping("newComPw")
 	public String newComPw(Company com, Model model) {
+		String encPassword = passwordEncoder.encode(com.getCom_password()); // 비밀번호 암호화 설정
+		com.setCom_password(encPassword);
 		int result = cs.newComPw(com);
 		model.addAttribute("result", result);
 		return "company/newComPw";
 	}
+	
+	/* 비밀번호 찾기 기능 끝 */
+	
+	/* 회원가입 기능 구현 */
+	
+	@RequestMapping("companyJoinForm")
+	public String companyJoinForm() {
+		return "join/companyJoinForm";
+	}
+	
+	@RequestMapping(value = "confirmCom", produces = "text/html;charset=utf-8")
+	@ResponseBody
+	public String confirmCom(HttpServletRequest request) {
+		
+		String com_id = request.getParameter("com_id");
+		String msg = "";
+		Company com = cs.selectLogin(com_id);
+		
+		if (com == null)
+			msg = "사용 가능한 아이디입니다.";
+		else
+			msg = "사용 중이니 다른 아이디를 사용하세요.";
+		
+		return msg;
+	}
+	
+	@RequestMapping("companyJoin.do")
+	public String companyJoin(Company com, Model model) {
+		
+		int result;
+		
+		com.setCom_num(cs.giveCom_num()); // 일련번호 부여
+		
+		String encPassword = passwordEncoder.encode(com.getCom_password()); // BCrypt를 활용한 비밀번호 암호화
+		com.setCom_password(encPassword);
+
+		List<Company> combnm = cs.selectCom_bnm(com.getCom_business_num()); // 중복된 사업자번호 등록 방지
+		List<Company> comemail = cs.selectCom_email(com.getCom_email()); // 중복된 이메일 등록 방지
+		List<Company> compno = cs.selectCom_pno(com.getCom_pno()); // 중복된 전화번호 등록 방지
+		
+		if (combnm.isEmpty() && comemail.isEmpty() && compno.isEmpty()) {
+			result = cs.insertCom(com);
+		} else
+			result = 0;
+		
+		model.addAttribute("result", result);
+		
+		return "join/companyJoin";
+	}
+	
+	/* 회원가입 기능 끝 */
 }

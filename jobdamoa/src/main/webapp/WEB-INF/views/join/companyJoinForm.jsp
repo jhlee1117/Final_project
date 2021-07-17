@@ -53,7 +53,7 @@
 					<tr>
 						<th width="25%" valign="middle">사업자등록번호</th>
 						<td>
-							<input type="text" name="com_email" class="form-control w-50" required="required">
+							<input type="text" name="com_business_num" class="form-control w-50" required="required">
 						</td>
 					</tr>
 					<tr>
@@ -73,7 +73,7 @@
 					<tr>
 						<th width="25%" valign="middle">회사 홈페이지</th>
 						<td>
-							<input type="url" name="com_homepage" class="form-control" required="required">
+							<input type="url" name="com_homepage" class="form-control">
 						</td>
 					</tr>
 					<tr>

@@ -1,5 +1,7 @@
 package com.ch.jobdamoa.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +37,30 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public int newComPw(Company com) {
 		return cd.newComPw(com);
+	}
+
+	@Override
+	public List<Company> selectCom_bnm(String com_business_num) {
+		return cd.selectCom_bnm(com_business_num);
+	}
+
+	@Override
+	public List<Company> selectCom_email(String com_email) {
+		return cd.selectCom_email(com_email);
+	}
+
+	@Override
+	public List<Company> selectCom_pno(String com_pno) {
+		return cd.selectCom_pno(com_pno);
+	}
+
+	@Override
+	public int insertCom(Company com) {
+		return cd.insertCom(com);
+	}
+
+	@Override
+	public int giveCom_num() {
+		return cd.giveCom_num();
 	}
 }

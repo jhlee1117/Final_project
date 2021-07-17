@@ -1,5 +1,7 @@
 package com.ch.jobdamoa.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,5 +27,20 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int newMemPw(Member mem) {
 		return sst.update("memberns.newMemPw", mem);
+	}
+
+	@Override
+	public int giveMem_num() {
+		return sst.selectOne("memberns.giveMem_num");
+	}
+
+	@Override
+	public List<Member> selectMem_email(String mem_email) {
+		return sst.selectList("memberns.selectMem_email", mem_email);
+	}
+
+	@Override
+	public int insertMem(Member mem) {
+		return sst.insert("memberns.insertMem", mem);
 	}
 }
