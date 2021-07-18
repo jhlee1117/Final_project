@@ -28,4 +28,8 @@
 								  #{mem_email}, default, default)
 	</insert>
 	
+	<select id="selectMem" parameterType="integer" resultType="member">
+		select * from member where mem_num = #{mem_num}
+	</select>
+	
 </mapper>

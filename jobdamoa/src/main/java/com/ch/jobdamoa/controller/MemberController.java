@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -213,4 +214,42 @@ public class MemberController {
 		return "join/memberJoin";
 	}
 	/* 회원가입 기능 구현 끝 */	
+	
+	/* 회원정보 조회 기능 구현 */
+	@RequestMapping("memInfo.do")
+	public String memInfo(Member mem, Model model, HttpSession session) {
+		int mem_num = (int) session.getAttribute("mem_num");
+		mem = ms.selectMem(mem_num);
+		model.addAttribute("mem", mem);
+		
+		return "member/memInfo";
+	}
+	
+	/* 회원정보 수정 기능 구현 */
+	@RequestMapping("memUpdateForm.do")
+	public String memUpdateForm(Member mem, Model model, HttpSession session) {
+		int mem_num = (int) session.getAttribute("mem_num");
+		mem = ms.selectMem(mem_num);
+		model.addAttribute("mem", mem);
+		
+		return "member/memUpdateForm";
+	}
+	
+	@RequestMapping(value = "checkMem_email", produces = "text/html;charset=utf-8")
+	@ResponseBody
+	public String checkMem_email(Member mem) {
+		int mem_num = mem.getMem_num();
+		String or_mem_email = ms.selectMem(mem_num).getMem_email();
+		String mem_email = mem.getMem_email();
+		List<Member> mememail = ms.selectMem_email(mem_email); // 중복된 이메일 등록 방지
+		String msg = "";
+		
+		if (mememail.isEmpty() || or_mem_email.equals(mem_email))
+			msg = "사용 가능한 이메일입니다.";
+		else
+			msg = "사용 중이니 다른 이메일을 사용하세요.";
+		
+		return msg;
+	}
+
 }

@@ -43,4 +43,9 @@ public class MemberServiceImpl implements MemberService {
 	public int insertMem(Member mem) {
 		return md.insertMem(mem);
 	}
+
+	@Override
+	public Member selectMem(int mem_num) {
+		return md.selectMem(mem_num);
+	}
 }

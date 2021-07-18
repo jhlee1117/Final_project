@@ -18,4 +18,6 @@ public interface MemberDao {
 
 	int insertMem(Member mem);
 
+	Member selectMem(int mem_num);
+
 }

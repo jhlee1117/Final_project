@@ -48,7 +48,7 @@
 						마이페이지
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
-    					<li><a class="dropdown-item" href="#">회원정보</a></li>
+    					<li><a class="dropdown-item" onclick="location.href='memInfo.do'">회원정보</a></li>
     					<li><a class="dropdown-item" onclick="location.href='myFavList.do'">저장공고</a></li>
     					<li><a class="dropdown-item" href="">스크랩공고</a></li>
   					</ul>
@@ -63,7 +63,7 @@
 						마이페이지
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
-    					<li><a class="dropdown-item" href="#">기업정보</a></li>
+    					<li><a class="dropdown-item" onclick="location.href='comInfo.do'">기업정보</a></li>
     					<li><a class="dropdown-item" onclick="location.href='myAnnList.do'">나의 공고</a></li>
   					</ul>  					
 				</div>
