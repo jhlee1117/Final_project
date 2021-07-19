@@ -34,7 +34,7 @@
 <body>
 <div class="col-10 bd-content">
 <div class="mt-5 mb-5">
-	<font color="white" size="6">회원관리</font>
+	<font color="black" size="6">회원관리</font>
 </div>
 	<form method="post" name="select_member">
 		<table class="table table-hover">
@@ -46,14 +46,14 @@
 				<th style="width: 10%">닉네임</th>
 				<th style="width: 20%">가입일</th>
 				<th style="width: 25%">이메일</th>
-				<th style="width: 10%">ID상태</th>
+				<th style="width: 10%">ID상태123</th>
 			</tr>
 			</thead>
-			<tbody class="table-light">
+			<tbody class="table-dark">
 			<c:forEach var="member" items="${memberList}">
 				<tr class="table-dark">
 					<td><input type="checkbox" name="chk_member_id" value="${member.mem_id }"></td>
-					<td>${member.mem_num }</td>
+					<td>${member.mem_num } </td>
 					<td>${member.mem_id }</td>
 					<td>${member.mem_nickname }</td>
 					<td>${member.mem_join_date }</td>

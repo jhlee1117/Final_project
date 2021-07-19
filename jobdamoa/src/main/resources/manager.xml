@@ -28,10 +28,10 @@
 	</select>
 	
 		<!-- list, 회원전체 리스트 -->
-	<!-- <select id="memberList" parameterType="map" resultType="member">
+	<select id="memberList" parameterType="map" resultType="member">
 		select * from (select rowNum rn, a.* from
 		(select * from member order by mem_num desc) a)
 		where rn between ${startRow} and ${endRow}
-	</select> -->
+	</select>
 
 </mapper>

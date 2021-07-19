@@ -84,13 +84,13 @@ public class ManagerController {
 		
 		List<Member> memberList = managerService.memberList(startRow, endRow);
 		
-		request.setAttribute("memberList", memberList);
-		request.setAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
-		request.setAttribute("number", number);
-		request.setAttribute("currentPage", currentPage);
-		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
-		request.setAttribute("totalPage", totalPage);
+		model.addAttribute("memberList", memberList);
+		model.addAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
+		model.addAttribute("number", number);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("totalPage", totalPage);
 		return "manager/memberManageForm";
 	}
 }
