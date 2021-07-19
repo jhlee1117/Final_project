@@ -13,21 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ch.jobdamoa.model.Manager;
 import com.ch.jobdamoa.model.Member;
 import com.ch.jobdamoa.service.ManagerService;
-import com.ch.jobdamoa.service.MemberService;
 
 @Controller
 public class ManagerController {
 
 	@Autowired
 	private ManagerService managerService;
-	
-	@Autowired
-	private MemberService memberService;
-	
-	@RequestMapping("managerLoginForm")
-	public String memberLoginForm() {
-		return "manager/managerLoginForm";
-	}
 	
 	@RequestMapping("managerLogin")
 	public String managerLogin(HttpServletRequest request, Model model, HttpSession session) {
@@ -92,5 +83,45 @@ public class ManagerController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("totalPage", totalPage);
 		return "manager/memberManageForm";
+	}
+	
+	@RequestMapping("memberOut")
+	public String memberOut(HttpServletRequest request) {
+		int result = 0;	
+		if(request.getParameterValues("chk_member_id") == null) {
+			request.setAttribute("result", result);
+			return "manager/memberOut";
+		}
+		
+		String[] member_id = request.getParameterValues("chk_member_id");
+
+		for(String m : member_id) {
+			if (managerService.chkMember(m).equals("n")) {
+				managerService.delete(m);
+				result += 1;
+			}
+		}
+		request.setAttribute("result", result);
+		return "manager/memberOut";
+	}
+	
+	@RequestMapping("memberRestore")
+	public String memberRestore(HttpServletRequest request) {
+		int result = 0;	
+		if(request.getParameterValues("chk_member_id") == null) {
+			request.setAttribute("result", result);
+			return "manager/memberRestore";
+		}
+		
+		String[] member_id = request.getParameterValues("chk_member_id");
+
+		for(String m : member_id) {
+			if (managerService.chkMember(m).equals("y")) {
+				managerService.restore(m);
+				result += 1;
+			}
+		}
+		request.setAttribute("result", result);
+		return "manager/memberRestore";
 	}
 }

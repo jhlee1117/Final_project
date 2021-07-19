@@ -17,13 +17,13 @@
 	<c:if test="${result == 0 }">
 		<script type="text/javascript">
 			alert("비밀번호가 일치하지 않습니다");
-			history.back();
+			history.back;
 		</script>
 	</c:if>
 	<c:if test="${result == -1 }">
 		<script type="text/javascript">
 			alert("존재하지 않는 id입니다");
-			history.back();
+			history.back;
 		</script>
 	</c:if>
 </body>

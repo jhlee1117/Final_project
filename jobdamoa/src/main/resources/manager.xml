@@ -33,5 +33,10 @@
 		(select * from member order by mem_num desc) a)
 		where rn between ${startRow} and ${endRow}
 	</select>
+	
+		<!-- 탈퇴 회원 수 체크 -->
+	<select id="chkMember" parameterType="string" resultType="string">
+		select mem_invalid from member where mem_id=#{mem_id}
+	</select>
 
 </mapper>

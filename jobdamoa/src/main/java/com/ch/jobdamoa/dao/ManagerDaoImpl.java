@@ -49,4 +49,9 @@ public class ManagerDaoImpl implements ManagerDao {
 		parms.put("endRow", endRow);
 		return sst.selectList("managerns.memberList", parms);
 	}
+
+	@Override
+	public String chkMember(String mem_id) {
+		return sst.selectOne("managerns.chkMember", mem_id);
+	}
 }

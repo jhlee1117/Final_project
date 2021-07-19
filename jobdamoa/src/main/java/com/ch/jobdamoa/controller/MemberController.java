@@ -37,7 +37,12 @@ public class MemberController {
 	private JavaMailSender jMailSender; // 이메일을 보내기 위한 객체 생성
 	
 	@RequestMapping("memberLoginForm")
-	public String memberLoginForm() {
+	public String memberLoginForm(HttpServletRequest request) {
+		String referer = request.getHeader("REFERER"); // 이전 페이지
+		//referer = referer.replace("Member/join.do", "index.jsp"); // 만약 회원 가입화면에서 넘어온 경우메인화면으로 보내준다
+		
+		request.setAttribute("referer", referer);
+		
 		return "member/memberLoginForm";
 	}
 	

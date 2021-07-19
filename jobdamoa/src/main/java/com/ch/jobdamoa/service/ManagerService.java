@@ -15,4 +15,6 @@ public interface ManagerService {
 	int getTotal();
 
 	List<Member> memberList(int startRow, int endRow);
+	
+	String chkMember(String mem_id);
 }

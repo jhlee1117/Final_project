@@ -21,7 +21,7 @@
 	function res() {
 		var con = confirm("정말로 복구 처리 하시겠습니까?");
 		if (con) {
-			document.select_member.action = "memberRes.do"
+			document.select_member.action = "memberRestore.do"
 			document.select_member.submit();
 		}
 		else {

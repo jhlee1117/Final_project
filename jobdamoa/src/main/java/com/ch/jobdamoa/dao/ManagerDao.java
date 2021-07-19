@@ -13,4 +13,5 @@ public interface ManagerDao {
 	Manager login(String manager_id);
 	int getTotal();
 	List<Member> memberList(int startRow, int endRow);
+	String chkMember(String mem_id);
 }

@@ -44,4 +44,9 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<Member> memberList(int startRow, int endRow) {
 		return md.memberList(startRow, endRow);
 	}
+
+	@Override
+	public String chkMember(String mem_id) {
+		return md.chkMember(mem_id);
+	}
 }
