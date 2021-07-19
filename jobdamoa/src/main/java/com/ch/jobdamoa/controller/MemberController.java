@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ch.jobdamoa.model.Manager;
 import com.ch.jobdamoa.model.Member;
+import com.ch.jobdamoa.service.ManagerService;
 import com.ch.jobdamoa.service.MemberService;
 
 @Controller
@@ -23,6 +26,12 @@ public class MemberController {
 
 	@Autowired
 	private MemberService ms;
+	
+	@Autowired
+	private ManagerService managerService;
+	
+	@Autowired
+	private ManagerController managerController;
 	
 	@Autowired
 	private JavaMailSender jMailSender; // 이메일을 보내기 위한 객체 생성
@@ -33,21 +42,33 @@ public class MemberController {
 	}
 	
 	@RequestMapping("memberLogin")
-	public String memberLogin(Member mem, Model model, HttpSession session) {
+	public String memberLogin(HttpServletRequest request, Model model, HttpSession session) {
+		String referer = request.getParameter("referer");
+		String member_id = request.getParameter("mem_id");
+		String member_password = request.getParameter("mem_password");
 		
 		int result = 0; // 암호가 다른 경우
 		
-		Member mem2 = ms.selectLogin(mem.getMem_id());
+		Member member = ms.selectLogin(member_id);
 		
-		if(mem2 == null || mem2.getMem_invalid().equals("y"))
+		// manager 아이디일 경우 managerController의 로그인 메소드 실행
+		Manager manager = managerService.login(member_id);
+		
+		if(member == null && manager != null) {
+			return managerController.managerLogin(request, model, session);
+		}
+		
+		else if(member == null || member.getMem_invalid().equals("y")) {
 			result = -1; // 없는 ID
-		else if (mem2.getMem_password().equals(mem.getMem_password())) {
+		}
+		else if (member.getMem_password().equals(member_password)) {
 			result = 1; // ID와 패스워드 일치
-			session.setAttribute("mem_num", mem2.getMem_num());
-			session.setAttribute("mem_nickname", mem2.getMem_nickname());
-			session.setAttribute("user_dist", mem2.getUser_dist());
+			session.setAttribute("mem_num", member.getMem_num());
+			session.setAttribute("mem_nickname", member.getMem_nickname());
+			session.setAttribute("user_dist", member.getUser_dist());
 		}
 		model.addAttribute("result", result);
+		model.addAttribute("referer", referer);
 		return "member/memberLogin";		
 	}
 	

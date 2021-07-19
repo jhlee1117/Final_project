@@ -14,4 +14,5 @@
 	<update id="newMemPw" parameterType="member">
 		update member set mem_password = #{mem_password} where mem_id = #{mem_id}
 	</update>
+	
 </mapper>

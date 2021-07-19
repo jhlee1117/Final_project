@@ -9,5 +9,4 @@ public interface MemberDao {
 	Member findMemId(String mem_email);
 
 	int newMemPw(Member mem);
-
 }
