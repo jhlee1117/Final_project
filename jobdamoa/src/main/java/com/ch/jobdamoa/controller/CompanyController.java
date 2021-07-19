@@ -217,4 +217,86 @@ public class CompanyController {
 	}
 	
 	/* 회원가입 기능 끝 */
+	
+	/* 회원정보 조회 기능 구현 */
+	@RequestMapping("comInfo.do")
+	public String memInfo(Company com, Model model, HttpSession session) {
+		int com_num = (int) session.getAttribute("com_num");
+		com = cs.selectCom(com_num);
+		model.addAttribute("com", com);
+		
+		return "company/comInfo";
+	}
+	
+	/* 회원정보 수정 기능 구현 */
+	@RequestMapping("comUpdateForm.do")
+	public String comUpdateForm(Company com, Model model, HttpSession session) {
+		int com_num = (int) session.getAttribute("com_num");
+		com = cs.selectCom(com_num);
+		model.addAttribute("com", com);
+		
+		return "company/comUpdateForm";
+	}
+	@RequestMapping(value = "checkCom_pno", produces = "text/html;charset=utf-8")
+	@ResponseBody
+	public String checkCom_pno(Company com) {
+		int com_num = com.getCom_num();
+		String or_com_pno = cs.selectCom(com_num).getCom_pno();
+		String com_pno = com.getCom_pno();
+		List<Company> compno = cs.selectCom_pno(com_pno);
+		String msg = "";
+		
+		if (compno.isEmpty() || or_com_pno.equals(com_pno))
+			msg = "사용 가능한 전화번호입니다.";
+		else
+			msg = "사용 중이니 다른 전화번호를 사용하세요.";
+		
+		return msg;
+	}
+	
+	@RequestMapping(value = "checkCom_email", produces = "text/html;charset=utf-8")
+	@ResponseBody
+	public String checkCom_email(Company com) {
+		int com_num = com.getCom_num();
+		String or_com_email = cs.selectCom(com_num).getCom_email();
+		String com_email = com.getCom_email();
+		List<Company> comemail = cs.selectCom_email(com_email);
+		String msg = "";
+		
+		if (comemail.isEmpty() || or_com_email.equals(com_email))
+			msg = "사용 가능한 이메일입니다.";
+		else
+			msg = "사용 중이니 다른 이메일을 사용하세요.";
+		
+		return msg;
+	}
+	
+	@RequestMapping("comUpdate")
+	public String comUpdate(Company com, Model model) {
+		String encPassword = passwordEncoder.encode(com.getCom_password()); // 비밀번호 암호화 설정
+		com.setCom_password(encPassword);
+		int result = cs.updateCom(com);
+		model.addAttribute("result", result);
+		return "company/comUpdate";
+	}
+	/* 회원정보 수정 기능 구현 끝 */
+	
+	/* 회원탈퇴 기능 구현 */
+	@RequestMapping("comDeleteForm")
+	public String comDeleteForm(HttpSession session) {
+		int com_num = (int) session.getAttribute("com_num");
+		session.setAttribute("com_num", com_num);
+		return "company/comDeleteForm";
+	}
+	
+	@RequestMapping("comDelete")
+	public String memDelete(HttpSession session, Model model) {
+		System.out.println("받기: " + session.getAttribute("com_num"));
+		int com_num = (int) session.getAttribute("com_num");
+		System.out.println("변환: " + com_num);
+		int result = cs.deleteCom(com_num);
+		model.addAttribute("result", result);
+		return "company/comDelete";
+	}
+	/* 회원탈퇴 기능 구현 끝 */	
 }

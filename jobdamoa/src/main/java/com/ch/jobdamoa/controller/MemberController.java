@@ -251,5 +251,33 @@ public class MemberController {
 		
 		return msg;
 	}
+	
+	@RequestMapping("memUpdate")
+	public String memUpdate(Member mem, Model model) {
+		String encPassword = passwordEncoder.encode(mem.getMem_password()); // 비밀번호 암호화 설정
+		mem.setMem_password(encPassword);
+		int result = ms.updateMem(mem);
+		model.addAttribute("result", result);
+		return "member/memUpdate";
+	}
+	/* 회원정보 수정 기능 구현 끝 */
 
+	/* 회원탈퇴 기능 구현 */
+	@RequestMapping("memDeleteForm")
+	public String memDeleteForm(HttpSession session) {
+		int mem_num = (int) session.getAttribute("mem_num");
+		session.setAttribute("mem_num", mem_num);
+		return "member/memDeleteForm";
+	}
+	
+	@RequestMapping("memDelete")
+	public String memDelete(HttpSession session, Model model) {
+		System.out.println("받기: " + session.getAttribute("mem_num"));
+		int mem_num = (int) session.getAttribute("mem_num");
+		System.out.println("변환: " + mem_num);
+		int result = ms.deleteMem(mem_num);
+		model.addAttribute("result", result);
+		return "member/memDelete";
+	}
+	/* 회원탈퇴 기능 구현 끝 */
 }

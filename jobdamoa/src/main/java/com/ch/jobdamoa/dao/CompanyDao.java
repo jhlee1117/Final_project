@@ -26,4 +26,8 @@ public interface CompanyDao {
 
 	int giveCom_num();
 
+	int updateCom(Company com);
+
+	int deleteCom(int com_num);
+
 }

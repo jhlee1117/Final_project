@@ -18,7 +18,7 @@
 	        } else 
 	        	$.post("confirmCom.do", "com_id=" + frm.com_id.value, function(data) {
 				$("#id_check").html(data);
-					if (data.value="사용 가능한 아이디입니다.") {
+					if (data=="사용 가능한 아이디입니다.") {
 						$("#id_check").css("color","blue");
 					} else {
 						$("#id_check").css("color","red");
@@ -44,7 +44,7 @@
 	        } else 
 	        	$.post("confirmMem.do", "mem_id=" + frm.mem_id.value, function(data) {
 				$("#id_check").html(data);
-					if (data.value="사용 가능한 아이디입니다.") {
+					if (data=="사용 가능한 아이디입니다.") {
 						$("#id_check").css("color","blue");
 					} else {
 						$("#id_check").css("color","red");

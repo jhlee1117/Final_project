@@ -48,4 +48,14 @@ public class MemberServiceImpl implements MemberService {
 	public Member selectMem(int mem_num) {
 		return md.selectMem(mem_num);
 	}
+
+	@Override
+	public int updateMem(Member mem) {
+		return md.updateMem(mem);
+	}
+
+	@Override
+	public int deleteMem(int mem_num) {
+		return md.deleteMem(mem_num);
+	}
 }

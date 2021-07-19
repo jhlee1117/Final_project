@@ -48,4 +48,14 @@ public class MemberDaoImpl implements MemberDao {
 	public Member selectMem(int mem_num) {
 		return sst.selectOne("memberns.selectMem", mem_num);
 	}
+
+	@Override
+	public int updateMem(Member mem) {
+		return sst.update("memberns.updateMem", mem);
+	}
+
+	@Override
+	public int deleteMem(int mem_num) {
+		return sst.update("memberns.deleteMem", mem_num);
+	}
 }

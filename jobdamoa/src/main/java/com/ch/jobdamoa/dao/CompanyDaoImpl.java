@@ -63,4 +63,14 @@ public class CompanyDaoImpl implements CompanyDao {
 	public int giveCom_num() {
 		return sst.selectOne("companyns.giveCom_num");
 	}
+
+	@Override
+	public int updateCom(Company com) {
+		return sst.update("companyns.updateCom", com);
+	}
+
+	@Override
+	public int deleteCom(int com_num) {
+		return sst.update("companyns.deleteCom", com_num);
+	}
 }

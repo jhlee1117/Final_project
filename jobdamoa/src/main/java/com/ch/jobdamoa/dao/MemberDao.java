@@ -20,4 +20,8 @@ public interface MemberDao {
 
 	Member selectMem(int mem_num);
 
+	int updateMem(Member mem);
+
+	int deleteMem(int mem_num);
+
 }

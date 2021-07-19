@@ -63,4 +63,14 @@ public class CompanyServiceImpl implements CompanyService {
 	public int giveCom_num() {
 		return cd.giveCom_num();
 	}
+
+	@Override
+	public int updateCom(Company com) {
+		return cd.updateCom(com);
+	}
+
+	@Override
+	public int deleteCom(int com_num) {
+		return cd.deleteCom(com_num);
+	}
 }

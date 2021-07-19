@@ -45,4 +45,13 @@
 									#{com_pno}, default)
 	</insert>
 	
+	<update id="updateCom" parameterType="company">
+		update company set com_pno = #{com_pno}, com_email = #{com_email}, com_address = #{com_address}, com_emp_num = #{com_emp_num},
+							com_sales = #{com_sales}, com_password = #{com_password}, com_homepage = #{com_homepage} where com_num = #{com_num}
+	</update>
+	
+	<update id="deleteCom" parameterType="integer">
+		update company set com_invalid = 'y' where com_num = #{com_num}
+	</update>
+	
 </mapper>

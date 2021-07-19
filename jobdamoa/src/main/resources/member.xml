@@ -32,4 +32,13 @@
 		select * from member where mem_num = #{mem_num}
 	</select>
 	
+	<update id="updateMem" parameterType="member">
+		update member set mem_nickname = #{mem_nickname}, mem_password = #{mem_password}, mem_email = #{mem_email}
+		where mem_num = #{mem_num} 
+	</update>
+	
+	<update id="deleteMem" parameterType="integer">
+		update member set mem_invalid = 'y' where mem_num = #{mem_num}
+	</update>
+	
 </mapper>
