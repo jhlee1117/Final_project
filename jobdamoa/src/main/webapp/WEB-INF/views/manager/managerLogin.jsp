@@ -10,7 +10,7 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("로그인 성공");
+			alert("관리자 계정 로그인 성공");
 			location.href = "${referer}";
 		</script>
 	</c:if>
@@ -22,7 +22,7 @@
 	</c:if>
 	<c:if test="${result == -1 }">
 		<script type="text/javascript">
-			alert("존재하지 않는 id입니다");
+			alert("존재하지 않는 관리자입니다");
 			history.back();
 		</script>
 	</c:if>

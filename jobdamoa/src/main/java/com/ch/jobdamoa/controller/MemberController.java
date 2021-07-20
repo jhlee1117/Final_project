@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ch.jobdamoa.model.Company;
+import com.ch.jobdamoa.model.Manager;
 import com.ch.jobdamoa.model.Member;
+import com.ch.jobdamoa.service.ManagerService;
 import com.ch.jobdamoa.service.MemberService;
 
 @Controller
@@ -29,6 +31,12 @@ public class MemberController {
 
 	@Autowired
 	private MemberService ms;
+	
+	@Autowired
+	private ManagerService managerService;
+	
+	@Autowired
+	private ManagerController managerController;
 	
 	@Autowired
 	private JavaMailSender jMailSender; // 이메일을 보내기 위한 객체 생성
@@ -39,27 +47,43 @@ public class MemberController {
 	/* 로그인 관련 기능 구현 */
 	
 	@RequestMapping("memberLoginForm")
-	public String memberLoginForm() {
-		return "login/memberLoginForm";
+	public String memberLoginForm(HttpServletRequest request) {
+		String referer = request.getHeader("REFERER"); // 이전 페이지
+		//referer = referer.replace("Member/join.do", "index.jsp"); // 만약 회원 가입화면에서 넘어온 경우메인화면으로 보내준다
+		
+		request.setAttribute("referer", referer);
+		
+		return "member/memberLoginForm";
 	}
 	
 	@RequestMapping("memberLogin")
-	public String memberLogin(Member mem, Model model, HttpSession session) {
+	public String memberLogin(HttpServletRequest request, Model model, HttpSession session) {
+		String referer = request.getParameter("referer");
+		String member_id = request.getParameter("mem_id");
+		String member_password = request.getParameter("mem_password");
 		
 		int result = 0; // 암호가 다른 경우
 		
-		Member mem2 = ms.selectLogin(mem.getMem_id());
+		Member member = ms.selectLogin(member_id);
 		
-		if(mem2 == null || mem2.getMem_invalid().equals("y"))
+		// manager 아이디일 경우 managerController의 로그인 메소드 실행
+		Manager manager = managerService.login(member_id);
+		
+		if(member == null && manager != null) {
+			return managerController.managerLogin(request, model, session);
+		}
+		
+		else if(member == null || member.getMem_invalid().equals("y")) {
 			result = -1; // 없는 ID
 		else if (passwordEncoder.matches(mem.getMem_password(), mem2.getMem_password())) {
 			result = 1; // ID와 패스워드 일치
-			session.setAttribute("mem_num", mem2.getMem_num());
-			session.setAttribute("mem_nickname", mem2.getMem_nickname());
-			session.setAttribute("user_dist", mem2.getUser_dist());
+			session.setAttribute("mem_num", member.getMem_num());
+			session.setAttribute("mem_nickname", member.getMem_nickname());
+			session.setAttribute("user_dist", member.getUser_dist());
 		}
 		model.addAttribute("result", result);
-		return "login/memberLogin";		
+		model.addAttribute("referer", referer);
+		return "login/memberLogin";			
 	}
 	
 	@RequestMapping("memberLogout")
