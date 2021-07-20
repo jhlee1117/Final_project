@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ch.jobdamoa.model.Company;
 import com.ch.jobdamoa.model.Manager;
 import com.ch.jobdamoa.model.Member;
 import com.ch.jobdamoa.service.ManagerService;
@@ -53,14 +52,13 @@ public class MemberController {
 		
 		request.setAttribute("referer", referer);
 		
-		return "member/memberLoginForm";
+		return "login/memberLoginForm";
 	}
 	
 	@RequestMapping("memberLogin")
-	public String memberLogin(HttpServletRequest request, Model model, HttpSession session) {
+	public String memberLogin(HttpServletRequest request, Member mem, Model model, HttpSession session) {
 		String referer = request.getParameter("referer");
-		String member_id = request.getParameter("mem_id");
-		String member_password = request.getParameter("mem_password");
+		String member_id = mem.getMem_id();
 		
 		int result = 0; // 암호가 다른 경우
 		
@@ -73,9 +71,9 @@ public class MemberController {
 			return managerController.managerLogin(request, model, session);
 		}
 		
-		else if(member == null || member.getMem_invalid().equals("y")) {
+		else if(member == null || member.getMem_invalid().equals("y"))
 			result = -1; // 없는 ID
-		else if (passwordEncoder.matches(mem.getMem_password(), mem2.getMem_password())) {
+		else if (passwordEncoder.matches(mem.getMem_password(), member.getMem_password())) {
 			result = 1; // ID와 패스워드 일치
 			session.setAttribute("mem_num", member.getMem_num());
 			session.setAttribute("mem_nickname", member.getMem_nickname());
