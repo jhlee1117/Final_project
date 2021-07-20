@@ -2,27 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="managerns">
-
+	<!-- 로그인 -->
 	<select id="select" parameterType="string" resultType="manager">
 		select * from manager where manager_id=#{manager_id}
 	</select>
 	
-	<!-- 수정 -->
+	<!-- 일반회원 관리 -->
+		<!-- 수정 -->
 	<update id="update" parameterType="member">
 		update member set mem_password=#{mem_password}, mem_nickname=#{mem_nickname}, mem_email=#{mem_email} where mem_id=#{mem_id}
 	</update>
 	
-	<!-- delete, 진짜 삭제하지않고 del컬럼 값을 y로 수정 y=탈퇴한회원, n=탈퇴하지않은회원 -->
+		<!-- delete, 진짜 삭제하지않고 del컬럼 값을 y로 수정 y=탈퇴한회원, n=탈퇴하지않은회원 -->
 	<update id="delete" parameterType="string">
 		update member set mem_invalid='y' where mem_id=#{mem_id}
 	</update>
 	
-	<!-- restore, del컬럼 값을 n로 수정 y=탈퇴한회원, n=탈퇴하지않은회원 -->
+		<!-- restore, del컬럼 값을 n로 수정 y=탈퇴한회원, n=탈퇴하지않은회원 -->
 	<update id="restore" parameterType="string">
 		update member set mem_invalid='n' where mem_id=#{mem_id}
 	</update>
 	
-			<!-- 회원 총 수 -->
+		<!-- 회원 총 수 -->
 	<select id="total" resultType="int">
 		select count(*) from member
 	</select>
@@ -38,5 +39,39 @@
 	<select id="chkMember" parameterType="string" resultType="string">
 		select mem_invalid from member where mem_id=#{mem_id}
 	</select>
-
+	
+	<!-- 기업회원 관리 -->
+		<!-- 수정 -->
+	<update id="companyUpdate" parameterType="company">
+		update company set com_password=#{com_password}, com_email=#{com_email}, com_business_num=#{com_business_num}, com_name=#{com_name},
+		com_homepage=#{com_homepage}, com_emp_num=#{com_emp_num}, com_sales=#{com_sales}, com_address=#{com_address}, com_pno=#{com_pno}
+		where com_id=#{com_id}
+	</update>
+	
+		<!-- delete, 진짜 삭제하지않고 invalid컬럼 값을 y로 수정 y=탈퇴한회원, n=탈퇴하지않은회원 -->
+	<update id="companyDelete" parameterType="string">
+		update company set com_invalid='y' where com_id=#{com_id}
+	</update>
+	
+		<!-- restore, invalid컬럼 값을 n로 수정 y=탈퇴한회원, n=탈퇴하지않은회원 -->
+	<update id="companyRestore" parameterType="string">
+		update company set com_invalid='n' where com_id=#{com_id}
+	</update>
+	
+		<!-- 회원 총 수 -->
+	<select id="companyTotal" resultType="int">
+		select count(*) from company
+	</select>
+	
+		<!-- list, 회원전체 리스트 -->
+	<select id="companyList" parameterType="map" resultType="company">
+		select * from (select rowNum rn, a.* from
+		(select * from company order by com_num desc) a)
+		where rn between ${startRow} and ${endRow}
+	</select>
+	
+		<!-- 탈퇴 회사 수 체크 -->
+	<select id="chkCompany" parameterType="string" resultType="string">
+		select com_invalid from member where com_id=#{com_id}
+	</select>
 </mapper>

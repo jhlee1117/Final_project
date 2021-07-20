@@ -82,10 +82,12 @@
 						마이페이지
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
-    					<li><a class="dropdown-item" onclick="location.href='memberManageForm.do'">회원관리</a></li>
-    					<li><a class="dropdown-item" href="#">기업회원관리</a></li>
+    					<li><a class="dropdown-item" href="memberManageForm.do">회원관리</a></li>
+    					<li><a class="dropdown-item" href="companyManageForm.do">기업회원관리</a></li>
     					<li><hr class="dropdown-divider"></li>
-    					<li><a class="dropdown-item" onclick="location.href='managerLogout.do'">>로그아웃</a>
+    					<li><a class="dropdown-item" href="#">채용공고 관리</a></li>
+    					<li><hr class="dropdown-divider"></li>
+    					<li><a class="dropdown-item" href="managerLogout.do">로그아웃</a>
   					</ul>  					
 				</div>
 				</c:when>

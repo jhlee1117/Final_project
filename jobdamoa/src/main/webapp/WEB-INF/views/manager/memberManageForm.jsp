@@ -70,7 +70,7 @@
 			  <ul class="pagination justify-content-center">
 			  <c:if test="${startPage > PAGE_PER_BLOCK}">
 			    <li class="page-item">
-			      <a class="page-link" href="memberManage.do?&pageNum=${startPage - 1}" aria-label="Previous">
+			      <a class="page-link" href="memberManageForm.do?&pageNum=${startPage - 1}" aria-label="Previous">
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
@@ -78,16 +78,16 @@
 				    <c:forEach var="i" begin="${startPage}" end="${endPage}">
 				    	<c:choose>
 				    		<c:when test="${currentPage eq i }">
-					    		<li class="page-item active" aria-current="page"><a class="page-link" href="memberManage.do?&pageNum=${i}">${i}</a></li>
+					    		<li class="page-item active" aria-current="page"><a class="page-link" href="memberManageForm.do?&pageNum=${i}">${i}</a></li>
 					    	</c:when>
 					    	<c:otherwise>
-					    		<li class="page-item"><a class="page-link" href="memberManage.do?&pageNum=${i}">${i}</a></li>
+					    		<li class="page-item"><a class="page-link" href="memberManageForm.do?&pageNum=${i}">${i}</a></li>
 					    	</c:otherwise>
 					    </c:choose>
 					</c:forEach>
 					<c:if test="${endPage < totalPage}">
 			    <li class="page-item">
-			      <a class="page-link" href="memberManage.do?&pageNum=${endPage + 1}" aria-label="Next">
+			      <a class="page-link" href="memberManageForm.do?&pageNum=${endPage + 1}" aria-label="Next">
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </li>
