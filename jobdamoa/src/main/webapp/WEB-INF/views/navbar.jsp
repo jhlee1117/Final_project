@@ -25,7 +25,7 @@
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">채용공고
 						확인</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item" href="#!">프로그래머스</a></li>
+						<li><a class="dropdown-item" href="scrapProgrammers.do">프로그래머스</a></li>
 						<li><a class="dropdown-item" href="#!">잡코리아</a></li>
 						<li><a class="dropdown-item" href="#!">사람인</a></li>
 					</ul></li>
