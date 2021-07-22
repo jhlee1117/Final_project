@@ -1,22 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<script type="text/javascript" src="${path}/python_scrap/data.json"></script>
-    <script type="text/javascript">
-        let mydata = null
-        if(data){
-            mydata = JSON.parse(data)
-        }
-        var x = mydata[1].company;
-        window.onload(alert(x));
-    </script>
 </head>
 <body>
+<div class="container px-4 px-lg-5 mt-5">
+	<div class="col mb-5">
+		<h2 class="text-primary" align="center">공고 목록</h2>
+	</div>
+		<c:if test="${empty prList }">
+			<div class="text-left">
+				<h5 class="fw-bolder">공고 목록이 존재하지 않습니다.</h5>
+			</div>
+		</c:if>
+		<c:if test="${not empty prList }">
+			<div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-2 justify-content-center">
+			<c:forEach var="pr" items="${prList }">
+				<div class="col mb-5">
+					<div class="card h-100">
+						<div class="card-body p-4">
+							<div class="text-left">
+								<h5 class="fw-bolder mb-3">${pr.title }</h5>
+								<h6 class="fw-bold mb-3">${pr.company }</h6>
+									<ul class="list-group list-group-horizontal mb-3">
+										<li class="list-group-item">${pr.location }</li>
+										<li class="list-group-item">${pr.experience }</li>
+										<li class="list-group-item">${pr.positions }</li>
+									</ul>
+										<!-- 상세보기 공고 저장 버튼-->
+								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+									<div class="text-center mt-3">
+										<a class="btn btn-outline-dark mt-auto" href="${pr.link }">공고 상세보기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			</div>
+		</c:if>
+</div>
 </body>
 </html>

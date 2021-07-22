@@ -3,7 +3,7 @@ import json
 
 def save_to_file(jobs):
     jobs_json = json.dumps(jobs, ensure_ascii=False)
-    js_form_json = "data='" + str(jobs_json) + "'"
+    js_form_json = str(jobs_json)
     with open("data.json", "w", encoding="utf-8") as f:
         f.write(js_form_json)
         #json.dump(jobs, f, ensure_ascii=False)
