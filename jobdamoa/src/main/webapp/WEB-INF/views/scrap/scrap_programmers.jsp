@@ -6,6 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function scrapSave(title, company, location, experience, positions, link) {
+		$.post("scrapSave.do", "title=" + title + "&company=" + company + "&location="
+				+ location + "&experience=" + experience + "&link=" + link,
+			function(msg) {
+				alert(msg);
+			});
+	}
+</script>
 </head>
 <body>
 <div class="container px-4 px-lg-5 mt-5">
@@ -35,6 +44,11 @@
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center mt-3">
 										<a class="btn btn-outline-dark mt-auto" href="${pr.link }">공고 상세보기</a>
+									<c:if test="${user_dist == '0' }">
+										<!-- 자바의 객체 데이터를 자바 스크립트로 읽을 수 없어서 각 값을 문자형으로 보내줌 -->
+										<a class="btn btn-outline-dark mt-auto" onclick="scrapSave('${pr.title}','${pr.company}','${pr.location}',
+										'${pr.experience}','${pr.positions}','${pr.link}')">공고 저장</a>
+									</c:if>
 									</div>
 								</div>
 							</div>

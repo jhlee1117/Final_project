@@ -18,6 +18,7 @@
 		<typeAlias alias="member"
 			type="com.ch.jobdamoa.model.Member" />
 		<typeAlias alias="scrap" type="com.ch.jobdamoa.model.Scrap" />
+		<typeAlias alias="scrapjson" type="com.ch.jobdamoa.model.ScrapJson" />
 	</typeAliases>
 	<!-- 매퍼정보 설정 -->
 	<mappers>

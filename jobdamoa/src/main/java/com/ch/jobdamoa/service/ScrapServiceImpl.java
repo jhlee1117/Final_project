@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ch.jobdamoa.dao.ScrapDao;
+import com.ch.jobdamoa.model.Scrap;
 import com.ch.jobdamoa.model.ScrapJson;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -22,7 +23,7 @@ public class ScrapServiceImpl implements ScrapService {
 	@Autowired
 	private ScrapDao sd;
 	
-	private static String path = "D:\\my_project\\final_project\\jobdamoa\\src\\main\\webapp\\python_scrap"; // 경로
+	private static String path = "C:\\my_project\\spring\\final_project\\jobdamoa\\src\\main\\webapp\\python_scrap"; // 경로
 	private String fileName = "";
 	
 	@Override
@@ -44,6 +45,7 @@ public class ScrapServiceImpl implements ScrapService {
 			jreader.setLenient(true);
 
 			// Type을 써서 배열로 구성된 Json을 Programmers 객체가 담긴 리스트로 변환
+			@SuppressWarnings("serial")
 			Type prListType = new TypeToken<ArrayList<ScrapJson>>() {
 			}.getType();
 			prList = gson.fromJson(jreader, prListType);
@@ -51,5 +53,20 @@ public class ScrapServiceImpl implements ScrapService {
 			System.out.println(e.getMessage());
 		}
 		return prList;
+	}
+
+	@Override
+	public Scrap confirmScrap(Scrap scchk) {
+		return sd.confirmScrap(scchk);
+	}
+
+	@Override
+	public int getMaxNum() {
+		return sd.getMaxNum();
+	}
+
+	@Override
+	public int scrapSave(Scrap scrap2) {
+		return sd.scrapSave(scrap2);
 	}
 }
