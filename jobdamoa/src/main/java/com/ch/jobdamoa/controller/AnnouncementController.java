@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ch.jobdamoa.model.Announcement;
 import com.ch.jobdamoa.model.Company;
+import com.ch.jobdamoa.model.PagingBean;
 import com.ch.jobdamoa.service.AnnouncementService;
 import com.ch.jobdamoa.service.CompanyService;
-import com.ch.jobdamoa.service.PagingBean;
 
 @Controller
 public class AnnouncementController {

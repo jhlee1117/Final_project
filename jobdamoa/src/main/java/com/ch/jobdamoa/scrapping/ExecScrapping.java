@@ -22,7 +22,7 @@ public class ExecScrapping implements Scrapping {
 			
 			pc = rt.exec(path + "\\" + filename);
 			System.out.println("프로그래머스 스크래핑 시작");
-			BufferedReader br = new BufferedReader(new InputStreamReader(pc.getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(pc.getInputStream(), "EUC-KR"));
 
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);

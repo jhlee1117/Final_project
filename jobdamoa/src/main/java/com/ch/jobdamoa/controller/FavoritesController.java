@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ch.jobdamoa.model.Favorites;
+import com.ch.jobdamoa.model.PagingBean;
 import com.ch.jobdamoa.service.FavoritesService;
-import com.ch.jobdamoa.service.PagingBean;
 
 @Controller
 public class FavoritesController {
