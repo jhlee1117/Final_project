@@ -1,4 +1,4 @@
-package com.ch.jobdamoa.service;
+package com.ch.jobdamoa.model;
 
 import lombok.Data;
 
