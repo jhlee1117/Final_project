@@ -7,15 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	var script = document.createElement('script');
-	script.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=d2196f3ead15c9e78a17ba1c74506591";
-	document.head.appendChild(script);
-	var container = document.getElementById("map");
-	var options = {	center: new kakao.maps.LatLng(33.450701, 126.570667), level: 3
-					};
-	var map = new kakao.maps.Map(container, options);		
-</script>
 </head>
 <body>
 	<div class="container px-4 px-lg-5 mt-5">
@@ -126,16 +117,47 @@
     								</dl>
     								<dl class="row">
     									<dt class="col">주소</dt>
-    									<dd class="col" style="text-align: right;"><span style="font-size: 8pt;">${com.com_address }</span></dd>
+    									<dd class="col" style="text-align: right;"><span style="font-size: 8pt;" id="com_address">${com.com_address }</span></dd>
     								</dl>
     							</li>
   							</ul>
   						</div>
 					</div>
 					<div class="card-header">위치</div>
-					<div class="card-body col-auto" id="map">
-						지도 API 연동 필요
+					<div class="card-body w-auto" id="map" style="height: 200px;">
 					</div>
+					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d2196f3ead15c9e78a17ba1c74506591&libraries=services"></script>
+					<script>
+						var mapContainer = document.getElementById('map');
+						var mapOption = { //지도를 생성할 때 필요한 기본 옵션
+							center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+							level: 3 //지도의 레벨(확대, 축소 정도)
+							};
+		
+						var map = new kakao.maps.Map(mapContainer, mapOption); 
+						
+						// 주소-좌표 변환 객체를 생성합니다
+						var geocoder = new kakao.maps.services.Geocoder();
+						// 주소로 좌표를 검색합니다
+						geocoder.addressSearch("${ann.ann_location }", function(result, status) {
+							// 정상적으로 검색이 완료됐으면 
+						     if (status === kakao.maps.services.Status.OK) {
+								var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+						        // 결과값으로 받은 위치를 마커로 표시합니다
+						        var marker = new kakao.maps.Marker({
+						            map: map,
+						            position: coords
+						        });
+						        // 인포윈도우로 장소에 대한 설명을 표시합니다
+						        var infowindow = new kakao.maps.InfoWindow({
+						            content: '<div style="width:150px;text-align:center;padding:6px 0;">${com.com_name }</div>'
+						        });
+						        infowindow.open(map, marker);
+						        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+						        map.setCenter(coords);
+						    } 
+						});    
+					</script>
 				</div>
 			</div>
 		</div>

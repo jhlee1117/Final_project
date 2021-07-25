@@ -82,7 +82,7 @@
 				<ul class="pagination justify-content-center">
 					<!-- 시작 페이지가 pagePerBlock(10)보다 크면 앞에 보여줄 페이지가 존재하므로 버튼 생성 -->
 					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link" href="annList.do?pageNum=1"><span class="glyphicon glyphicon-backward"></span></a></li>
+						<li class="page-item"><a class="page-link" href="annList.do?pageNum=1"><span>시작</span></a></li>
 						<li class="page-item"><a class="page-link" href="annList.do?pageNum=${pb.startPage - 1 }" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage}" end="${pb.endPage }">
@@ -96,8 +96,8 @@
 					</c:forEach>
 					<!-- 보여줄 것이 많은 경우는 다음 endPage 보다 totalPage가 클 경우 -->
 					<c:if test ="${pb.endPage < pb.totalPage }">
-						<li class="page-item"><a class="page-link" href="annList.do?pageNum=${pb.endPage + 1 }" aria-label="Next"><span aria-hidden="true">&laquo;</span></a></li>
-						<li class="page-item"><a class="page-link" href="annList.do?pageNum=${pb.totalPage}"><span class="glyphicon glyphicon-forward"></span></a></li>
+						<li class="page-item"><a class="page-link" href="annList.do?pageNum=${pb.endPage + 1 }" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+						<li class="page-item"><a class="page-link" href="annList.do?pageNum=${pb.totalPage}"><span>끝</span></a></li>
 					</c:if>
 				</ul>
 			</div>
