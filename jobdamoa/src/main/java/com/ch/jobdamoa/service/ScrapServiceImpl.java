@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ch.jobdamoa.dao.ScrapDao;
+import com.ch.jobdamoa.model.Favorites;
 import com.ch.jobdamoa.model.Scrap;
 import com.ch.jobdamoa.model.ScrapJson;
 import com.google.common.reflect.TypeToken;
@@ -69,4 +70,21 @@ public class ScrapServiceImpl implements ScrapService {
 	public int scrapSave(Scrap scrap2) {
 		return sd.scrapSave(scrap2);
 	}
+
+	@Override
+	public int getMyTotal(int mem_num) {
+		return sd.getMyTotal(mem_num);
+	}
+
+	@Override
+	public List<Scrap> scrapList(Scrap scrap) {
+		return sd.scrapList(scrap);
+	}
+
+	@Override
+	public int scrapDelete(int scrap_num) {
+		return sd.scrapDelete(scrap_num);
+	}
+
+	
 }

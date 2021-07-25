@@ -14,5 +14,11 @@ public interface ScrapService {
 	int getMaxNum();
 
 	int scrapSave(Scrap scrap2);
+
+	int getMyTotal(int mem_num);
+
+	List<Scrap> scrapList(Scrap scrap);
+
+	int scrapDelete(int scrap_num);
 	
 }

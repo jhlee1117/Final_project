@@ -1,5 +1,7 @@
 package com.ch.jobdamoa.dao;
 
+import java.util.List;
+
 import com.ch.jobdamoa.model.Scrap;
 
 public interface ScrapDao {
@@ -9,5 +11,11 @@ public interface ScrapDao {
 	int getMaxNum();
 
 	int scrapSave(Scrap scrap2);
+
+	int getMyTotal(int mem_num);
+
+	List<Scrap> scrapList(Scrap scrap);
+
+	int scrapDelete(int scrap_num);
 
 }

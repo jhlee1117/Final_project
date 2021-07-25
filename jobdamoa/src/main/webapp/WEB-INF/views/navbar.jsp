@@ -51,7 +51,7 @@
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
     					<li><a class="dropdown-item" onclick="location.href='memInfo.do'">회원정보</a></li>
     					<li><a class="dropdown-item" onclick="location.href='myFavList.do'">저장공고</a></li>
-    					<li><a class="dropdown-item" href="">스크랩공고</a></li>
+    					<li><a class="dropdown-item" onclick="location.href='myScrapList.do'">스크랩공고</a></li>
   					</ul>
 				</div>
 					<button class="btn btn-dark" type="button" onclick="location.href='memberLogout.do';">

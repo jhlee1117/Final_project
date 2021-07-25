@@ -1,5 +1,7 @@
 package com.ch.jobdamoa.model;
 
+import java.sql.Date;
+
 import lombok.Data;
 
 @Data
@@ -12,4 +14,12 @@ public class Scrap {
     private String scrap_location; // 위치
     private String scrap_career; // 경험
     private String scrap_link; // 링크
+    private Date scrap_date; // 추가한 날짜
+    
+    private String scrap_from; // 어디서 추가한 공고인지 구분하기 위함 (1: 프로그래머스, 2: 사람인...)
+    
+	// paging용
+	private int startRow;
+	private int endRow;
+	
 }
