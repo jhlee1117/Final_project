@@ -30,7 +30,7 @@ public class ScrapServiceImpl implements ScrapService {
 	@Override
 	public List<ScrapJson> scrapProgrammers() {
 		
-		fileName = "data.json";
+		fileName = "scrap_result_programmers.json";
 		List<ScrapJson> prList = null;
 		
 		// JSON 데이터를 읽어와서 객체로 변환 후 해당 사이트로 보내줌
@@ -54,6 +54,35 @@ public class ScrapServiceImpl implements ScrapService {
 			System.out.println(e.getMessage());
 		}
 		return prList;
+	}
+
+	@Override
+	public List<ScrapJson> scrapSaramin() {
+		
+		fileName = "scrap_result_saramin.json";
+		List<ScrapJson> saramList = null;
+		
+		// JSON 데이터를 읽어와서 객체로 변환 후 해당 사이트로 보내줌
+		try {
+			// Json 파일을 읽어들임 (경로 지정 필수)
+			Reader reader = new FileReader(path + "\\" + fileName);
+
+			// 구글에서 제공하는 Gson으로 Json 데이터를 파싱
+			Gson gson = new Gson();
+
+			// JsonReader는 불러들인 JSON 파일 형식의 오류나 문제를 잡아주는 역할을 함
+			JsonReader jreader = new JsonReader(reader);
+			jreader.setLenient(true);
+
+			// Type을 써서 배열로 구성된 Json을 Programmers 객체가 담긴 리스트로 변환
+			@SuppressWarnings("serial")
+			Type saramListType = new TypeToken<ArrayList<ScrapJson>>() {
+			}.getType();
+			saramList = gson.fromJson(jreader, saramListType);
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		return saramList;
 	}
 
 	@Override
@@ -85,6 +114,5 @@ public class ScrapServiceImpl implements ScrapService {
 	public int scrapDelete(int scrap_num) {
 		return sd.scrapDelete(scrap_num);
 	}
-
 	
 }

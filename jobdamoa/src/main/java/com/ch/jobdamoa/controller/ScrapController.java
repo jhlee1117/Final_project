@@ -61,9 +61,50 @@ public class ScrapController {
 		return "scrap/scrap_programmers";
 	}
 
+	@RequestMapping("scrapSaramin") // 사람인 사이트와 연결
+	public String scrapSaramin(String pageNum, Model model) {
+
+		List<ScrapJson> saramAllList = ss.scrapSaramin();
+
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1"; // 페이지 번호 여부 확인 및 값 초기화
+		int currentPage = Integer.parseInt(pageNum); // 숫자로 변환하여 처리
+		int rowPerPage = 10; // 한 화면에 보여지는 게시글 개수
+		int startRow = (currentPage - 1) * rowPerPage; // 페이지 내 시작행 설정
+		int endRow = startRow + rowPerPage - 1; // 페이지 내 끝행 설정
+
+		// 전체 페이징 처리
+		int total = saramAllList.size();
+		PagingBean pb = new PagingBean(currentPage, rowPerPage, total);
+		System.out.println(total);
+		List<ScrapJson> saramList = new ArrayList<>();
+
+		if (currentPage == total / rowPerPage + 1) {
+			for (int i = 0; i < total % rowPerPage; i++) {
+				System.out.println(startRow);
+				saramList.add(i, saramAllList.get(startRow));
+				startRow++;
+			}
+		} else {
+			for (int i = 0; i <= 9; i++) {
+				saramList.add(i, saramAllList.get(startRow));
+				startRow++;
+			}
+		}
+
+		model.addAttribute("saramList", saramList);
+		model.addAttribute("pb", pb);
+
+		return "scrap/scrap_saramin";
+	}	
+	
 	@RequestMapping(value = "scrapSave", produces = "text/html;charset=utf-8") // 스크래핑 내용 즐겨찾기 추가
 	@ResponseBody
 	public String scrapSave(ScrapJson sc, HttpSession session, String scrap_from) {
+		
+		if (sc.getLink().indexOf("And") > 0) {
+			sc.setLink(sc.getLink().replace("And", "&")); // And를 &로 변경해서 링크 주소를 넣어줌
+		}
 		
 		String msg = "";
 		int mem_num = (int) session.getAttribute("mem_num");

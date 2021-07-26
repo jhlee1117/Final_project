@@ -48,8 +48,6 @@ def extract_job_info(html):
     positions = ",".join(p)
 
     result = {'title':title, 'company':company, 'location':location, 'experience':experience, 'positions':positions, 'link':f"https://programmers.co.kr{job_id}"}
-    #return result
-    #return json.dumps(result, sort_keys=True, indent=2, ensure_ascii=False)
     return result
 
 

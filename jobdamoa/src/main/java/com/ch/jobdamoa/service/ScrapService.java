@@ -20,5 +20,7 @@ public interface ScrapService {
 	List<Scrap> scrapList(Scrap scrap);
 
 	int scrapDelete(int scrap_num);
+
+	List<ScrapJson> scrapSaramin();
 	
 }

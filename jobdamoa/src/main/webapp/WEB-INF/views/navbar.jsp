@@ -26,8 +26,8 @@
 						확인</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<li><a class="dropdown-item" href="scrapProgrammers.do">프로그래머스</a></li>
-						<li><a class="dropdown-item" href="#!">잡코리아</a></li>
-						<li><a class="dropdown-item" href="#!">사람인</a></li>
+						<!-- <li><a class="dropdown-item" href="#!">잡코리아</a></li> -->
+						<li><a class="dropdown-item" href="scrapSaramin.do">사람인</a></li>
 					</ul></li>
 				<li class="nav-item"><a class="nav-link" href="annList.do">기업 채용 공고</a></li>
 			</ul>

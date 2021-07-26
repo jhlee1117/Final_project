@@ -21,6 +21,6 @@ public class ExecScrapPy {
 		 
 		 // 5분마다 주기적으로 실행하는 프로세스
 		 ExecScrapping es = new ExecScrapping();
-		 es.doProgrammers();
+		 es.doScrapping();
 	}
 }

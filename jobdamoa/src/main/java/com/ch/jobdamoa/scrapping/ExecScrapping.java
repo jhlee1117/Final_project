@@ -11,7 +11,7 @@ public class ExecScrapping implements Scrapping {
 
 	private static String path = "python C:\\my_project\\spring\\final_project\\jobdamoa\\src\\main\\webapp\\python_scrap";
 	
-	public void doProgrammers() {
+	public void doScrapping() {
 
 		String filename = "scrapper.py";
 		Process pc = null; // 프로세스를 실행할 주체
@@ -21,7 +21,7 @@ public class ExecScrapping implements Scrapping {
 		try {
 			
 			pc = rt.exec(path + "\\" + filename);
-			System.out.println("프로그래머스 스크래핑 시작");
+			System.out.println("스크래핑 시작");
 			BufferedReader br = new BufferedReader(new InputStreamReader(pc.getInputStream(), "EUC-KR"));
 
 			while ((line = br.readLine()) != null) {
@@ -39,7 +39,7 @@ public class ExecScrapping implements Scrapping {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
 			}
-			System.out.println("프로그래머스 스크래핑 완료");
+			System.out.println("스크래핑 완료");
 			pc.destroy();
 		}
 	}
