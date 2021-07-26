@@ -11,4 +11,4 @@
 		location.href="home.do";
 	</script>
 </body>
-</html>	
+</html>
