@@ -43,7 +43,9 @@ public class CompanyController {
 	
 	@RequestMapping("companyLogin")
 	public String companyLogin(Company com, Model model, HttpSession session) {
-		
+	    if (session == null || session.getAttribute("user_dist") == null) {
+	    	return "/sessionChk";
+	    }
 		int result = 0; // 암호가 다른 경우
 		
 		Company com2 = cs.selectLogin(com.getCom_id());
@@ -61,9 +63,10 @@ public class CompanyController {
 	}
 	
 	@RequestMapping("companyLogout")
-	public String companyLogout(HttpSession session) {
+	public String companyLogout(HttpServletRequest request, HttpSession session) {
+		String previouspage = request.getHeader("referer");
 		session.invalidate();
-		return "home/home";
+		return "redirect: " + previouspage;
 	}
 	
 	/* 로그인 관련 기능 끝 */

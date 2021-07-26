@@ -24,7 +24,6 @@ public class ManagerController {
 	//관리자 계정 로그인
 	@RequestMapping("managerLogin")
 	public String managerLogin(HttpServletRequest request, Model model, HttpSession session) {
-		String referer = request.getParameter("referer");
 		String manager_id = request.getParameter("mem_id");
 		String manager_password = request.getParameter("mem_password");
 		
@@ -37,26 +36,27 @@ public class ManagerController {
 		else if (manager.getManager_password().equals(manager_password)) {
 			result = 1; // ID와 패스워드 일치
 			session.setAttribute("manager_num", manager.getManager_num());
+			session.setAttribute("manager_id", manager.getManager_id());
 			session.setAttribute("user_dist", manager.getUser_dist());
 		}
 		model.addAttribute("result", result);
-		model.addAttribute("referer", referer);
 		return "manager/managerLogin";		
 	}
 	
 	//관리자 계정 로그아웃
 	@RequestMapping("managerLogout")
-	public String memberLogout(HttpSession session) {
+	public String memberLogout(HttpServletRequest request, HttpSession session) {
+		String previouspage = request.getHeader("referer");
 		session.invalidate();
-		return "home/home";
+		return "redirect: " + previouspage;
 	}
 	
 	//일반 회원 관리 페이지
 	@RequestMapping("memberManageForm")
-	public String memberManageForm(HttpServletRequest request, Manager man, Model model, HttpSession session) {
-	    /*if (session == null || session.getAttribute("manager_id") == null) {
-	    	return "../sessionChk";
-	    }*/
+	public String memberManageForm(HttpServletRequest request, Model model, HttpSession session) {
+	    if (session == null || session.getAttribute("manager_num") == null) {
+	    	return "/sessionChk";
+	    }
 	    
 		final int ROW_PER_PAGE = 10;
 		final int PAGE_PER_BLOCK = 10;
@@ -134,9 +134,9 @@ public class ManagerController {
 	//기업 회원 관리 페이지
 	@RequestMapping("companyManageForm")
 	public String companyManageForm(HttpServletRequest request, Manager man, Model model, HttpSession session) {
-	    /*if (session == null || session.getAttribute("manager_id") == null) {
-	    	return "../sessionChk";
-	    }*/
+	    if (session == null || session.getAttribute("manager_num") == null) {
+	    	return "/sessionChk";
+	    }
 	    
 		final int ROW_PER_PAGE = 10;
 		final int PAGE_PER_BLOCK = 10;

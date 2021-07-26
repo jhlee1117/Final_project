@@ -72,6 +72,6 @@
 	
 		<!-- 탈퇴 회사 수 체크 -->
 	<select id="chkCompany" parameterType="string" resultType="string">
-		select com_invalid from member where com_id=#{com_id}
+		select com_invalid from company where com_id=#{com_id}
 	</select>
 </mapper>
