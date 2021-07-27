@@ -1,7 +1,7 @@
 import json
 import csv
 
-SAVE_DIRECTORY = 'C:/my_project/spring/final_project/jobdamoa/src/main/webapp/python_scrap/'
+SAVE_DIRECTORY = 'C:/WorkPlace/Spring/SpringSrc/final_project/jobdamoa/src/main/webapp/python_scrap/'
 
 def save_to_file(jobs, name):
     with open(SAVE_DIRECTORY + name + ".json", "w", encoding="utf-8") as f:
