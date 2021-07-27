@@ -44,7 +44,6 @@ public class ScrapController {
 
 		if (currentPage == total / rowPerPage + 1) {
 			for (int i = 0; i < total % rowPerPage; i++) {
-				System.out.println(startRow);
 				prList.add(i, prAllList.get(startRow));
 				startRow++;
 			}
@@ -76,12 +75,10 @@ public class ScrapController {
 		// 전체 페이징 처리
 		int total = saramAllList.size();
 		PagingBean pb = new PagingBean(currentPage, rowPerPage, total);
-		System.out.println(total);
 		List<ScrapJson> saramList = new ArrayList<>();
 
 		if (currentPage == total / rowPerPage + 1) {
 			for (int i = 0; i < total % rowPerPage; i++) {
-				System.out.println(startRow);
 				saramList.add(i, saramAllList.get(startRow));
 				startRow++;
 			}
@@ -169,7 +166,6 @@ public class ScrapController {
 	@RequestMapping(value = "scrapDelete", produces = "text/html;charset=utf-8")
 	@ResponseBody
 	public String scrapDelete(int scrap_num, int pageNum) {
-		System.out.println(scrap_num);
 		int result = 0;
 		result = ss.scrapDelete(scrap_num);
 		String msg;

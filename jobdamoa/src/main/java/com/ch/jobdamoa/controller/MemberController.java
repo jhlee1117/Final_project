@@ -86,7 +86,7 @@ public class MemberController {
 			session.setAttribute("user_dist", member.getUser_dist());
 		}
 		model.addAttribute("result", result);
-		model.addAttribute("referer", referer);
+//		model.addAttribute("referer", referer);
 		return "login/memberLogin";			
 	}
 	

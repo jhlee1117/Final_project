@@ -45,8 +45,9 @@
 	<context:component-scan
 		base-package="com.ch.jobdamoa" />
 	
-	<beans:bean id="clc" class="com.ch.jobdamoa.service.ComLoginChk"></beans:bean>
-	<beans:bean id="mlc" class="com.ch.jobdamoa.service.MemLoginChk"></beans:bean>
+	<beans:bean id="comlc" class="com.ch.jobdamoa.service.ComLoginChk"></beans:bean>
+	<beans:bean id="memlc" class="com.ch.jobdamoa.service.MemLoginChk"></beans:bean>
+	<beans:bean id="manlc" class="com.ch.jobdamoa.service.ManagerLoginChk"></beans:bean>
 	<interceptors>
 		<interceptor>
 			<mapping path="/annInsertForm.do"/>
@@ -56,7 +57,7 @@
 			<mapping path="/comInfo.do"/>
 			<mapping path="/comUpdateForm.do"/>
 			<mapping path="/comDeleteForm.do"/>
-			<beans:ref bean="clc"/>
+			<beans:ref bean="comlc"/>
 		</interceptor>
 		<interceptor>
 			<mapping path="/favSave.do"/>
@@ -68,7 +69,16 @@
 			<mapping path="/scrapSave.do"/>
 			<mapping path="/myScrapList.do"/>
 			<mapping path="/scrapDelete.do"/>
-			<beans:ref bean="mlc"/>
+			<beans:ref bean="memlc"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/memberManageForm.do"/>
+			<mapping path="/memberOut.do"/>
+			<mapping path="/memberRestore.do"/>
+			<mapping path="/companyManageForm.do"/>
+			<mapping path="/companyOut.do"/>
+			<mapping path="/companyRestore.do"/>
+			<beans:ref bean="manlc"/>
 		</interceptor>
 	</interceptors>
 
