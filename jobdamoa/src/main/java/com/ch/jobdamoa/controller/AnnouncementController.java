@@ -188,21 +188,6 @@ public class AnnouncementController {
 		return "announcement/annDeleteForm";
 	}
 	
-	@RequestMapping("confirmAnnDel")
-	@ResponseBody
-	public String confirmAnnDel(String com_password, HttpSession session) {
-		
-		String result;
-		Company com = cs.selectCom((int) session.getAttribute("com_num"));
-		
-		if (com.getCom_password().equals(com_password)) {
-			result = "1";
-		} else 
-			result = "-1";
-		
-		return result;
-	}
-	
 	@RequestMapping("annDelete")
 	public String annDelete(int ann_num, String pageNum, Model model) {
 		

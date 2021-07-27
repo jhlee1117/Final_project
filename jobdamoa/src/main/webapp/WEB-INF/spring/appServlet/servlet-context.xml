@@ -44,7 +44,32 @@
 
 	<context:component-scan
 		base-package="com.ch.jobdamoa" />
-
-
+	
+	<beans:bean id="clc" class="com.ch.jobdamoa.service.ComLoginChk"></beans:bean>
+	<beans:bean id="mlc" class="com.ch.jobdamoa.service.MemLoginChk"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/annInsertForm.do"/>
+			<mapping path="/myAnnList.do"/>
+			<mapping path="/annUpdateForm.do"/>
+			<mapping path="/annDeleteForm.do"/>
+			<mapping path="/comInfo.do"/>
+			<mapping path="/comUpdateForm.do"/>
+			<mapping path="/comDeleteForm.do"/>
+			<beans:ref bean="clc"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/favSave.do"/>
+			<mapping path="/myFavList.do"/>
+			<mapping path="/favDelete.do"/>
+			<mapping path="/memInfo.do"/>
+			<mapping path="/memUpdateForm.do"/>
+			<mapping path="/memDeleteForm.do"/>
+			<mapping path="/scrapSave.do"/>
+			<mapping path="/myScrapList.do"/>
+			<mapping path="/scrapDelete.do"/>
+			<beans:ref bean="mlc"/>
+		</interceptor>
+	</interceptors>
 
 </beans:beans>

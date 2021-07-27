@@ -37,13 +37,24 @@ public class CompanyController {
 	/* 로그인을 위한 기능 구현 */
 	
 	@RequestMapping("companyLoginForm")
-	public String companyLoginForm() {
+	public String companyLoginForm(HttpServletRequest request, HttpSession session) {
+		String referer = "";
+		if (session.getAttribute("referer") == null) {
+			referer = request.getHeader("referer");
+		} else if (((String) session.getAttribute("referer")).contains("LoginForm")) {
+			session.removeAttribute("referer");
+		} else {
+			referer = (String) session.getAttribute("referer");
+		}
+		session.setAttribute("referer", referer);
+		
 		return "login/companyLoginForm";
 	}
 	
 	@RequestMapping("companyLogin")
 	public String companyLogin(Company com, Model model, HttpSession session) {
 		
+		String referer = (String) session.getAttribute("referer");
 		int result = 0; // 암호가 다른 경우
 		
 		Company com2 = cs.selectLogin(com.getCom_id());
@@ -57,13 +68,16 @@ public class CompanyController {
 			session.setAttribute("user_dist", com2.getUser_dist());
 		}
 		model.addAttribute("result", result);
+		model.addAttribute("referer", referer);
+		
 		return "login/companyLogin";
 	}
 	
 	@RequestMapping("companyLogout")
-	public String companyLogout(HttpSession session) {
+	public String companyLogout(HttpSession session, HttpServletRequest request) {
+		String referer = request.getHeader("referer");
 		session.invalidate();
-		return "home/home";
+		return "redirect:" + referer;
 	}
 	
 	/* 로그인 관련 기능 끝 */
@@ -299,4 +313,19 @@ public class CompanyController {
 		return "company/comDelete";
 	}
 	/* 회원탈퇴 기능 구현 끝 */	
+	
+	@RequestMapping(value = "confirmAnnDel", produces = "text/html;charset=utf-8")
+	@ResponseBody
+	public String confirmAnnDel(String com_password, HttpSession session) {
+		String result="";
+		Company com = cs.selectCom((int) session.getAttribute("com_num"));
+		if (passwordEncoder.matches(com_password, com.getCom_password())) {
+			System.out.println("성공");
+			result = "1";
+		} else {
+			System.out.println("실패");
+			result = "-1";
+		}
+		return result;
+	}
 }

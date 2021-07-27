@@ -46,18 +46,24 @@ public class MemberController {
 	/* 로그인 관련 기능 구현 */
 	
 	@RequestMapping("memberLoginForm")
-	public String memberLoginForm(HttpServletRequest request) {
-		String referer = request.getHeader("REFERER"); // 이전 페이지
-		//referer = referer.replace("Member/join.do", "index.jsp"); // 만약 회원 가입화면에서 넘어온 경우메인화면으로 보내준다
-		
-		request.setAttribute("referer", referer);
+	public String memberLoginForm(HttpServletRequest request, HttpSession session) {
+		String referer = "";
+		if (session.getAttribute("referer") == null) {
+			referer = request.getHeader("referer");
+		} else if (((String) session.getAttribute("referer")).contains("LoginForm")) {
+			session.removeAttribute("referer");
+		} else {
+			referer = (String) session.getAttribute("referer");
+		}
+		session.setAttribute("referer", referer);
 		
 		return "login/memberLoginForm";
 	}
 	
 	@RequestMapping("memberLogin")
 	public String memberLogin(HttpServletRequest request, Member mem, Model model, HttpSession session) {
-		String referer = request.getParameter("referer");
+
+		String referer = (String) session.getAttribute("referer");
 		String member_id = mem.getMem_id();
 		
 		int result = 0; // 암호가 다른 경우
@@ -85,9 +91,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping("memberLogout")
-	public String memberLogout(HttpSession session) {
+	public String memberLogout(HttpSession session, HttpServletRequest request) {
+		String referer = request.getHeader("referer");
 		session.invalidate();
-		return "home/home";
+		return "redirect:" + referer;
 	}
 	
 	/* 로그인 관련 기능 구현 끝 */

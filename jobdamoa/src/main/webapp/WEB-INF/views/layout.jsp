@@ -15,7 +15,7 @@
 <%-- 	<header class="bg-dark py-5">
 		<tiles:insertAttribute name="header"></tiles:insertAttribute>
 	</header> --%>
-	<section class="py-5">
+	<section class="py-5" style="min-height:600px;">
 		<tiles:insertAttribute name="section"></tiles:insertAttribute>
 	</section>
 	<footer class="py-5 bg-dark">

@@ -92,7 +92,7 @@
 				</table>
 			</div>
 		<div align="center">
-			<input class="btn btn-dark" type="submit" id="submit" value="수정 완료" onclick="location.href='comUpdate.do'">
+			<input class="btn btn-dark" type="submit" id="submit" value="수정 완료">
 			<input class="btn btn-dark" type="button" id="button" value="취소" onclick="history.go(-1); return false;">
 		</div>	
 		</form>

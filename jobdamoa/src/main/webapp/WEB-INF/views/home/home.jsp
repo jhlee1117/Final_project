@@ -12,10 +12,10 @@
 	<header class="bg-dark py-5">
 		<div id="carouselScrap" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
   			<div class="carousel-inner">
-    			<div class="carousel-item active" id="jobkorea">
+<%--     			<div class="carousel-item active" id="jobkorea">
       				<img src="${path }/resources/template/img/logo_jobkorea.png" class="img-fluid mx-auto d-block w-25" alt="...">
-    			</div>
-    			<div class="carousel-item" id="programmers">
+    			</div> --%>
+    			<div class="carousel-item active" id="programmers">
       				<img src="${path }/resources/template/img/logo_programmers.png" class="img-fluid mx-auto d-block w-25" alt="...">
     			</div>
     			<div class="carousel-item" id="saramin">

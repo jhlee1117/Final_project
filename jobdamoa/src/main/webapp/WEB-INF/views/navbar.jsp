@@ -35,11 +35,11 @@
 			<c:choose>
 				<c:when test="${empty user_dist }">
 				<div class="dropdown">
-					<button class="btn btn-outline-dark" type="button" onclick="location.href='selectLoginForm.do'">
+					<button class="btn btn-outline-dark" type="button" onclick="location.href='memberLoginForm.do'">
 						<i class="bi bi-box-arrow-in-right"></i> 로그인
 					</button> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
 				</div> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
-				<button class="btn btn-dark" type="button" onclick="location.href='selectJoinForm.do'">
+				<button class="btn btn-dark" type="button" onclick="location.href='memberJoinForm.do'">
 					<i class="bi bi-person-plus"></i> 회원가입
 				</button>
 				</c:when>

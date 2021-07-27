@@ -13,11 +13,15 @@
 			frm.com_password.focus();
 			return false;
 		}
-		$.post("confirmAnnDel.do", "com_password=" + frm.com_password.value,
-			function (result) {
-				if (result == "1") {
+		$.ajax({
+	        type: "POST",
+	        url: "confirmAnnDel.do?com_password=" + frm.com_password.value,
+	        async: false,
+	        contentType: "application/json; charset=utf-8",
+	        success: function (result) {
+	        	if (result == "1") {
 					delchk = confirm("정말로 공고를 삭제하시겠습니까?");
-					if (delchk == true) {
+					if (delchk) {
 						//return true;
 						frm.action="annDelete.do";
 						frm.submit();
@@ -28,8 +32,8 @@
 					alert("비밀번호가 일치하지 않습니다.");
 					return;
 				}
-			}
-		);
+	        }
+	    });
 	}
 </script>
 </head>
