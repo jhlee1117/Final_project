@@ -43,8 +43,7 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder; // 비밀번호 암호화 객체 생성
 	
-	/* 로그인 관련 기능 구현 */
-	
+	/* 로그인 관련 기능 구현 */	
 	@RequestMapping("memberLoginForm")
 	public String memberLoginForm(HttpServletRequest request, HttpSession session) {
 		String referer = "";
@@ -63,16 +62,15 @@ public class MemberController {
 	@RequestMapping("memberLogin")
 	public String memberLogin(HttpServletRequest request, Member mem, Model model, HttpSession session) {
 
-		String referer = (String) session.getAttribute("referer");
+		String previouspage = request.getHeader("referer");
 		String member_id = mem.getMem_id();
 		
 		int result = 0; // 암호가 다른 경우
 		
 		Member member = ms.selectLogin(member_id);
-		
 		// manager 아이디일 경우 managerController의 로그인 메소드 실행
 		Manager manager = managerService.login(member_id);
-		
+
 		if(member == null && manager != null) {
 			return managerController.managerLogin(request, model, session);
 		}
@@ -86,15 +84,15 @@ public class MemberController {
 			session.setAttribute("user_dist", member.getUser_dist());
 		}
 		model.addAttribute("result", result);
-		model.addAttribute("referer", referer);
+		model.addAttribute("previouspage", previouspage)
 		return "login/memberLogin";			
 	}
 	
 	@RequestMapping("memberLogout")
-	public String memberLogout(HttpSession session, HttpServletRequest request) {
-		String referer = request.getHeader("referer");
+	public String memberLogout(HttpServletRequest request, HttpSession session) {
+		String previouspage = request.getHeader("referer");
 		session.invalidate();
-		return "redirect:" + referer;
+		return "redirect: " + previouspage;
 	}
 	
 	/* 로그인 관련 기능 구현 끝 */
@@ -247,6 +245,10 @@ public class MemberController {
 	/* 회원정보 조회 기능 구현 */
 	@RequestMapping("memInfo.do")
 	public String memInfo(Member mem, Model model, HttpSession session) {
+	    if (session == null || session.getAttribute("user_dist") == null) {
+	    	System.out.println(112);
+	    	return "/sessionChk";
+	    }
 		int mem_num = (int) session.getAttribute("mem_num");
 		mem = ms.selectMem(mem_num);
 		model.addAttribute("mem", mem);

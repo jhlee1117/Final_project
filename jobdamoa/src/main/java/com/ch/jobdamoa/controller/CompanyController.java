@@ -52,9 +52,12 @@ public class CompanyController {
 	}
 	
 	@RequestMapping("companyLogin")
-	public String companyLogin(Company com, Model model, HttpSession session) {
-		
-		String referer = (String) session.getAttribute("referer");
+	public String companyLogin(Company com, Model model, HttpServletRequest request, HttpSession session) {
+	    if (session == null || session.getAttribute("user_dist") == null) {
+	    	return "/sessionChk";
+	    }
+		String previouspage = request.getHeader("referer");
+
 		int result = 0; // 암호가 다른 경우
 		
 		Company com2 = cs.selectLogin(com.getCom_id());
@@ -68,16 +71,16 @@ public class CompanyController {
 			session.setAttribute("user_dist", com2.getUser_dist());
 		}
 		model.addAttribute("result", result);
-		model.addAttribute("referer", referer);
+		model.addAttribute("previouspage", previouspage);
 		
 		return "login/companyLogin";
 	}
 	
 	@RequestMapping("companyLogout")
-	public String companyLogout(HttpSession session, HttpServletRequest request) {
-		String referer = request.getHeader("referer");
+	public String companyLogout(HttpServletRequest request, HttpSession session) {
+		String previouspage = request.getHeader("referer");
 		session.invalidate();
-		return "redirect:" + referer;
+		return "redirect: " + previouspage;
 	}
 	
 	/* 로그인 관련 기능 끝 */
