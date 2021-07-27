@@ -4,10 +4,14 @@
 <c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<!-- 
+<script type="text/javascript">
+	var myCarousel = document.getElementById('myCarousel')
+	myCarousel.addEventListener('slide.bs.carousel', function () {
+		
+	})
+</script>
+ -->
 <body>
 	<header class="bg-dark py-5">
 		<div id="carouselScrap" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
@@ -44,7 +48,7 @@
 				<div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
 			 		<div class="card-header"><h5>${recentList.title}</h5></div>
 			  		<div class="card-body">
-			    		<h5 class="card-title">${recentList .company}</h5>
+			    		<h5 class="card-title">${recentList.company}</h5>
 			    		<p class="card-text">${recentList.location }</p>
 			    		<p class="card-text">${recentList.experience }</p>
 			    		<p class="card-text">${recentList.positions }</p>
