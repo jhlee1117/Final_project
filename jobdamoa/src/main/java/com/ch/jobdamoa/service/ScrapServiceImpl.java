@@ -24,7 +24,7 @@ public class ScrapServiceImpl implements ScrapService {
 	@Autowired
 	private ScrapDao sd;
 	
-	private static String path = "C:\\my_project\\spring\\final_project\\jobdamoa\\src\\main\\webapp\\python_scrap"; // 경로
+	private static String path = "C:\\WorkPlace\\Spring\\SpringSrc\\final_project\\jobdamoa\\src\\main\\webapp\\python_scrap"; // 경로
 	private String fileName = "";
 	
 	@Override
