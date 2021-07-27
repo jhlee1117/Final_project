@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExecScrapping implements Scrapping {
 
-	private static String path = "python C:\\my_project\\spring\\final_project\\jobdamoa\\src\\main\\webapp\\python_scrap";
+	private static String path = "python C:\\WorkPlace\\Spring\\SpringSrc\\final_project\\jobdamoa\\src\\main\\webapp\\python_scrap";
 	
 	public void doProgrammers() {
 
