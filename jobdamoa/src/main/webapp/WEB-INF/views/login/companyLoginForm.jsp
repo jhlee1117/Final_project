@@ -47,6 +47,7 @@
 		<div>
 			<span><a href="javascript:findComId()">ID 찾기</a></span>
 			<span><a href="javascript:findComPw()">비밀번호 찾기</a></span>
+			<span><a href="companyJoinForm.do">회원가입</a></span>
 		</div>
 	</div>
 </body>

@@ -49,20 +49,19 @@ public class MemberController {
 		String referer = "";
 		if (session.getAttribute("referer") == null) {
 			referer = request.getHeader("referer");
-		} else if (((String) session.getAttribute("referer")).contains("LoginForm")) {
-			session.removeAttribute("referer");
 		} else {
 			referer = (String) session.getAttribute("referer");
 		}
+		referer = referer.replace("memInfo.do", "home.do");
+		referer = referer.replace("myFavList.do", "home.do");
+		referer = referer.replace("myScrapList.do", "home.do");
 		session.setAttribute("referer", referer);
-		
+
 		return "login/memberLoginForm";
 	}
 	
 	@RequestMapping("memberLogin")
 	public String memberLogin(HttpServletRequest request, Member mem, Model model, HttpSession session) {
-
-		String previouspage = request.getHeader("referer");
 		String member_id = mem.getMem_id();
 		
 		int result = 0; // 암호가 다른 경우
@@ -84,15 +83,15 @@ public class MemberController {
 			session.setAttribute("user_dist", member.getUser_dist());
 		}
 		model.addAttribute("result", result);
-		model.addAttribute("previouspage", previouspage)
+		
 		return "login/memberLogin";			
 	}
 	
 	@RequestMapping("memberLogout")
 	public String memberLogout(HttpServletRequest request, HttpSession session) {
-		String previouspage = request.getHeader("referer");
+		String referer = request.getHeader("referer");
 		session.invalidate();
-		return "redirect: " + previouspage;
+		return "redirect: " + referer;
 	}
 	
 	/* 로그인 관련 기능 구현 끝 */

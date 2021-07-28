@@ -11,7 +11,7 @@
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("관리자 계정 로그인 성공");
-			location.href = "${previouspage}";
+			location.href = "${referer}";
 		</script>
 	</c:if>
 	<c:if test="${result == 0 }">

@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
+
 <c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html>
 <html>
@@ -36,12 +37,12 @@
 				<c:when test="${empty user_dist }">
 				<div class="dropdown">
 					<button class="btn btn-outline-dark" type="button" onclick="location.href='memberLoginForm.do'">
-						<i class="bi bi-box-arrow-in-right"></i> 로그인
+						<i class="bi bi-box-arrow-in-right"></i> 로그인 / 회원가입
 					</button> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
 				</div> <!-- 드랍박스가 아닌 화면 구성 시 로그인 페이지를 별도로 연결하여, 탭으로 회원 선택 및 구분 -->
-				<button class="btn btn-dark" type="button" onclick="location.href='memberJoinForm.do'">
+				<!--  <button class="btn btn-dark" type="button" onclick="location.href='memberJoinForm.do'">
 					<i class="bi bi-person-plus"></i> 회원가입
-				</button>
+				</button>-->
 				</c:when>
 				<c:when test="${user_dist == '0' }">
 				<div class="dropdown">
@@ -49,14 +50,13 @@
 						마이페이지
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
-    					<li><a class="dropdown-item" onclick="location.href='memInfo.do'">회원정보</a></li>
-    					<li><a class="dropdown-item" onclick="location.href='myFavList.do'">저장공고</a></li>
-    					<li><a class="dropdown-item" onclick="location.href='myScrapList.do'">스크랩공고</a></li>
+    					<li><a class="dropdown-item" href="memInfo.do">회원정보</a></li>
+    					<li><a class="dropdown-item" href="myFavList.do">저장공고</a></li>
+    					<li><a class="dropdown-item" href="myScrapList.do">스크랩공고</a></li>
+			    		<li><hr class="dropdown-divider"></li>
+    					<li><a class="dropdown-item" href="memberLogout.do">로그아웃</a>
   					</ul>
 				</div>
-					<button class="btn btn-dark" type="button" onclick="location.href='memberLogout.do';">
-						<i class="bi bi-box-arrow-in-left"></i> 로그아웃
-					</button>
 				</c:when>
 				<c:when test="${user_dist == '1' }">
 				<div class="dropdown">
@@ -64,13 +64,12 @@
 						마이페이지
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
-    					<li><a class="dropdown-item" onclick="location.href='comInfo.do'">기업정보</a></li>
-    					<li><a class="dropdown-item" onclick="location.href='myAnnList.do'">나의 공고</a></li>
+    					<li><a class="dropdown-item" href="comInfo.do">기업정보</a></li>
+    					<li><a class="dropdown-item" href="myAnnList.do">나의 공고</a></li>
+    					<li><hr class="dropdown-divider"></li>
+    					<li><a class="dropdown-item" href="companyLogout.do">로그아웃</a>
   					</ul>  					
 				</div>
-					<button class="btn btn-dark" type="button" onclick="location.href='companyLogout.do';">
-						<i class="bi bi-box-arrow-in-left"></i> 로그아웃
-					</button>
 				</c:when>
 				<c:when test="${user_dist == '2' }">
 				<div class="dropdown">

@@ -7,7 +7,7 @@
 	<definition name="tilesbase"
 		template="/WEB-INF/views/layout.jsp">
 		<put-attribute name="navbar" value="/WEB-INF/views/navbar.jsp" /> <!-- 헤더는 무조건 이 파일을 쓴다는 의미 -->
-		<!-- <put-attribute name="header" value="/WEB-INF/views/header.jsp" /> 메뉴는 무조건 이 파일을 쓴다는 의미 -->
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp" /> <!-- 메뉴는 무조건 이 파일을 쓴다는 의미 -->
 		<put-attribute name="section" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" /> <!-- 푸터는 무조건 이파일을 쓴다는 의미 -->
 	</definition>
@@ -17,7 +17,7 @@
 	</definition>
 	<!-- 로그인 시 기본 메뉴바가 아닌 레이아웃 적용 -->
 	<definition name="loginlayout" template="/WEB-INF/views/loginlayout.jsp">
-		<put-attribute name="navbar" value="/WEB-INF/views/loginnav.jsp" />
+		<put-attribute name="loginnavbar" value="/WEB-INF/views/loginnav.jsp" />
 		<!-- <put-attribute name="header" value="" /> -->
 		<put-attribute name="footer" value="" />	
 	</definition>

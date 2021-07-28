@@ -23,7 +23,6 @@
 <body>
 	<div class="container px-4 px-lg-5 mt-5">
 		<form action="memberLogin.do" method="post">
-<%-- 		<input type="hidden" name="previouspage" value="${referer }"> --%>
 			<div class="card w-50 text-center">
 				<div class="card-header">
 					<h2>일반회원 로그인</h2>
@@ -47,8 +46,9 @@
 			</div>
 		</form>
 		<div>
-			<span><a href="javascript:findMemId()">ID 찾기</a></span> <span><a
-				href="javascript:findMemPw()">비밀번호 찾기</a></span>
+			<span><a href="javascript:findMemId()">ID 찾기</a></span>
+			<span><a href="javascript:findMemPw()">비밀번호 찾기</a></span>
+			<span><a href="memberJoinForm.do">회원가입</a></span>
 		</div>
 	</div>
 </body>

@@ -11,7 +11,7 @@
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("회원가입이 정상적으로 처리되었습니다.");
-			location.href = "${previouspage}";
+			location.href = "${referer}";
 		</script>
 	</c:if>
 	<c:if test="${result == 0 }">

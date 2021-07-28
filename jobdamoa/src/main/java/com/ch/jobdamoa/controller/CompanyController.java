@@ -41,23 +41,17 @@ public class CompanyController {
 		String referer = "";
 		if (session.getAttribute("referer") == null) {
 			referer = request.getHeader("referer");
-		} else if (((String) session.getAttribute("referer")).contains("LoginForm")) {
-			session.removeAttribute("referer");
 		} else {
 			referer = (String) session.getAttribute("referer");
 		}
+		referer = referer.replace("comInfo.do", "home.do");
+		referer = referer.replace("myAnnList.do", "home.do");
 		session.setAttribute("referer", referer);
-		
 		return "login/companyLoginForm";
 	}
 	
 	@RequestMapping("companyLogin")
 	public String companyLogin(Company com, Model model, HttpServletRequest request, HttpSession session) {
-	    if (session == null || session.getAttribute("user_dist") == null) {
-	    	return "/sessionChk";
-	    }
-		String previouspage = request.getHeader("referer");
-
 		int result = 0; // 암호가 다른 경우
 		
 		Company com2 = cs.selectLogin(com.getCom_id());
@@ -71,16 +65,15 @@ public class CompanyController {
 			session.setAttribute("user_dist", com2.getUser_dist());
 		}
 		model.addAttribute("result", result);
-		model.addAttribute("previouspage", previouspage);
 		
 		return "login/companyLogin";
 	}
 	
 	@RequestMapping("companyLogout")
 	public String companyLogout(HttpServletRequest request, HttpSession session) {
-		String previouspage = request.getHeader("referer");
+		String referer = request.getHeader("referer");
 		session.invalidate();
-		return "redirect: " + previouspage;
+		return "redirect: " + referer;
 	}
 	
 	/* 로그인 관련 기능 끝 */

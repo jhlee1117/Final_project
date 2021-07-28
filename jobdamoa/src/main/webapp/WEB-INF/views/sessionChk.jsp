@@ -11,7 +11,7 @@
 <c:set var="user_dist" value="${sessionScope.user_dist }"></c:set>
 <c:if test="${empty user_dist }">
 	<script type="text/javascript">
-		location.href="selectLoginForm.do";
+		location.href="memberLoginForm.do";
 	</script>
 </c:if>
 <c:if test="${user_dist ne 2}">

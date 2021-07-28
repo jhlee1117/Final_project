@@ -24,7 +24,6 @@ public class ManagerController {
 	//관리자 계정 로그인
 	@RequestMapping("managerLogin")
 	public String managerLogin(HttpServletRequest request, Model model, HttpSession session) {
-		String previouspage = request.getHeader("referer");
 		String manager_id = request.getParameter("mem_id");
 		String manager_password = request.getParameter("mem_password");
 		
@@ -41,16 +40,16 @@ public class ManagerController {
 			session.setAttribute("user_dist", manager.getUser_dist());
 		}
 		model.addAttribute("result", result);
-		model.addAttribute("previouspage", previouspage);
-		return "manager/managerLogin";		
+		
+		return "login/managerLogin";		
 	}
 	
 	//관리자 계정 로그아웃
 	@RequestMapping("managerLogout")
 	public String memberLogout(HttpServletRequest request, HttpSession session) {
-		String previouspage = request.getHeader("referer");
+		String referer = request.getHeader("referer");
 		session.invalidate();
-		return "redirect: " + previouspage;
+		return "redirect: " + referer;
 	}
 	
 	//일반 회원 관리 페이지

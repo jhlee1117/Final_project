@@ -99,7 +99,7 @@
 			</div>
 		<div align="center">
 			<button class="btn btn-dark" id="submit" type="submit">확인</button>
-			<button class="btn btn-dark" type="button" onclick="history.go(-1); return false;">취소</button>
+			<button class="btn btn-dark" type="button" onclick="location.href='companyLoginForm.do'">취소</button>
 		</div>
 		</form>
 	</div>
