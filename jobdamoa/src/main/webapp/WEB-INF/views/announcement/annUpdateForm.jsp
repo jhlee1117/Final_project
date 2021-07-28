@@ -46,8 +46,8 @@
 				<tr>
 					<th width="30%" valign="middle">고용형태</th>
 					<td>
-						<select class="form-select" name="ann_type" aria-label="Default select example" required="required" >
-  							<option selected="${ann.ann_type }">고용형태를 선택하세요</option>
+						<select class="form-select" name="ann_type" aria-label="Disabled select example" required="required" >
+  							<option disabled>고용형태를 선택하세요</option>
   							<option value="regular">정규직</option>
   							<option value="contract">계약직</option>
   							<option value="intern">인턴</option>
@@ -58,8 +58,8 @@
 				<tr>
 					<th width="30%" valign="middle">경력여부</th>
 					<td>
-						<select class="form-select" name="ann_career" aria-label="Default select example" required="required" >
-  							<option selected="${ann.ann_career }">경력여부를 선택하세요</option>
+						<select class="form-select" name="ann_career" aria-label="Disabled select example" required="required" >
+  							<option disabled>경력여부를 선택하세요</option>
   							<option value="new">신입</option>
   							<option value="old">경력</option>
   							<option value="okay">경력무관</option>

@@ -95,7 +95,7 @@
     							<li class="list-group-item">
     								<dl class="row">
     									<dt class="col">회사홈페이지</dt>
-    									<dd class="col" style="text-align: right;"><a href="${com_homepage}">바로가기</a></dd>
+    									<dd class="col" style="text-align: right;"><a href="${com.com_homepage}">바로가기</a></dd>
     								</dl>
     								<dl class="row">
     									<dt class="col">사원수</dt>
