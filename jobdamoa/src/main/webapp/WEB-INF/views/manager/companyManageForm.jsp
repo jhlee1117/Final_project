@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>기업 회원 관리</title>
 <script type="text/javascript">
 	function del() {
 		var con = confirm("정말로 탈퇴 처리 하시겠습니까?");
@@ -32,28 +30,30 @@
 </script>
 </head>
 <body>
-<div class="col-10 bd-content">
-<div class="mt-5 mb-5">
-	<font color="black" size="6">기업회원관리</font>
-</div>
+<div class="container" style="min-height:662px">
+<div class="col-12 bd-content justify-content-center">
+	<div class="mt-5 mb-5" align="center">
+		<font color="black" size="6">기업회원관리</font>
+	</div>
 	<form method="post" name="select_company">
 		<table class="table table-hover">
 			<thead class="table-primary">
 			<tr class="table-dark">
-				<th style="width: 5%">선택</th>
-				<th style="width: 10%">기업회원번호</th>
-				<th style="width: 13%">기업회원ID</th>
+				<th style="width: 5%; text-align: center;">선택</th>
+				<th style="width: 8%">회원번호</th>
+				<th style="width: 12%">회원ID</th>
 				<th style="width: 12%">회사명</th>
-				<th style="width: 15%">가입일</th>
-				<th style="width: 20%">대표이메일</th>
+				<th style="width: 10%">가입일</th>
+				<th style="width: 15%">대표이메일</th>
 				<th style="width: 13%">사업번호</th>
-				<th style="width: 17%">홈페이지</th>
+				<th style="width: 20%">홈페이지주소</th>
+				<th style="width: 5%">상태</th>
 			</tr>
 			</thead>
 			<tbody class="table-dark">
 			<c:forEach var="company" items="${companyList}">
 				<tr class="table-dark">
-					<td><input type="checkbox" name="chk_company_id" value="${company.com_id }"></td>
+					<td style="text-align: center;"><input type="checkbox" name="chk_company_id" value="${company.com_id }"></td>
 					<td>${company.com_num } </td>
 					<td>${company.com_id }</td>
 					<td>${company.com_name }</td>
@@ -101,6 +101,7 @@
 	    <button class="mt-2 btn btn-danger btn-sm" onclick="del()">회원삭제</button>
 		<button class="mt-2 btn btn-primary btn-sm" onclick="res()">회원복구</button>
 	</form>
+</div>
 </div>
 </body>
 </html>

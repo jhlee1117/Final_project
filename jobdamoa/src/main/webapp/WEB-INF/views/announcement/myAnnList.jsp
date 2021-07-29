@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="container px-4 px-lg-5 mt-5">
+<div class="container px-4 px-lg-5 mt-5" style="min-height:662px">
 	<div class="col mb-5">
 		<h2 class="text-primary" align="center">${com_name } 공고</h2>
 	</div>

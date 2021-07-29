@@ -4,8 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>일반회원 관리</title>
 <script type="text/javascript">
 	function del() {
 		var con = confirm("정말로 탈퇴 처리 하시겠습니까?");
@@ -32,27 +30,28 @@
 </script>
 </head>
 <body>
-<div class="col-10 bd-content">
-<div class="mt-5 mb-5">
-	<font color="black" size="6">회원관리</font>
-</div>
+<div class="container" style="min-height:662px">
+<div class="col-12 bd-content justify-content-center">
+	<div class="mt-5 mb-5" align="center">
+		<font color="black" size="6">회원관리</font>
+	</div>
 	<form method="post" name="select_member">
 		<table class="table table-hover">
 			<thead class="table-primary">
 			<tr class="table-dark">
-				<th style="width: 5%">선택</th>
-				<th style="width: 12%">회원번호</th>
-				<th style="width: 13%">회원ID</th>
-				<th style="width: 10%">닉네임</th>
-				<th style="width: 20%">가입일</th>
+				<th style="width: 6%; text-align:center;">선택</th>
+				<th style="width: 11%">회원번호</th>
+				<th style="width: 16%">회원ID</th>
+				<th style="width: 17%">닉네임</th>
+				<th style="width: 17%">가입일</th>
 				<th style="width: 25%">이메일</th>
-				<th style="width: 10%">ID상태123</th>
+				<th style="width: 8%">상태</th>
 			</tr>
 			</thead>
 			<tbody class="table-dark">
 			<c:forEach var="member" items="${memberList}">
 				<tr class="table-dark">
-					<td><input type="checkbox" name="chk_member_id" value="${member.mem_id }"></td>
+					<td style="text-align:center;"><input type="checkbox" name="chk_member_id" value="${member.mem_id }"></td>
 					<td>${member.mem_num } </td>
 					<td>${member.mem_id }</td>
 					<td>${member.mem_nickname }</td>
@@ -98,6 +97,7 @@
 	    <button class="mt-2 btn btn-danger btn-sm" onclick="del()">회원삭제</button>
 		<button class="mt-2 btn btn-primary btn-sm" onclick="res()">회원복구</button>
 	</form>
+</div>
 </div>
 </body>
 </html>

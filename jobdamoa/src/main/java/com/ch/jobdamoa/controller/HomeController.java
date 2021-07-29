@@ -22,15 +22,19 @@ public class HomeController {
 	public String home(Model model) {
 
 		List<ScrapJson> prList = ss.scrapProgrammers(); // 우선 데이터를 긁어옴
+		List<ScrapJson> saList = ss.scrapSaramin();
 		// 최근 5가지만 우선 저장하여 보내줌
-		List<ScrapJson> prRecentList = new ArrayList<>(); 
+		List<ScrapJson> prRecentList = new ArrayList<>();
+		List<ScrapJson> saRecentList = new ArrayList<>();
 		for (int i = 0; i < prList.size(); i++) {
 			if (i >= 5)
 				break;
 			prRecentList.add(prList.get(i));
+			saRecentList.add(saList.get(i));
 		}
 
 		model.addAttribute("prRecentList", prRecentList);
+		model.addAttribute("saRecentList", saRecentList);
 
 		return "home/home";
 	}

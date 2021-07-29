@@ -29,11 +29,11 @@
 					<h5 class="h5">요약</h5>
 					<table class="table table-bordered">
 						<tr>
-							<th width="30%" valign="middle">직무</th>
+							<th width="30%" valign="middle"><i class="bi bi-briefcase-fill"></i>&nbsp&nbsp직무</th>
 							<td>${ann.ann_job }</td>
 						</tr>
 						<tr>
-							<th width="30%" valign="middle">고용형태</th>
+							<th width="30%" valign="middle"><i class="bi bi-file-text-fill"></i>&nbsp&nbsp고용형태</th>
 							<td><c:if test="${ann.ann_type == 'regular' }">
 								정규직
 							</c:if> <c:if test="${ann.ann_type == 'contract' }">
@@ -45,7 +45,7 @@
 							</c:if></td>
 						</tr>
 						<tr>
-							<th width="30%" valign="middle">경력</th>
+							<th width="30%" valign="middle"><i class="bi bi-laptop-fill"></i>&nbsp&nbsp경력</th>
 							<td><c:if test="${ann.ann_career == 'new' }">
 								신입
 							</c:if> <c:if test="${ann.ann_career == 'old' }">
@@ -55,19 +55,19 @@
 							</c:if></td>
 						</tr>
 						<tr>
-							<th width="30%" valign="middle">연봉</th>
+							<th width="30%" valign="middle"><i class="bi bi-cash-coin"></i>&nbsp&nbsp연봉</th>
 							<td>${ann.ann_min } ~ ${ann.ann_max } 만원</td>
 						</tr>
 						<tr>
-							<th width="30%" valign="middle">회사 규모</th>
+							<th width="30%" valign="middle"><i class="bi bi-arrows-fullscreen"></i>&nbsp&nbsp회사 규모</th>
 							<td>${com.com_emp_num }명</td>
 						</tr>
 						<tr>
-							<th width="30%" valign="middle">기간</th>
+							<th width="30%" valign="middle"><i class="bi bi-hourglass-split"></i>&nbsp&nbsp기간</th>
 							<td>${ann.ann_recruit_period }</td>
 						</tr>
 						<tr>
-							<th width="30%" valign="middle">근무위치</th>
+							<th width="30%" valign="middle"><i class="bi bi-geo-alt-fill"></i>&nbsp&nbsp근무위치</th>
 							<td>${ann.ann_location }</td>
 						</tr>
 					</table>
@@ -89,41 +89,41 @@
 				<div class="section">
 					<h5 class="h5">회사정보</h5>
 					<div class="card">
-  						<div class="card-header">${com.com_name }</div>
+  						<div class="card-header"><h4>${com.com_name }</h4></div>
   						<div class="card-body">
     						<ul class="list-group list-group-flush">
     							<li class="list-group-item">
     								<dl class="row">
-    									<dt class="col">회사홈페이지</dt>
+    									<dt class="col"><i class="bi bi-house-fill"></i>&nbsp&nbsp회사홈페이지</dt>
     									<dd class="col" style="text-align: right;"><a href="${com.com_homepage}">바로가기</a></dd>
     								</dl>
     								<dl class="row">
-    									<dt class="col">사원수</dt>
+    									<dt class="col"><i class="bi bi-people-fill"></i>&nbsp&nbsp사원수</dt>
     									<dd class="col" style="text-align: right;">${com.com_emp_num } <span style="font-size: 6pt;">명</span></dd>
     								</dl>
     								<dl class="row">
-    									<dt class="col">매출</dt>
+    									<dt class="col"><i class="bi bi-bank2"></i>&nbsp&nbsp매출</dt>
     									<dd class="col" style="text-align: right;">${com.com_sales } <span style="font-size: 6pt;">만원</span></dd>
     								</dl>
     							</li>
     							<li class="list-group-item">
     								<dl class="row">
-    									<dt class="col">전화번호</dt>
+    									<dt class="col"><i class="bi bi-telephone-fill"></i>&nbsp&nbsp전화번호</dt>
     									<dd class="col" style="text-align: right;">${com.com_pno}</dd>
     								</dl>
     								<dl class="row">
-    									<dt class="col">이메일</dt>
+    									<dt class="col"><i class="bi bi-envelope-fill"></i>&nbsp&nbsp이메일</dt>
     									<dd class="col" style="text-align: right;"><span style="font-size: 8pt;">${com.com_email }</span></dd>
     								</dl>
     								<dl class="row">
-    									<dt class="col">주소</dt>
+    									<dt class="col"><i class="bi bi-pin-map-fill"></i>&nbsp&nbsp주소</dt>
     									<dd class="col" style="text-align: right;"><span style="font-size: 8pt;" id="com_address">${com.com_address }</span></dd>
     								</dl>
     							</li>
   							</ul>
   						</div>
 					</div>
-					<div class="card-header">위치</div>
+					<div class="card-header"><i class="bi bi-map-fill"></i>&nbsp&nbsp근무위치</div>
 					<div class="card-body w-auto" id="map" style="height: 200px;">
 					</div>
 					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d2196f3ead15c9e78a17ba1c74506591&libraries=services"></script>

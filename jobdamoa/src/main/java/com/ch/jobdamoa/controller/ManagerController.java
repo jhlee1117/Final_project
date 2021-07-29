@@ -10,9 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ch.jobdamoa.model.Announcement;
 import com.ch.jobdamoa.model.Company;
 import com.ch.jobdamoa.model.Manager;
 import com.ch.jobdamoa.model.Member;
+import com.ch.jobdamoa.model.PagingBean;
+import com.ch.jobdamoa.service.AnnouncementService;
+import com.ch.jobdamoa.service.CompanyService;
 import com.ch.jobdamoa.service.ManagerService;
 
 @Controller
@@ -20,6 +24,12 @@ public class ManagerController {
 
 	@Autowired
 	private ManagerService managerService;
+	
+	@Autowired
+	private AnnouncementService announcementService;
+	
+	@Autowired
+	private CompanyService companyService;
 	
 	//관리자 계정 로그인
 	@RequestMapping("managerLogin")
@@ -191,13 +201,13 @@ public class ManagerController {
 		return "manager/memberOut";
 	}
 		
-	// 일반 회원 복구 처리
+	// 기업 회원 복구 처리
 	@RequestMapping("companyRestore")
 	public String companyRestore(HttpServletRequest request) {
 		int result = 0;	
 		if(request.getParameterValues("chk_member_id") == null) {
 			request.setAttribute("result", result);
-			return "manager/memberRestore";
+			return "manager/companyRestore";
 		}
 		
 		String[] member_id = request.getParameterValues("chk_member_id");
@@ -209,6 +219,42 @@ public class ManagerController {
 			}
 		}
 		request.setAttribute("result", result);
-		return "manager/memberRestore";
+		return "manager/companyRestore";
+	}
+	
+	/*채용공고 관리*/
+	@RequestMapping("manageAnnouncement")
+	public String manageAnnouncement(HttpServletRequest request, HttpSession session, Model model, Announcement ann, String pageNum) {
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";	// 페이지 번호 여부 확인 및 값 초기화
+		int currentPage = Integer.parseInt(pageNum); // 숫자로 변환하여 처리
+		int rowPerPage = 10; // 한 화면에 보여지는 게시글 개수
+		int startRow = (currentPage - 1) * rowPerPage + 1; // 페이지 내 시작행 설정
+		int endRow = startRow + rowPerPage - 1; // 페이지 내 끝행 설정
+		
+		// 전체 페이징 처리
+		int total = announcementService.getTotal();
+		PagingBean pb = new PagingBean(currentPage, rowPerPage, total);
+		
+		ann.setStartRow(startRow);
+		ann.setEndRow(endRow);
+		List<Announcement> annlist = announcementService.annList(ann);
+		
+		// 회사번호로 회사명을 하나씩 조회해서 annList에 추가해준다.
+		for (Announcement ann_com_name : annlist) {
+			Company company = companyService.selectCom_nm(ann_com_name.getCom_num());
+			if (company != null) { // 게시물과 회사 정보는 동시에 있어야 그렇지 않은 경우 에러 발생 때문에 넣어놓음
+				ann_com_name.setCom_name(company.getCom_name());
+			} else
+				break;
+		}
+		
+		int ann_num = total - startRow + 1;
+		model.addAttribute("ann_num", ann_num);
+		model.addAttribute("pb", pb);
+		model.addAttribute("annlist", annlist);
+
+		
+		return "manager/manageAnnouncement";
 	}
 }

@@ -7,7 +7,7 @@
 	<definition name="tilesbase"
 		template="/WEB-INF/views/layout.jsp">
 		<put-attribute name="navbar" value="/WEB-INF/views/navbar.jsp" /> <!-- 헤더는 무조건 이 파일을 쓴다는 의미 -->
-		<put-attribute name="header" value="/WEB-INF/views/header.jsp" /> <!-- 메뉴는 무조건 이 파일을 쓴다는 의미 -->
+<!-- 		<put-attribute name="header" value="/WEB-INF/views/header.jsp" /> --> <!-- 메뉴는 무조건 이 파일을 쓴다는 의미 -->
 		<put-attribute name="section" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" /> <!-- 푸터는 무조건 이파일을 쓴다는 의미 -->
 	</definition>

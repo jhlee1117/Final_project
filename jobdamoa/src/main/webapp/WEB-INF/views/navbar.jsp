@@ -73,8 +73,8 @@
 				</c:when>
 				<c:when test="${user_dist == '2' }">
 				<div class="dropdown">
-					<button class="btn btn-outline-dark dropdown-toggle bi bi-file-person-fill" type="button" id="loginSelectButton" data-bs-toggle="dropdown" aria-expanded="false">
-						마이페이지
+					<button class="btn btn-warning btn-outline-dark dropdown-toggle bi bi-file-person-fill" type="button" id="loginSelectButton" data-bs-toggle="dropdown" aria-expanded="false">
+						관리메뉴
 					</button>
 					<ul class="dropdown-menu" aria-labelledby="loginSelectButton">
     					<li><a class="dropdown-item" href="memberManageForm.do">회원관리</a></li>
