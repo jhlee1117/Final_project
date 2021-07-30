@@ -45,11 +45,11 @@ def extract_job_info(html):
 
     for i in positions:
         p.append(i.get_text().strip())
+        print(i.get_text().strip())
     positions = ",".join(p)
 
     result = {'title':title, 'company':company, 'location':location, 'experience':experience, 'positions':positions, 'link':f"https://programmers.co.kr{job_id}"}
     return result
-
 
 def extract_programmers_jobs(last_page):
     jobs = []
