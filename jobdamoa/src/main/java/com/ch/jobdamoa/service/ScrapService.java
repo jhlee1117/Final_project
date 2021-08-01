@@ -7,7 +7,7 @@ import com.ch.jobdamoa.model.ScrapJson;
 
 public interface ScrapService {
 
-	List<ScrapJson> scrapProgrammers();
+	List<ScrapJson> scrapProgrammers(String fileName);
 
 	Scrap confirmScrap(Scrap scchk);
 
@@ -21,6 +21,8 @@ public interface ScrapService {
 
 	int scrapDelete(int scrap_num);
 
-	List<ScrapJson> scrapSaramin();
+	List<ScrapJson> scrapSaramin(String fileName);
+
+	String getDate(String fileName);
 	
 }

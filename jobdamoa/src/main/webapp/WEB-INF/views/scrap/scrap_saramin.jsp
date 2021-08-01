@@ -22,6 +22,7 @@
 </head>
 <body>
 <div class="container px-4 px-lg-5 mt-5" style="min-height:662px;">
+	<div align="right"><h6>업데이트 시점: ${srDate }</h6></div>
 	<div class="col mb-5">
 		<h2 class="text-primary" align="center">공고 목록</h2>
 	</div>
@@ -39,10 +40,12 @@
 							<div class="text-left">
 								<h5 class="fw-bolder mb-3">${sr.title }</h5>
 								<h6 class="fw-bold mb-3">${sr.company }</h6>
+									<ul class="list-group list-group-horizontal">
+										<li class="list-group-item"><i class="bi bi-geo-alt-fill"></i>&nbsp&nbsp${sr.location }</li>
+										<li class="list-group-item"><i class="bi bi-laptop-fill"></i>&nbsp&nbsp${sr.experience }</li>
+									</ul>
 									<ul class="list-group list-group-horizontal mb-3">
-										<li class="list-group-item">${sr.location }</li>
-										<li class="list-group-item">${sr.experience }</li>
-										<li class="list-group-item">${sr.positions }</li>
+										<li class="list-group-item"><i class="bi bi-briefcase-fill"></i>&nbsp&nbsp${sr.positions }</li>
 									</ul>
 										<!-- 상세보기 공고 저장 버튼-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">

@@ -36,17 +36,19 @@
 									<h6 class="fw-bold mb-3">${ann.com_name }</h6>
 										<ul class="list-group list-group-horizontal mb-3">
 											<li class="list-group-item"> <!-- 경력 제약조건 확인 -->
+												<i class="bi bi-laptop-fill"></i>&nbsp&nbsp
 												<c:if test="${ann.ann_career == 'new' }">신입</c:if>
 												<c:if test="${ann.ann_career == 'old' }">경력</c:if>
 												<c:if test="${ann.ann_career == 'okay' }">경력무관</c:if>
 											</li>
 											<li class="list-group-item">
+												<i class="bi bi-briefcase-fill"></i>&nbsp&nbsp
 												<c:if test="${ann.ann_type == 'regular' }">정규직</c:if>
 												<c:if test="${ann.ann_type == 'contract' }">계약직</c:if>
 												<c:if test="${ann.ann_type == 'intern' }">인턴</c:if>
 												<c:if test="${ann.ann_type == 'rest' }">기타</c:if>
 											</li>
-											<li class="list-group-item">${ann.ann_location }</li>
+											<li class="list-group-item"><i class="bi bi-geo-alt-fill"></i>&nbsp&nbsp${ann.ann_location }</li>
 										</ul>
 										<table>
 											<tr>

@@ -1,17 +1,19 @@
 package com.ch.jobdamoa.service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ch.jobdamoa.dao.ScrapDao;
-import com.ch.jobdamoa.model.Favorites;
 import com.ch.jobdamoa.model.Scrap;
 import com.ch.jobdamoa.model.ScrapJson;
 import com.google.common.reflect.TypeToken;
@@ -25,12 +27,10 @@ public class ScrapServiceImpl implements ScrapService {
 	private ScrapDao sd;
 	
 	private static String path = "C:\\my_project\\spring\\final_project\\jobdamoa\\src\\main\\webapp\\python_scrap"; // 경로
-	private String fileName = "";
 	
 	@Override
-	public List<ScrapJson> scrapProgrammers() {
+	public List<ScrapJson> scrapProgrammers(String fileName) {
 		
-		fileName = "scrap_result_programmers.json";
 		List<ScrapJson> prList = null;
 		
 		// JSON 데이터를 읽어와서 객체로 변환 후 해당 사이트로 보내줌
@@ -57,9 +57,8 @@ public class ScrapServiceImpl implements ScrapService {
 	}
 
 	@Override
-	public List<ScrapJson> scrapSaramin() {
+	public List<ScrapJson> scrapSaramin(String fileName) {
 		
-		fileName = "scrap_result_saramin.json";
 		List<ScrapJson> saramList = null;
 		
 		// JSON 데이터를 읽어와서 객체로 변환 후 해당 사이트로 보내줌
@@ -113,6 +112,19 @@ public class ScrapServiceImpl implements ScrapService {
 	@Override
 	public int scrapDelete(int scrap_num) {
 		return sd.scrapDelete(scrap_num);
+	}
+
+	@Override
+	public String getDate(String fileName) {
+		
+		// 파일 동기화 시간을 불러오기 위한 코드
+		File file = new File(path + "\\" + fileName);
+		long lastModified = file.lastModified();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date lastModifiedDate = new Date(lastModified);
+		String scrapDate = dateFormat.format(lastModifiedDate);
+		
+		return scrapDate;
 	}
 	
 }

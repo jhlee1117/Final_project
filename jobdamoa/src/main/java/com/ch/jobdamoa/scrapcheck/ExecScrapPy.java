@@ -13,7 +13,7 @@ public class ExecScrapPy {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ExecScrapPy.class);
 	
-	@Scheduled(cron="0 0/5 * * * *")
+	@Scheduled(cron="0 0/10 * * * *")
 	public void doScrapPy() {
 		 Calendar calendar = Calendar.getInstance();
 		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

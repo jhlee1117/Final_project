@@ -3,7 +3,6 @@ package com.ch.jobdamoa.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ch.jobdamoa.model.Favorites;
 import com.ch.jobdamoa.model.PagingBean;
 import com.ch.jobdamoa.model.Scrap;
 import com.ch.jobdamoa.model.ScrapJson;
@@ -26,8 +24,11 @@ public class ScrapController {
 
 	@RequestMapping("scrapProgrammers") // 프로그래머스 사이트와 연결
 	public String scrapProgrammers(String pageNum, Model model) {
-
-		List<ScrapJson> prAllList = ss.scrapProgrammers();
+		
+		String fileName = "scrap_result_programmers.json";
+		
+		String prDate = ss.getDate(fileName);
+		List<ScrapJson> prAllList = ss.scrapProgrammers(fileName);
 
 		if (pageNum == null || pageNum.equals(""))
 			pageNum = "1"; // 페이지 번호 여부 확인 및 값 초기화
@@ -53,7 +54,8 @@ public class ScrapController {
 				startRow++;
 			}
 		}
-
+		
+		model.addAttribute("prDate", prDate);
 		model.addAttribute("prList", prList);
 		model.addAttribute("pb", pb);
 
@@ -62,8 +64,11 @@ public class ScrapController {
 
 	@RequestMapping("scrapSaramin") // 사람인 사이트와 연결
 	public String scrapSaramin(String pageNum, Model model) {
-
-		List<ScrapJson> saramAllList = ss.scrapSaramin();
+		
+		String fileName = "scrap_result_saramin.json";
+		
+		String srDate = ss.getDate(fileName);
+		List<ScrapJson> saramAllList = ss.scrapSaramin(fileName);
 
 		if (pageNum == null || pageNum.equals(""))
 			pageNum = "1"; // 페이지 번호 여부 확인 및 값 초기화
@@ -88,7 +93,8 @@ public class ScrapController {
 				startRow++;
 			}
 		}
-
+		
+		model.addAttribute("srDate", srDate);
 		model.addAttribute("saramList", saramList);
 		model.addAttribute("pb", pb);
 
