@@ -24,5 +24,7 @@ public interface ScrapService {
 	List<ScrapJson> scrapSaramin(String fileName);
 
 	String getDate(String fileName);
+
+	List<Scrap> myxlslist(int mem_num);
 	
 }

@@ -18,4 +18,6 @@ public interface ScrapDao {
 
 	int scrapDelete(int scrap_num);
 
+	List<Scrap> myxlslist(int mem_num);
+
 }

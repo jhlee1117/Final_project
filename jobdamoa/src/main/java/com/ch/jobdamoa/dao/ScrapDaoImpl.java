@@ -44,4 +44,9 @@ public class ScrapDaoImpl implements ScrapDao {
 	public int scrapDelete(int scrap_num) {
 		return sst.delete("scrapns.scrapDelete", scrap_num);
 	}
+
+	@Override
+	public List<Scrap> myxlslist(int mem_num) {
+		return sst.selectList("scrapns.myxlslist", mem_num);
+	}
 }

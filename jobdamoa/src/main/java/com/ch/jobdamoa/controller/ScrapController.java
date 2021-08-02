@@ -1,10 +1,22 @@
 package com.ch.jobdamoa.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -183,5 +195,101 @@ public class ScrapController {
 			msg = "삭제에 실패하였습니다.";
 		}
 		return msg;
+	}
+	
+	@RequestMapping("xlsSave")
+	public void xlsSave(HttpServletResponse response, HttpSession session) {
+		
+		// 로그인한 id 기준으로 모든 스크랩 공고를 가져옴
+		int mem_num = (int) session.getAttribute("mem_num");
+		List<Scrap> myxlslist = ss.myxlslist(mem_num);
+		
+		// 엑셀 워크북 생성
+		Workbook wb = new XSSFWorkbook();
+		Sheet sheet = wb.createSheet("내 스크랩 공고");
+		Row row = null;
+		Cell cell = null;
+		int rowNo = 0;
+		
+		// 헤더 스타일 지정
+		CellStyle headStyle = wb.createCellStyle();
+		// 가는 경계선
+		headStyle.setBorderTop(BorderStyle.THIN);
+		headStyle.setBorderBottom(BorderStyle.THIN);
+		headStyle.setBorderLeft(BorderStyle.THIN);
+		headStyle.setBorderRight(BorderStyle.THIN);
+		// 오렌지 배경색
+		headStyle.setFillForegroundColor(IndexedColors.LEMON_CHIFFON.getIndex());
+		headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		// 데이터 가운데 정렬
+		headStyle.setAlignment(HorizontalAlignment.CENTER);
+		
+		// 데이터 출력 스타일 지정
+		CellStyle bodyStyle = wb.createCellStyle();
+		// 가는 경계선
+		bodyStyle.setBorderTop(BorderStyle.THIN);
+		bodyStyle.setBorderBottom(BorderStyle.THIN);
+		bodyStyle.setBorderLeft(BorderStyle.THIN);
+		bodyStyle.setBorderRight(BorderStyle.THIN);
+		
+		// 헤더 생성
+		row = sheet.createRow(rowNo++);
+		cell = row.createCell(0); // 0번부터 셀 컬럼 하나씩 추가
+		cell.setCellStyle(headStyle);
+		cell.setCellValue("공고출처");
+		cell = row.createCell(1);
+		cell.setCellStyle(headStyle);
+		cell.setCellValue("공고명");
+		cell = row.createCell(2);
+		cell.setCellStyle(headStyle);
+		cell.setCellValue("회사명");
+		cell = row.createCell(3);
+		cell.setCellStyle(headStyle);
+		cell.setCellValue("근무지");
+		cell = row.createCell(4);
+		cell.setCellStyle(headStyle);
+		cell.setCellValue("경력");
+		cell = row.createCell(5);
+		cell.setCellStyle(headStyle);
+		cell.setCellValue("공고 URL");
+		
+		// 리스트에서 데이터를 입력해줌
+		for(Scrap scrap : myxlslist) {
+			
+			row = sheet.createRow(rowNo++);
+			cell = row.createCell(0);
+			cell.setCellStyle(bodyStyle);
+			cell.setCellValue(scrap.getScrap_from());
+			if (cell.getStringCellValue().equals("1")) {
+				cell.setCellValue("프로그래머스");
+			} else
+				cell.setCellValue("사람인");
+			cell = row.createCell(1);
+			cell.setCellStyle(bodyStyle);
+			cell.setCellValue(scrap.getScrap_title());
+			cell = row.createCell(2);
+			cell.setCellStyle(bodyStyle);
+			cell.setCellValue(scrap.getScrap_company());
+			cell = row.createCell(3);
+			cell.setCellStyle(bodyStyle);
+			cell.setCellValue(scrap.getScrap_location());
+			cell = row.createCell(4);
+			cell.setCellStyle(bodyStyle);
+			cell.setCellValue(scrap.getScrap_career());
+			cell = row.createCell(5);
+			cell.setCellStyle(bodyStyle);
+			cell.setCellValue(scrap.getScrap_link());
+		}
+		
+		// 엑셀 출력
+		response.setContentType("application/vnd.ms-excel");
+		response.setHeader("Content-Disposition", "attachment;filename=MyScrapList.xlsx");			
+		try {
+			wb.write(response.getOutputStream());
+			wb.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 }

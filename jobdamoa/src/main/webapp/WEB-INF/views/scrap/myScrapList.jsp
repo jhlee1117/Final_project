@@ -20,10 +20,17 @@
 			return;
 		location.reload();
 	}
+	function xlsSave() {
+		var xlschk = confirm("정말로 다운로드를 하시겠습니까?");
+		if (xlschk == true) {
+			location.href = 'xlsSave.do';
+		}
+	}
 </script>
 </head>
 <body>
 <div class="container px-4 px-lg-5 mt-5" style="min-height:662px">
+	<div align="right"><button type="button" class="btn btn-success" onclick="xlsSave();"><i class="bi bi-file-earmark-excel"></i>&nbsp&nbsp다운로드</button></div>
 	<div class="col mb-5">
 		<h2 class="text-primary" align="center">내가 저장한 공고</h2>
 	</div>

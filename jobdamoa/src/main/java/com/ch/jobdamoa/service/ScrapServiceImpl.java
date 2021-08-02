@@ -126,5 +126,10 @@ public class ScrapServiceImpl implements ScrapService {
 		
 		return scrapDate;
 	}
+
+	@Override
+	public List<Scrap> myxlslist(int mem_num) {
+		return sd.myxlslist(mem_num);
+	}
 	
 }

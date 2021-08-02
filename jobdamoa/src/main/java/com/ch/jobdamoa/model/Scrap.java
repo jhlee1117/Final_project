@@ -22,4 +22,13 @@ public class Scrap {
 	private int startRow;
 	private int endRow;
 	
+//	public String getScrap_from() {
+//		String data = "";
+//		if (scrap_from.equals("1")) {
+//			data = "프로그래머스";
+//		} else if (scrap_from.equals("2")) {
+//			data = "사람인";
+//		}
+//		return data;
+//	}
 }

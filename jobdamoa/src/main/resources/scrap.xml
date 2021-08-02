@@ -13,7 +13,7 @@
 	
 	<insert id="scrapSave" parameterType="scrap">
 		insert into scrap values(#{scrap_num}, #{mem_num}, #{scrap_title}, #{scrap_company}, #{scrap_location},
-						#{scrap_career}, #{scrap_link}, default, #{scrap_from})
+						nvl(#{scrap_career},'신입'), #{scrap_link}, default, #{scrap_from})
 	</insert>
 	
 	<select id="getMyTotal" parameterType="integer" resultType="integer">
@@ -28,5 +28,9 @@
 	<delete id="scrapDelete" parameterType="integer">
 		delete from scrap where scrap_num = #{scrap_num}
 	</delete>
+	
+	<select id="myxlslist" parameterType="integer" resultType="scrap">
+		select * from scrap where mem_num = #{mem_num}
+	</select>
 	
 </mapper>
