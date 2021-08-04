@@ -30,7 +30,7 @@
 	</delete>
 	
 	<select id="myxlslist" parameterType="integer" resultType="scrap">
-		select * from scrap where mem_num = #{mem_num}
+		select * from scrap where mem_num = #{mem_num} order by scrap_num desc
 	</select>
 	
 </mapper>

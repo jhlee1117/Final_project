@@ -325,7 +325,7 @@ public class ScrapController {
 		headStyle.setBorderBottom(BorderStyle.THIN);
 		headStyle.setBorderLeft(BorderStyle.THIN);
 		headStyle.setBorderRight(BorderStyle.THIN);
-		// 오렌지 배경색
+		// 레몬 배경색
 		headStyle.setFillForegroundColor(IndexedColors.LEMON_CHIFFON.getIndex());
 		headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 		// 데이터 가운데 정렬
@@ -387,7 +387,12 @@ public class ScrapController {
 			cell.setCellStyle(bodyStyle);
 			cell.setCellValue(scrap.getScrap_link());
 		}
-
+		wb.getSheet("내 스크랩 공고").autoSizeColumn(0);
+		wb.getSheet("내 스크랩 공고").autoSizeColumn(1);
+		wb.getSheet("내 스크랩 공고").autoSizeColumn(2);
+		wb.getSheet("내 스크랩 공고").autoSizeColumn(3);
+		wb.getSheet("내 스크랩 공고").autoSizeColumn(4);
+		wb.getSheet("내 스크랩 공고").autoSizeColumn(5);
 		// 엑셀 출력
 		response.setContentType("application/vnd.ms-excel");
 		response.setHeader("Content-Disposition", "attachment;filename=MyScrapList.xlsx");

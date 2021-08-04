@@ -86,9 +86,7 @@ public class FavoritesController {
 	public String favDelete(int ann_num, int pageNum) {
 		
 		List<Favorites> cflist = fs.confirmFavAnn(ann_num);
-		for (int i = 0; i < cflist.size(); i++) {
-			System.out.println(i);
-		}
+
 		String msg;
 		
 		if (cflist.isEmpty()) {

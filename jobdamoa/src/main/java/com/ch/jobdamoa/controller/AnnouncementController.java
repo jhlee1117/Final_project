@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ch.jobdamoa.model.Announcement;
 import com.ch.jobdamoa.model.Company;
@@ -100,9 +99,16 @@ public class AnnouncementController {
 	}
 	 
 	@RequestMapping("annView")
-	public String annView(int ann_num, String pageNum, Model model) {
-		as.updateReadCount(ann_num); 
+	public String annView(int ann_num, String pageNum, Model model, HttpSession session) { 
 		Announcement ann = as.annView(ann_num);
+		// 중지된 공고는 작성한 회사 외에 조회 불가능하도록 접근 제한 페이지 처리
+		if (ann.getAnn_del().equals("y") && session.getAttribute("com_num") == null) {
+			return "announcement/annFail";
+		} else if (ann.getAnn_del().equals("y") && ann.getCom_num() != ((int) session.getAttribute("com_num"))) {
+			return "announcement/annFail";
+		}
+		
+		as.updateReadCount(ann_num);
 		Company com = cs.selectCom(ann.getCom_num());
 		model.addAttribute("ann", ann);
 		model.addAttribute("com", com);

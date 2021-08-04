@@ -69,6 +69,7 @@
 			<mapping path="/scrapSave.do"/>
 			<mapping path="/myScrapList.do"/>
 			<mapping path="/scrapDelete.do"/>
+			<mapping path="/xlsSave.do"/>
 			<beans:ref bean="memlc"/>
 		</interceptor>
 		<interceptor>

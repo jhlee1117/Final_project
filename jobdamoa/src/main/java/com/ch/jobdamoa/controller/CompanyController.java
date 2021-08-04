@@ -301,9 +301,7 @@ public class CompanyController {
 	
 	@RequestMapping("comDelete")
 	public String memDelete(HttpSession session, Model model) {
-		System.out.println("받기: " + session.getAttribute("com_num"));
 		int com_num = (int) session.getAttribute("com_num");
-		System.out.println("변환: " + com_num);
 		int result = cs.deleteCom(com_num);
 		model.addAttribute("result", result);
 		return "company/comDelete";
@@ -316,10 +314,8 @@ public class CompanyController {
 		String result="";
 		Company com = cs.selectCom((int) session.getAttribute("com_num"));
 		if (passwordEncoder.matches(com_password, com.getCom_password())) {
-			System.out.println("성공");
 			result = "1";
 		} else {
-			System.out.println("실패");
 			result = "-1";
 		}
 		return result;

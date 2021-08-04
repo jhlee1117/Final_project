@@ -14,7 +14,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -302,9 +302,7 @@ public class MemberController {
 	
 	@RequestMapping("memDelete")
 	public String memDelete(HttpSession session, Model model) {
-		System.out.println("받기: " + session.getAttribute("mem_num"));
 		int mem_num = (int) session.getAttribute("mem_num");
-		System.out.println("변환: " + mem_num);
 		int result = ms.deleteMem(mem_num);
 		model.addAttribute("result", result);
 		return "member/memDelete";
