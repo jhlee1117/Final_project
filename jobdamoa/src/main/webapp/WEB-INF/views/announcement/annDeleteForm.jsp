@@ -36,14 +36,21 @@
 	        }
 	    });
 		}
-		else
+	}
+	function chk2() {
+		if(!frm.manager_password.value) {
+			alert("비밀번호를 입력해야 합니다.");
+			frm.manager_password.focus();
+			return false;
+		}
+		else if(frm.manager_password.value) {
 		$.ajax({
 	        type: "POST",
 	        url: "confirmAnnDelManager.do?manager_password=" + frm.manager_password.value,
 	        async: false,
 	        contentType: "application/json; charset=utf-8",
 	        success: function (result) {
-	        	if (result == "1") {
+	        	if (result == "2") {
 					delchk = confirm("정말로 공고를 삭제하시겠습니까?");
 					if (delchk) {
 						//return true;
@@ -55,9 +62,9 @@
 				} else if (result == "-1") {
 					alert("비밀번호가 일치하지 않습니다.");
 					return;
-				}
-	        }
-	    });
+					}
+	        	}
+	    	});
 		}
 	}
 </script>
@@ -70,8 +77,7 @@
 	</script>	
 </c:if>
 <c:if test="${result == 1 }">
-	<c:choose>
-	<c:when test="${user_dist == 1 }">
+	<c:if test="${user_dist == 1 }">
 		<div class="container" align="center">
 		<form action="" name="frm" method="post" onsubmit="return chk(this);">
 			<input type="hidden" name="ann_num" value="${ann_num }">
@@ -91,18 +97,20 @@
 				</div>
 			</form>
 		</div>
-	</c:when>
-	<c:when test="${user_dist == 2}">
+	</c:if>
+</c:if>
+<c:if test="${result == 2 }">
+	<c:if test="${user_dist == 2}">
 		<div class="container" align="center">
-			<form action="" name="frm" method="post" onsubmit="return chk(this);">
+			<form action="" name="frm" method="post" onsubmit="return chk2(this);">
 			<input type="hidden" name="ann_num" value="${ann_num }">
 				<div class="card w-100 text-center">
 					<div class="card-body">
 						<h6>관리자 비밀번호를 입력하세요.</h6>
 						<div class="form-floating mb-3">
-							<input type="password" name="man_password" class="form-control"
-								id="man_password" placeholder="Password"> <label
-								for="man_password">Password</label>
+							<input type="password" name="manager_password" class="form-control"
+								id="manager_password" placeholder="Password"> <label
+								for="manager_password">Password</label>
 						</div>
 					</div>
 					<div class="card-footer">
@@ -112,8 +120,7 @@
 				</div>
 			</form>
 		</div>
-	</c:when>
-	</c:choose>
+	</c:if>
 </c:if>
 </body>
 </html>

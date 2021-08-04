@@ -48,12 +48,12 @@
 	<beans:bean id="comlc" class="com.ch.jobdamoa.service.ComLoginChk"></beans:bean>
 	<beans:bean id="memlc" class="com.ch.jobdamoa.service.MemLoginChk"></beans:bean>
 	<beans:bean id="manlc" class="com.ch.jobdamoa.service.ManagerLoginChk"></beans:bean>
+	<beans:bean id="anndelchk" class="com.ch.jobdamoa.service.AnnDelChk"></beans:bean>
 	<interceptors>
 		<interceptor>
 			<mapping path="/annInsertForm.do"/>
 			<mapping path="/myAnnList.do"/>
 			<mapping path="/annUpdateForm.do"/>
-			<mapping path="/annDeleteForm.do"/>
 			<mapping path="/comInfo.do"/>
 			<mapping path="/comUpdateForm.do"/>
 			<mapping path="/comDeleteForm.do"/>
@@ -80,6 +80,10 @@
 			<mapping path="/companyOut.do"/>
 			<mapping path="/companyRestore.do"/>
 			<beans:ref bean="manlc"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/annDeleteForm.do"/>
+			<beans:ref bean="anndelchk"/>
 		</interceptor>
 	</interceptors>
 
