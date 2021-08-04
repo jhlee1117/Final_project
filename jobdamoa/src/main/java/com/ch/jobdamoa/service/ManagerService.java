@@ -8,7 +8,7 @@ import com.ch.jobdamoa.model.Member;
 
 public interface ManagerService {
 	
-	Manager login(String manager_id);
+	Manager select(String manager_id);
 	
 	//일반 회원 관리
 	int update(Member member); //회원 정보 수정

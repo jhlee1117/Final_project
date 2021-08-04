@@ -17,8 +17,8 @@ public class ManagerServiceImpl implements ManagerService {
 	private ManagerDao md;
 
 	@Override
-	public Manager login(String manager_id) {
-		return md.login(manager_id);
+	public Manager select(String manager_id) {
+		return md.select(manager_id);
 	}
 	
 	@Override

@@ -19,7 +19,7 @@ public class ManagerDaoImpl implements ManagerDao {
 	private SqlSessionTemplate sst;
 	
 	@Override
-	public Manager login(String manager_id) {
+	public Manager select(String manager_id) {
 		return sst.selectOne("managerns.select", manager_id);
 	}
 	

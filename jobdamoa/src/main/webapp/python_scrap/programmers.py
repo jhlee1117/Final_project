@@ -1,28 +1,33 @@
-import requests
 from bs4 import BeautifulSoup
-import json
+import time
+from selenium import webdriver as wd
 
 START = 1
-URL = f"https://programmers.co.kr/job?_=1624927323767&job_position%5Bdummy%5D=0&job_position%5Bmin_career%5D=0&order=recent"
+URL = f"https://programmers.co.kr/job?min_salary=&min_career=0&min_employees=&order=recent&page=1"
+driver = wd.Chrome(executable_path = './chromedriver')
+driver.implicitly_wait(3)
 
 def extract_programmers_page():
-    result = requests.get(URL)
-    soup = BeautifulSoup(result.text, "html.parser")
+    driver.get(URL)
+    result = driver.page_source
+    time.sleep(1)
+    soup = BeautifulSoup(result, "html.parser")
     pagination = soup.find("ul", {"class":"pagination"})
-    lists = pagination.find_all('a')
+
+    lists = pagination.find_all('span')
 
     pages = []
     for list in lists:
-        if list.string.isdigit():
-            pages.append(int(list.string))
+        pages.append(list.string)
 
-    last_page = pages[-1]
-
+    last_page = int(pages[-2])
+    print(last_page)
+    
     return last_page
 
 
 def extract_job_info(html):
-    title = html.find("h5", {"class":"position-title"}).find("a").string
+    title = html.find("h5", {"class":"position-title"}).find("a").get_text().strip()
     company = html.find("h6", {"class":"company-name"})
     job_id = html.find("h5", {"class":"position-title"}).find("a")["href"]
 
@@ -56,8 +61,10 @@ def extract_programmers_jobs(last_page):
 
     for page in range(START, last_page+1):
         print(str(page) + "페이지 스크래핑중(프로그래머스)")
-        result = requests.get(f"{URL}&page={page}")
-        soup = BeautifulSoup(result.text, "html.parser")
+        driver.get(URL.replace("page=1", f"page={page}"))
+        time.sleep(1.5)
+        result = driver.page_source
+        soup = BeautifulSoup(result, "html.parser")
 
         results = soup.find_all("li", {"class":"list-position-item"})
 
@@ -70,5 +77,6 @@ def extract_programmers_jobs(last_page):
 def get_jobs():
     last_page = extract_programmers_page()
     jobs_list = extract_programmers_jobs(last_page)
+    driver.quit()
 
     return jobs_list

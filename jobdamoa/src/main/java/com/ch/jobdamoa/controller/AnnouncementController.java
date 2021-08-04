@@ -171,18 +171,23 @@ public class AnnouncementController {
 	@RequestMapping("annDeleteForm")
 	public String annDeleteForm(int ann_num, String pageNum, Model model, HttpSession session) {
 		
-		int result;
+		int result = 0;
+		int userDist = (int)session.getAttribute("user_dist");
+		System.out.println(ann_num);
+		System.out.println(userDist);
 		Announcement ann = as.annView(ann_num);
 		
 		if (ann.getAnn_del().equals("y")) {
 			result = 0;
-		} else {
+		} else if (userDist == 1) {
 			result = 1;
-			model.addAttribute("ann_num", ann_num);
-			model.addAttribute("pageNum", pageNum);
-			model.addAttribute("ann", ann);
+		} else if (userDist == 2) {
+			result = 2;
 		}
-		
+
+		model.addAttribute("ann_num", ann_num);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("ann", ann);
 		session.setAttribute("result", result);
 		
 		return "announcement/annDeleteForm";
