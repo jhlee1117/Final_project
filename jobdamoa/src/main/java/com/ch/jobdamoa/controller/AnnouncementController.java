@@ -39,6 +39,7 @@ public class AnnouncementController {
 		// 전체 페이징 처리
 		int total = as.getTotal();
 		PagingBean pb = new PagingBean(currentPage, rowPerPage, total);
+		String[] select = {"공고명","근무지","직무"};
 		
 		ann.setStartRow(startRow);
 		ann.setEndRow(endRow);
@@ -54,6 +55,7 @@ public class AnnouncementController {
 		}
 		
 		int ann_num = total - startRow + 1;
+		model.addAttribute("select", select);
 		model.addAttribute("ann_num", ann_num);
 		model.addAttribute("pb", pb);
 		model.addAttribute("annlist", annlist);

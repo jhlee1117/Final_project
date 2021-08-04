@@ -4,7 +4,13 @@
 <mapper namespace="announcementns">
 
 	<select id="annList" parameterType="map" resultType="announcement">
-		select * from (select a.*, rowNum rn from (select * from announcement) a order by ann_num desc) 
+		select * from (select a.*, rowNum rn from (select * from announcement
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like '%'||#{keyword}||'%' and ann_del = 'n'
+			</if>
+		</where>
+		) a order by ann_num desc) 
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
