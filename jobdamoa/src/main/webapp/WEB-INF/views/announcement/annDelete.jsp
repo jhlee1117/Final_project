@@ -8,10 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:if test="${result > 0 }">
+<c:if test="${result == 1 }">
 	<script type="text/javascript">
 		alert("삭제 성공");
 		location.href="myAnnList.do";
+	</script>
+</c:if>
+<c:if test="${result == 2 }">
+	<script type="text/javascript">
+		alert("삭제 성공");
+		location.href="managerAnnouncementForm.do";
 	</script>
 </c:if>
 <c:if test="${result == 0 }">

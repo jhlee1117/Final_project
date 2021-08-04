@@ -68,7 +68,7 @@ public class MemberController {
 		
 		Member member = ms.selectLogin(member_id);
 		// manager 아이디일 경우 managerController의 로그인 메소드 실행
-		Manager manager = managerService.login(member_id);
+		Manager manager = managerService.select(member_id);
 
 		if(member == null && manager != null) {
 			return managerController.managerLogin(request, model, session);
