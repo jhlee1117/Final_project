@@ -245,7 +245,6 @@ public class MemberController {
 	@RequestMapping("memInfo.do")
 	public String memInfo(Member mem, Model model, HttpSession session) {
 	    if (session == null || session.getAttribute("user_dist") == null) {
-	    	System.out.println(112);
 	    	return "/sessionChk";
 	    }
 		int mem_num = (int) session.getAttribute("mem_num");

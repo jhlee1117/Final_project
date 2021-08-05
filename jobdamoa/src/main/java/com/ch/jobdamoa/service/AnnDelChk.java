@@ -13,7 +13,6 @@ public class AnnDelChk extends HandlerInterceptorAdapter {
 			throws Exception {
 		
 		HttpSession session = request.getSession();
-		System.out.println("세션체크 후:" + session.getAttribute("user_dist"));
 		if (session.getAttribute("user_dist") != null) {
 			if (session.getAttribute("user_dist") == "1" && session.getAttribute("com_num") == null) {
 				response.sendRedirect("companyLoginForm.do");

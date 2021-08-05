@@ -41,7 +41,7 @@
 							<a class="btn btn-info btn-sm" href="annView.do?ann_num=${ann.ann_num}&pageNum=${pb.currentPage}">공고 상세보기</a>
 						</td>
 						<td style="text-align: center">
-							<a class="btn btn-info btn-sm" href="annDeleteForm.do?ann_num=${ann.ann_num}&pageNum=${pb.currentPage}">공고 삭제123</a>
+							<a class="btn btn-info btn-sm" href="annDeleteForm.do?ann_num=${ann.ann_num}&pageNum=${pb.currentPage}">공고 삭제</a>
 						</td>
 				</c:forEach>
 			</c:if>

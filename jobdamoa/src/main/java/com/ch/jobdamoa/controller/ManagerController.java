@@ -268,10 +268,8 @@ public class ManagerController {
 		String result="";
 		Manager manager = managerService.select((String)session.getAttribute("manager_id"));
 		if (manager_password.equals(manager.getManager_password())) {
-			System.out.println("성공");
 			result = "2";
 		} else {
-			System.out.println("실패");
 			result = "-1";
 		}
 		return result;

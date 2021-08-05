@@ -102,10 +102,14 @@ public class AnnouncementController {
 	public String annView(int ann_num, String pageNum, Model model, HttpSession session) { 
 		Announcement ann = as.annView(ann_num);
 		// 중지된 공고는 작성한 회사 외에 조회 불가능하도록 접근 제한 페이지 처리
-		if (ann.getAnn_del().equals("y") && session.getAttribute("com_num") == null) {
-			return "announcement/annFail";
-		} else if (ann.getAnn_del().equals("y") && ann.getCom_num() != ((int) session.getAttribute("com_num"))) {
-			return "announcement/annFail";
+		if (ann.getAnn_del().equals("y")) {
+			if(session.getAttribute("com_num") == null && session.getAttribute("manager_num") == null) {
+				return "announcement/annFail";
+			} else if (session.getAttribute("com_num") != null) {
+				if (ann.getCom_num() != ((int) session.getAttribute("com_num"))) {
+					return "announcement/annFail";
+				}		
+			} 
 		}
 		
 		as.updateReadCount(ann_num);
@@ -181,7 +185,6 @@ public class AnnouncementController {
 		
 		int result = 0;
 		String userDist = (String)session.getAttribute("user_dist");
-		System.out.println(userDist);
 		Announcement ann = as.annView(ann_num);
 		
 		if (ann.getAnn_del().equals("y")) {
